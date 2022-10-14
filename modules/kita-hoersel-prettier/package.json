@@ -1,0 +1,9 @@
+{
+  "name": "@kita-hoersel/prettier-config",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.5"
+  }
+}

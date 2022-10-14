@@ -1,0 +1,64 @@
+{
+  // various editor settings
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "explorer.autoReveal": false,
+  "workbench.startupEditor": "none",
+  "explorer.compactFolders": false,
+
+  // prisma configuration
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
+  // css configuration
+  "css.lint.unknownAtRules": "ignore",
+
+  // astro configuration
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // eslint project settings
+  "eslint.workingDirectories": ["./app", "./backend"],
+
+  // inline fold & tailwind intellisense support
+  //"inlineFold.supportedLanguages": ["astro"],
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  // typescript configuration
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "eslint.validate": ["typescript"],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "emmet.includeLanguages": {
+    "typescript": "typescriptreact"
+  },
+  "auto-close-tag.disableOnLanguage": ["javascript", "typescript"],
+
+  // vscode explorer file nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "README.md": "SECURITY.md,LICENSE",
+    "package.json": "tsconfig.json,.gitignore,tsconfig.build.json,.editorconfig,.env",
+    "astro.config.mjs": "tailwind.config.cjs"
+  },
+
+  // hide various files/folders
+  "files.exclude": {
+    //"**/node_modules": true,
+    //"**/yarn.lock": true,
+    //"**/dist": true,
+    //"**/*.db": true
+  }
+}

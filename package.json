@@ -1,0 +1,16 @@
+{
+  "name": "kita-hoersel",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "modules/*",
+    "app",
+    "backend"
+  ],
+  "scripts": {
+    "backend": "yarn workspace @kita-hoersel/backend",
+    "app": "yarn workspace @kita-hoersel/app",
+    "docker:build": "docker build -f deploy/Dockerfile -t kita-hoersel/application .",
+    "docker:start": "docker compose -f deploy/docker-compose.yml -p kita-hoersel up"
+  }
+}

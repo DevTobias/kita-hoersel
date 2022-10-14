@@ -1,0 +1,13 @@
+# build output
+**/dist
+**/*.db
+
+# dependencies
+**/node_modules/
+
+# environment variables
+**/.env
+**/.env.production
+
+# operating system
+**/.DS_Store
