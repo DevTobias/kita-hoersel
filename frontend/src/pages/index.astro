@@ -1,0 +1,50 @@
+---
+import '@fontsource/poppins';
+
+const response = await fetch('http://localhost:8055/graphql', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    query: `
+      query {
+        quick_facts {
+          label
+          value
+        }
+      }
+      `,
+  }),
+}).then((response) => response.json());
+
+type QuickFacts = {
+  label: string;
+  value: string;
+};
+
+const quickFacts: QuickFacts[] = response.data.quick_facts;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Document</title>
+  </head>
+  <body class="h-screen w-full font-poppins">
+    <div class="bg-white text-slate-800 p-20 h-full w-full flex flex-col items-center">
+      <ul class="flex space-x-20">
+        {
+          quickFacts.map((fact) => (
+            <li class="flex flex-col justify-center items-center">
+              <div class="text-4xl font-semibold text-primary-600">{fact.value}</div>
+              <div class="text-lg font-medium text-primary-200">{fact.label}</div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </body>
+</html>

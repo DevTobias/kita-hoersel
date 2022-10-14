@@ -1,0 +1,47 @@
+{
+  "name": "@kita-hoersel/backend",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "esbuild src/server.ts --bundle --minify --platform=node --outdir=dist --external:../node_modules/*",
+    "start": "node dist/server",
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "@fastify/express": "^2.0.2",
+    "@fastify/helmet": "^10.0.1",
+    "@fastify/static": "^6.5.0",
+    "@kita-hoersel/frontend": "^1.0.0",
+    "fastify": "^4.8.1"
+  },
+  "devDependencies": {
+    "@kita-hoersel/eslint-config": "^1.0.0",
+    "@kita-hoersel/prettier-config": "^1.0.0",
+    "@types/node": "^18.8.3",
+    "esbuild": "^0.15.11",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.4"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src",
+      "tsconfig.json"
+    ],
+    "ext": "ts",
+    "exec": "yarn build && yarn start",
+    "env": {
+      "NODE_ENV": "development"
+    }
+  },
+  "prettier": "@kita-hoersel/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@kita-hoersel/eslint-config"
+    ],
+    "ignorePatterns": [
+      "*.mjs",
+      "dist",
+      "node_modules"
+    ]
+  }
+}

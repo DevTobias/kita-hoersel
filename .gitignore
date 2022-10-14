@@ -1,6 +1,8 @@
 # build output
 **/dist
 **/*.db
+**/data
+**/uploads
 
 # dependencies
 **/node_modules/

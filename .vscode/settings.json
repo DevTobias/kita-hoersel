@@ -25,7 +25,7 @@
   },
 
   // eslint project settings
-  "eslint.workingDirectories": ["./app", "./backend"],
+  "eslint.workingDirectories": ["./frontend", "./backend"],
 
   // inline fold & tailwind intellisense support
   //"inlineFold.supportedLanguages": ["astro"],
