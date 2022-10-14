@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/DevTobias/kita-hoersel">
-    <img src="https://github.com/trophoria/.github/blob/main/images/hero.svg" alt="kita hoersel logo" />
+    <img src="https://github.com/DevTobias/kita-hoersel/blob/main/.github/images/hero.svg" alt="kita hoersel logo" />
   </a>
 
   <br />
