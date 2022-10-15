@@ -3,6 +3,7 @@
 **/*.db
 **/data
 **/uploads
+**/database
 
 # dependencies
 **/node_modules/

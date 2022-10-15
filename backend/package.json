@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "esbuild src/server.ts --bundle --minify --platform=node --outdir=dist --external:../node_modules/*",
+    "build": "esbuild src/server.ts --bundle --minify --platform=node --outdir=dist",
     "start": "node dist/server",
+    "build:dev": "esbuild src/server.ts --bundle --platform=node --outdir=dist --external:../node_modules/*",
     "dev": "nodemon"
   },
   "dependencies": {
@@ -28,7 +29,7 @@
       "tsconfig.json"
     ],
     "ext": "ts",
-    "exec": "yarn build && yarn start",
+    "exec": "yarn build:dev && yarn start",
     "env": {
       "NODE_ENV": "development"
     }
