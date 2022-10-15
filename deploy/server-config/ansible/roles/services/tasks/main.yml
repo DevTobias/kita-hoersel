@@ -1,0 +1,95 @@
+- name: Create the traefik directory
+  file:
+    path: "/etc/traefik"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Copy traefik.yaml file
+  template:
+    src: "traefik.yml.j2"
+    dest: "/etc/traefik/traefik.yml"
+
+- name: Deploy docker compopse stack
+  docker_compose:
+    project_name: trophoria-stack
+    definition:
+      version: '3'
+      services:
+        traefik:
+          image: "traefik:latest"
+          container_name: "traefik"
+          restart: unless-stopped
+          ports:
+            - "80:80"
+            - "443:443"
+          networks:
+            - server_network
+          volumes:
+            - /etc/traefik:/etc/traefik
+            - traefik-ssl-certs:/ssl-certs
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+
+        watchtower:
+          image: "containrrr/watchtower"
+          container_name: "watchtower"
+          restart: unless-stopped
+          command: --schedule "* */15 * * * *"
+          volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+
+        directus:
+          container_name: directus
+          image: directus/directus:latest
+          restart: unless-stopped
+          ports:
+            - 8055:8055
+          volumes:
+            - ./uploads:/directus/uploads
+            - ./database:/directus/database
+          networks:
+            - local
+          environment:
+            KEY: "{{ directus_key }}"
+            SECRET: "{{ directus_secret }}"
+            DB_CLIENT: 'sqlite3'
+            DB_FILENAME: 'database/database.sql'
+            RATE_LIMITER_ENABLED: 'true'
+            CACHE_ENABLED: 'true'
+            CACHE_STORE: 'memory'
+            ADMIN_EMAIL: "{{ directus_admin_email }}"
+            ADMIN_PASSWORD: "{{ directus_admin_password }}"
+          labels:
+            traefik.enable: true
+            traefik.http.routers.server.entrypoints: web, websecure
+            traefik.http.routers.server.rule: Host("{{ root_host }}") && Path("/admin"))
+            traefik.http.routers.server.tls: true
+            traefik.http.routers.server.tls.certresolver: zerossl
+
+        server:
+          image: kitashoersel/server:latest
+          container_name: kita-hoersel
+          restart: unless-stopped
+          environment:
+            "PORT": "{{ api_port }}"
+          networks:
+            - server_network
+          depends_on:
+            - traefik
+            - directus
+          ports:
+            - 8080:8080
+          labels:
+            traefik.enable: true
+            traefik.http.routers.server.entrypoints: web, websecure
+            traefik.http.routers.server.rule: Host("{{ root_host }}")
+            traefik.http.routers.server.tls: true
+            traefik.http.routers.server.tls.certresolver: zerossl
+
+      volumes:
+        traefik-ssl-certs:
+          driver: local
+
+      networks:
+        server_network:
+          driver: bridge

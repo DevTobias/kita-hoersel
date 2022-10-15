@@ -62,5 +62,9 @@
     "**/uploads": true,
     "**/export": true,
     "**/yarn.lock": true
+  },
+
+  "material-icon-theme.folders.associations": {
+    "server-config": "config"
   }
 }

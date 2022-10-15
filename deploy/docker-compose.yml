@@ -27,7 +27,7 @@ services:
       ADMIN_PASSWORD: 'd1r3ctu5'
   
   server:
-    image: kita-hoersel/application
+    image: kitashoersel/server
     restart: unless-stopped
     networks:
       - local
