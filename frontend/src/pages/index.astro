@@ -1,7 +1,7 @@
 ---
 import '@fontsource/poppins';
 
-const endpointUrl = import.meta.env.ENDPOINT_URL ?? 'http://localhost:8055/graphql';
+const endpointUrl = import.meta.env.PUBLIC_ENDPOINT_URL ?? 'http://localhost:8055/graphql';
 
 const response = await fetch(endpointUrl, {
   method: 'POST',

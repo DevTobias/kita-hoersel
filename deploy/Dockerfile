@@ -22,7 +22,7 @@ COPY frontend/public/ ./public/
 COPY frontend/export/ ./export/
 COPY frontend/src/ ./src
 ENV NODE_ENV=production
-ENV ENDPOINT_URL=https://admin.tobias-kaerst.de/graphql
+ENV PUBLIC_ENDPOINT_URL=https://admin.tobias-kaerst.de/graphql
 RUN yarn build
 
 # Build backend
