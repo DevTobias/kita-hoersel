@@ -45,10 +45,10 @@
           ports:
             - 8055:8055
           volumes:
-            - ./uploads:/directus/uploads
-            - ./database:/directus/database
+            - directus-storage:/directus/uploads
+            - directus-storage:/directus/database
           networks:
-            - local
+            - server_network
           environment:
             KEY: "{{ directus_key }}"
             SECRET: "{{ directus_secret }}"
@@ -59,12 +59,14 @@
             CACHE_STORE: 'memory'
             ADMIN_EMAIL: "{{ directus_admin_email }}"
             ADMIN_PASSWORD: "{{ directus_admin_password }}"
+            PUBLIC_URL: https://admin.tobias-kaerst.de
           labels:
             traefik.enable: true
-            traefik.http.routers.server.entrypoints: web, websecure
-            traefik.http.routers.server.rule: Host("{{ root_host }}") && Path("/admin"))
-            traefik.http.routers.server.tls: true
-            traefik.http.routers.server.tls.certresolver: zerossl
+            traefik.http.routers.directus.entrypoints: web, websecure
+            traefik.http.routers.directus.rule: Host(`admin.{{ root_host }}`)
+            traefik.http.routers.directus.tls: true
+            traefik.http.routers.directus.tls.certresolver: zerossl
+
 
         server:
           image: kitashoersel/server:latest
@@ -89,6 +91,8 @@
       volumes:
         traefik-ssl-certs:
           driver: local
+        directus-storage:
+          driver: local          
 
       networks:
         server_network:

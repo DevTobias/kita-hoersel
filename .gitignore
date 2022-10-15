@@ -11,6 +11,7 @@
 # environment variables
 **/.env
 **/.env.production
+**/inventory.yml
 
 # operating system
 **/.DS_Store

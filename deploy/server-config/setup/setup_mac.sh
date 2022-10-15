@@ -53,10 +53,10 @@ confirmed $(confirm_dialog "Do you want to generate a ssh key pair for the remot
 if [ $? -eq 1 ]; then
   echo; read -p "Please enter your email address: " email_input
 
-  ssh-keygen -t ed25519 -C $email_input -f ~/.ssh/trophoria_id -q -N ""
-  chmod 600 ~/.ssh/trophoria_id
-  chmod 600 ~/.ssh/trophoria_id.pub  
-  public_key=$(cat ~/.ssh/trophoria_id.pub)
+  ssh-keygen -t ed25519 -C $email_input -f ~/.ssh/kitas_hoersel_id -q -N ""
+  chmod 600 ~/.ssh/kitas_hoersel_id
+  chmod 600 ~/.ssh/kitas_hoersel_id.pub  
+  public_key=$(cat ~/.ssh/kitas_hoersel_id.pub)
   escaped_key=$(printf '%s\n' "$public_key" | sed -e 's/[\/&]/\\&/g')
   sed "s/{{ SSH_PUBLIC_KEY }}/$escaped_key/g" ./ansible/inventory.yml > ./ansible/_inventory.yml && mv ./ansible/_inventory.yml ./ansible/inventory.yml
 fi
@@ -152,4 +152,4 @@ fi
 
 # isable temp user/password authentication
 sed "s/ansible_ssh_user:.*$/ansible_ssh_user: $username/g" inventory.yml > _inventory.yml && mv _inventory.yml inventory.yml
-sed "s/ansible_ssh_pass:.*$/ansible_ssh_private_key_file: ~\/.ssh\/trophoria_id/g" inventory.yml > _inventory.yml && mv _inventory.yml inventory.yml
+sed "s/ansible_ssh_pass:.*$/ansible_ssh_private_key_file: ~\/.ssh\/kitas_hoersel_id/g" inventory.yml > _inventory.yml && mv _inventory.yml inventory.yml
