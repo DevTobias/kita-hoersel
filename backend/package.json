@@ -6,7 +6,8 @@
     "build": "esbuild src/server.ts --bundle --minify --platform=node --outdir=dist",
     "start": "node dist/server",
     "build:dev": "esbuild src/server.ts --bundle --platform=node --outdir=dist --external:../node_modules/*",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "lint": "eslint src --ext .ts"
   },
   "dependencies": {
     "@fastify/express": "^2.0.2",
