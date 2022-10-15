@@ -56,9 +56,11 @@
 
   // hide various files/folders
   "files.exclude": {
-    //"**/node_modules": true,
-    //"**/yarn.lock": true,
-    //"**/dist": true,
-    //"**/*.db": true
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/database": true,
+    "**/uploads": true,
+    "**/export": true,
+    "**/yarn.lock": true
   }
 }
