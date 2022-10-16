@@ -1,0 +1,16 @@
+---
+import MetaTags from '~/components/core/MetaTags.astro';
+
+const { meta = {} } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="de" class="motion-safe:scroll-smooth">
+  <head>
+    <MetaTags {...meta} />
+  </head>
+
+  <body class="antialiased h-screen w-full font-poppins bg-white text-primary-600">
+    <slot />
+  </body>
+</html>

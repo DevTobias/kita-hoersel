@@ -1,0 +1,49 @@
+---
+import { SEO } from 'astro-seo';
+
+import Fonts from '~/components/core/Fonts.astro';
+import { SITE } from '~/config';
+
+const {
+  title = SITE.name,
+  description = SITE.description,
+  image = '/images/default.png',
+
+  noindex = false,
+  nofollow = false,
+
+  ogTitle = description,
+  ogType = 'website',
+} = Astro.props;
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<SEO
+  title={title}
+  description={description}
+  noindex={noindex}
+  nofollow={nofollow}
+  openGraph={{
+    basic: {
+      title: ogTitle,
+      type: ogType,
+      image,
+    },
+    image: {
+      alt: ogTitle,
+    },
+  }}
+  twitter={{
+    card: 'summary_large_image',
+  }}
+  extend={{
+    link: [
+      { rel: 'shortcut icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+    ],
+  }}
+/>
+
+<Fonts />
