@@ -1,0 +1,39 @@
+---
+import headerImageReference from '~/assets/header.svg';
+import boyImageReference from '~/assets/boy-silhouette.svg';
+import girlImageReference from '~/assets/girl-silhouette.svg';
+import { header as content } from '~/translations/de-DE.json';
+---
+
+<header>
+  <div class="relative">
+    <div>
+      <img
+        src={boyImageReference}
+        class="absolute bottom-0 left-20 parallax z-10"
+        alt="illustration of a sitting boy silhouette from behind"
+        data-parallax-rate="1"
+      />
+      <img
+        src={girlImageReference}
+        class="absolute bottom-0 parallax z-10"
+        alt="illustration of a sitting girl silhouette from behind"
+        data-parallax-rate="2"
+      />
+    </div>
+    <img src={headerImageReference} class="w-full" alt="illustration of forest at day time" />
+  </div>
+
+  <div
+    class="bg-primary-600 text-neutral-0 p-10 rounded-b-2xl shadow-xl parallax relative z-10"
+    data-parallax-rate="3"
+    data-parallax-offset="1"
+  >
+    <h2 class="text-body-sm">{content.welcome_to}</h2>
+    <h1 class="text-header-sm font-bold mb-3">{content.kita_hoersel}</h1>
+    <ul class="text-body-sm text-secondary-100 flex space-x-5 justify-end">
+      <li><a href="/mechterstadt" class="before:bg-secondary-100">{content.mechterstaedt}</a></li>
+      <li><a href="/teutleben" class="before:bg-secondary-100">{content.teutleben}</a></li>
+    </ul>
+  </div>
+</header>

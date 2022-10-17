@@ -1,11 +1,33 @@
 ---
 import Layout from '~/layouts/BaseLayout.astro';
+import Header from '~/components/widgets/Header.astro';
 
 const { meta } = Astro.props;
 ---
 
 <Layout {meta}>
+  <Header />
   <main class="h-full w-full">
     <slot />
+    <script>
+      window.addEventListener('scroll', () => {
+        const parallaxElements = document.querySelectorAll<HTMLElement>('.parallax');
+
+        parallaxElements.forEach((element) => {
+          const scrollFactor = parseInt(element.dataset.parallaxRate);
+          const offset = parseInt(element.dataset.parallaxOffset);
+          const scrollRate = window.scrollY * (-scrollFactor / 10);
+          element.style.transform = `translate(0, ${scrollRate - offset}px)`;
+        });
+      });
+
+      window.addEventListener('load', () => {
+        const parallaxElements = document.querySelectorAll<HTMLElement>('.parallax');
+        parallaxElements.forEach((element) => {
+          const offset = parseInt(element.dataset.parallaxOffset);
+          element.style.transform = `translate(0, ${-offset}px)`;
+        });
+      });
+    </script>
   </main>
 </Layout>
