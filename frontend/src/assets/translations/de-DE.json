@@ -2,14 +2,14 @@
   "header": {
     "welcome_to": "Herzlich Willkommen bei den",
     "kita_hoersel": "Kindertagesstädten\nder Gemeinde Hörsel",
-    "mechterstaedt": "mechterstädt",
-    "teutleben": "teutleben"
+    "mechterstaedt": "Mechterstädt",
+    "teutleben": "Teutleben"
   },
   "footer": {
     "header": "Kindertagesstädten der Gemeinde Hörsel",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "contact": "Kontakt",
-    "copyright": "© {0} Tobias Kärst. All rights reserved."
+    "copyright": "© {0} <a href='https://www.linkedin.com/in/tobias-kärst' target='_blank' rel='noopener noreferrer'>Tobias Kärst</a>. All rights reserved."
   }
 }
