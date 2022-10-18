@@ -2,7 +2,7 @@ import { DEFAULT_LANGUAGE, LANGUAGES } from '~/config';
 
 declare global {
   interface String {
-    tr(): string;
+    tr({ lang, values }?: { lang?: string; values?: unknown[] }): string;
   }
 }
 
@@ -19,6 +19,10 @@ const traverseObject = (obj: object | string, keys: string[], position = 0): str
   return traverseObject(obj[key], keys, position + 1);
 };
 
-String.prototype.tr = function tr(this: string, lang = DEFAULT_LANGUAGE) {
-  return traverseObject(translations.get(lang), this.split('.')) ?? this;
+String.prototype.tr = function tr(this: string, { lang = DEFAULT_LANGUAGE, values = [] } = {}) {
+  let value = traverseObject(translations.get(lang), this.split('.')) ?? this;
+  for (let i = 0; i < values.length; i += 1) {
+    value = value.replace(`{${i}}`, values[i].toString());
+  }
+  return value;
 };
