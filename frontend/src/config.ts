@@ -10,6 +10,7 @@ export const SITE = {
 };
 
 export const ROUTES = {
+  home: '/',
   teutlebenLanding: '/teutleben',
   mechterstaedtLanding: '/mechterstaedt',
   privacy: '/privacy',
