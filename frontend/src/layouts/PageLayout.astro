@@ -7,15 +7,27 @@ const { meta } = Astro.props;
 
 <Layout {meta}>
   <Header />
-  <main class="h-full w-full">
+  <main
+    class="h-full w-full parallax lg:bg-white lg:relative lg:z-30"
+    data-parallax-rate="3"
+    data-parallax-media="1024"
+  >
     <slot />
     <script>
       window.addEventListener('scroll', () => {
         const parallaxElements = document.querySelectorAll<HTMLElement>('.parallax');
 
         parallaxElements.forEach((element) => {
+          if (
+            element.dataset.parallaxMedia &&
+            window.innerWidth < parseInt(element.dataset.parallaxMedia)
+          ) {
+            element.style.transform = `translate(0, 0)`;
+            return;
+          }
+
           const scrollFactor = parseInt(element.dataset.parallaxRate);
-          const offset = parseInt(element.dataset.parallaxOffset);
+          const offset = parseInt(element.dataset.parallaxOffset ?? '0');
           const scrollRate = window.scrollY * (-scrollFactor / 10);
           element.style.transform = `translate(0, ${scrollRate - offset}px)`;
         });

@@ -3,37 +3,84 @@ import headerImageReference from '~/assets/header.svg';
 import boyImageReference from '~/assets/boy-silhouette.svg';
 import girlImageReference from '~/assets/girl-silhouette.svg';
 import { header as content } from '~/translations/de-DE.json';
+import { ROUTES } from '~/config';
 ---
 
-<header>
-  <div class="relative">
+<header class="max-h-[40rem]">
+  <div class="relative max-h-[40rem]">
     <div>
       <img
         src={boyImageReference}
-        class="absolute bottom-0 left-20 parallax z-10"
+        class="absolute bottom-0 left-20 parallax z-10 lg:w-44 lg:left-52"
         alt="illustration of a sitting boy silhouette from behind"
         data-parallax-rate="1"
       />
       <img
         src={girlImageReference}
-        class="absolute bottom-0 parallax z-10"
+        class="absolute bottom-0 parallax z-10 lg:w-44 lg:left-20"
         alt="illustration of a sitting girl silhouette from behind"
         data-parallax-rate="2"
       />
     </div>
-    <img src={headerImageReference} class="w-full" alt="illustration of forest at day time" />
+
+    <div class="hidden text-neutral-0 w-[56%] h-full absolute right-0 lg:flex">
+      <div class="w-[10%] translate-x-1">
+        <svg height="100%" width="100%" viewBox="0 0 51.546 381.03" preserveAspectRatio="none">
+          <g transform="translate(-66.149 29.463)">
+            <path
+              d="m100.76 351.57 1.3785-12.703c1.4844-12.703 4.0826-38.108-2.9234-63.495-7.1119-25.387-24.093-50.755-25.543-76.152-1.5556-25.397 12.684-50.824 12.557-76.224 0.0319-25.4-14.303-50.773-18.505-76.165-4.3602-25.392 1.4131-50.803 4.1145-63.508l2.8073-12.705 42.333-0.07922 0.0238 12.7c0.0238 12.7 0.0713 38.1 0.11883 63.5 0.0475 25.4 0.0951 50.8 0.14259 76.2 0.0475 25.4 0.0951 50.8 0.14259 76.2 0.0475 25.4 0.0951 50.8 0.14259 76.2 0.0475 25.4 0.0951 50.8 0.11883 63.5l0.0238 12.7z"
+              fill="#25334f"></path>
+          </g>
+        </svg>
+      </div>
+
+      <div class="bg-primary-600 w-[90%] p-10 2xl:pr-[10%]">
+        <ul class="text-body-md text-secondary-100 flex space-x-5 justify-end 2xl:text-body-lg">
+          <li>
+            <a href={ROUTES.mechterstaedtLanding} class="before:bg-secondary-100">
+              {content.mechterstaedt}
+            </a>
+          </li>
+          <li>
+            <a href={ROUTES.teutlebenLanding} class="before:bg-secondary-100">
+              {content.teutleben}
+            </a>
+          </li>
+        </ul>
+        <div class="h-full flex flex-col justify-center text-right">
+          <h2 class="text-body-lg 2xl:text-body-xl">{content.welcome_to}</h2>
+          <h1 class="text-header-md font-bold mb-3 2xl:text-header-xl">
+            <span class="whitespace-pre-line">{content.kita_hoersel}</span>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <img
+      src={headerImageReference}
+      class="w-full max-h-[40rem] object-cover"
+      alt="illustration of forest at day time"
+    />
   </div>
 
   <div
-    class="bg-primary-600 text-neutral-0 p-10 rounded-b-2xl shadow-xl parallax relative z-10"
+    class="bg-primary-600 text-neutral-0 p-10 rounded-b-2xl shadow-xl parallax relative z-10 lg:hidden"
     data-parallax-rate="3"
     data-parallax-offset="1"
   >
     <h2 class="text-body-sm">{content.welcome_to}</h2>
     <h1 class="text-header-sm font-bold mb-3">{content.kita_hoersel}</h1>
     <ul class="text-body-sm text-secondary-100 flex space-x-5 justify-end">
-      <li><a href="/mechterstadt" class="before:bg-secondary-100">{content.mechterstaedt}</a></li>
-      <li><a href="/teutleben" class="before:bg-secondary-100">{content.teutleben}</a></li>
+      <li>
+        <a href={ROUTES.mechterstaedtLanding} class="before:bg-secondary-100">
+          {content.mechterstaedt}
+        </a>
+      </li>
+      <li>
+        <a href={ROUTES.teutlebenLanding} class="before:bg-secondary-100">
+          {content.teutleben}
+        </a>
+      </li>
     </ul>
   </div>
 </header>

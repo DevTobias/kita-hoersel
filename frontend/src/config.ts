@@ -9,4 +9,6 @@ export const SITE = {
     'Die Kindergärten Dreikäsehoch Mechterstädt und Kleine Strolche Teutleben sind die zwei kommunalen Kindergarteneinrichtung der Gemeinde Hörsel.',
 };
 
-export const PAGES = ['/test'].map((page) => SITE.origin + page);
+export const ROUTES = { teutlebenLanding: '/teutleben', mechterstaedtLanding: '/mechterstaedt' };
+
+export const PAGES = Object.values(ROUTES).map((page) => SITE.origin + page);
