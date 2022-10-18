@@ -47,7 +47,9 @@
       "dist"
     ],
     "rules": {
-      "import/no-extraneous-dependencies": "off"
+      "import/no-extraneous-dependencies": "off",
+      "no-extend-native": "off",
+      "no-await-in-loop": "off"
     }
   },
   "dependencies": {

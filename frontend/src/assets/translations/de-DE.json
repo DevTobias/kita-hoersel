@@ -4,5 +4,12 @@
     "kita_hoersel": "Kindertagesstädten\nder Gemeinde Hörsel",
     "mechterstaedt": "mechterstädt",
     "teutleben": "teutleben"
+  },
+  "footer": {
+    "header": "Kindertagesstädten der Gemeinde Hörsel",
+    "privacy": "Datenschutz",
+    "imprint": "Impressum",
+    "contact": "Kontakt",
+    "copyright": "© {} Tobias Kärst. All rights reserved."
   }
 }
