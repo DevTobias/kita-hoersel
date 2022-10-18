@@ -7,10 +7,13 @@ declare global {
 }
 
 const translations = new Map();
-for (let i = 0; i < LANGUAGES.length; i += 1) {
-  const lang = LANGUAGES[i];
-  translations.set(lang, (await import(`../assets/translations/${lang}.json`)).default);
-}
+
+(async () => {
+  for (let i = 0; i < LANGUAGES.length; i += 1) {
+    const lang = LANGUAGES[i];
+    translations.set(lang, (await import(`../assets/translations/${lang}.json`)).default);
+  }
+})();
 
 const traverseObject = (obj: object | string, keys: string[], position = 0): string | undefined => {
   if (typeof obj === 'string') return obj;
