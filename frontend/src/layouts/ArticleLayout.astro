@@ -1,13 +1,21 @@
 ---
+import type { MarkdownLayoutProps } from 'astro';
+
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/ArticleHeader.astro';
 import Footer from '~/components/widgets/Footer.astro';
 
-const { meta } = Astro.props;
+type Props = MarkdownLayoutProps<{
+  title: string;
+  desc: string;
+}>;
+
+const { meta, frontmatter } = Astro.props;
+const { title, desc } = frontmatter;
 ---
 
-<Layout {meta}>
-  <Header />
+<Layout meta={{ ...meta, title }}>
+  <Header title={title} desc={desc} />
   <main
     class="w-full prose-sm prose-a:text-secondary-700 max-w-[75rem] mx-auto py-10 px-8 lg:w-3/4 lg:prose-base lg:py-20"
   >

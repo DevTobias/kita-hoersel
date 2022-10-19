@@ -1,5 +1,12 @@
 ---
 import { ROUTES } from '~/config';
+
+interface Props {
+  title: string;
+  desc: string;
+}
+
+const { title, desc } = Astro.props;
 ---
 
 <header
@@ -12,9 +19,9 @@ import { ROUTES } from '~/config';
       <li><a href={ROUTES.teutlebenLanding}>Teutleben</a></li>
     </ul>
     <div class="mb-10">
-      <h1 class="text-header-md font-bold mb-5 lg:text-header-lg">Impressum</h1>
+      <h1 class="text-header-md font-bold mb-5 lg:text-header-lg">{title}</h1>
       <p class="text-body-md text-primary-100 lg:text-body-lg">
-        Hier finden Sie alle gesetzlich vorgeschriebenen Angaben zu den Verantwortlichen der Seite.
+        {desc}
       </p>
     </div>
   </div>

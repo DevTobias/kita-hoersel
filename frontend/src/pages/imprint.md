@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/ArticleLayout.astro
 title: "Impressum"
+desc: "Hier finden Sie alle gesetzlich vorgeschriebenen Angaben zu den Verantwortlichen der Seite."
 ---
 
 # **Impressum**
