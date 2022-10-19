@@ -33,9 +33,9 @@
     "limax": "^3.0.0",
     "preact": "^10.11.1",
     "sass": "^1.55.0",
-    "sharp": "^0.31.1",
     "tailwindcss": "^3.1.8",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "@astrojs/node": "^2.0.0"
   },
   "prettier": "@kita-hoersel/prettier-config",
   "eslintConfig": {
@@ -51,8 +51,5 @@
       "no-extend-native": "off",
       "no-await-in-loop": "off"
     }
-  },
-  "dependencies": {
-    "@astrojs/node": "^2.0.0"
   }
 }
