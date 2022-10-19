@@ -1,4 +1,5 @@
 ---
+import '~/utils/localization';
 import { ROUTES } from '~/config';
 
 interface Props {
@@ -14,9 +15,9 @@ const { title, desc } = Astro.props;
 >
   <div class="max-w-[75rem] w-full px-8 flex flex-col-reverse lg:flex-col lg:w-3/4">
     <ul class="flex justify-start mb-10 text-body-md space-x-5 lg:justify-end lg:text-body-lg">
-      <li><a href={ROUTES.home}>Home</a></li>
-      <li><a href={ROUTES.mechterstaedtLanding}>Mechterstädt</a></li>
-      <li><a href={ROUTES.teutlebenLanding}>Teutleben</a></li>
+      <li><a href={ROUTES.home}>{'header.home'.tr()}</a></li>
+      <li><a href={ROUTES.mechterstaedtLanding}>{'header.mechterstaedt'.tr()}</a></li>
+      <li><a href={ROUTES.teutlebenLanding}>{'header.teutleben'.tr()}</a></li>
     </ul>
     <div class="mb-10">
       <h1 class="text-header-md font-bold mb-5 lg:text-header-lg">{title}</h1>

@@ -15,32 +15,9 @@ const { meta } = Astro.props;
   >
     <slot />
     <script>
-      window.addEventListener('scroll', () => {
-        const parallaxElements = document.querySelectorAll<HTMLElement>('.parallax');
-
-        parallaxElements.forEach((element) => {
-          if (
-            element.dataset.parallaxMedia &&
-            window.innerWidth < parseInt(element.dataset.parallaxMedia)
-          ) {
-            element.style.transform = `translate(0, 0)`;
-            return;
-          }
-
-          const scrollFactor = parseInt(element.dataset.parallaxRate);
-          const offset = parseInt(element.dataset.parallaxOffset ?? '0');
-          const scrollRate = window.scrollY * (-scrollFactor / 10);
-          element.style.transform = `translate(0, ${scrollRate - offset}px)`;
-        });
-      });
-
-      window.addEventListener('load', () => {
-        const parallaxElements = document.querySelectorAll<HTMLElement>('.parallax');
-        parallaxElements.forEach((element) => {
-          const offset = parseInt(element.dataset.parallaxOffset);
-          element.style.transform = `translate(0, ${-offset}px)`;
-        });
-      });
+      import { addInitialParallaxOffset, listenForParallax } from '~/utils/parallax';
+      window.addEventListener('scroll', () => listenForParallax('.parallax'));
+      window.addEventListener('load', () => addInitialParallaxOffset('.parallax'));
     </script>
   </main>
   <Footer />
