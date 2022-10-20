@@ -1,6 +1,3 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
-
 module.exports = {
   content: ['./src/**/*.{astro,html,tsx}'],
   plugins: [require('@tailwindcss/typography')],

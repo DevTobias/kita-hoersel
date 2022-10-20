@@ -2,34 +2,6 @@
 import Layout from '~/layouts/PageLayout.astro';
 import { SITE } from '~/config';
 
-const endpointUrl = import.meta.env.PUBLIC_ENDPOINT_URL;
-
-const response = await fetch(endpointUrl, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    query: `
-      query {
-        quick_facts {
-          label
-          value
-        }
-      }
-      `,
-  }),
-})
-  .then((response) => response.json())
-  .catch((rejected) => {
-    console.log(rejected);
-  });
-
-type QuickFacts = {
-  label: string;
-  value: string;
-};
-
-const quickFacts: QuickFacts[] = response.data.quick_facts;
-
 const meta = {
   title: SITE.title,
   description: SITE.description,
@@ -37,16 +9,5 @@ const meta = {
 ---
 
 <Layout {meta}>
-  <div class="p-20 h-full w-full flex flex-col items-center">
-    <ul class="flex space-x-20">
-      {
-        quickFacts.map((fact) => (
-          <li class="flex flex-col justify-center items-center">
-            <div class="text-4xl font-semibold text-primary-600">{fact.value}</div>
-            <div class="text-lg font-medium text-primary-200">{fact.label}</div>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <h1>Homepage</h1>
 </Layout>

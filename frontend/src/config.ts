@@ -17,7 +17,5 @@ export const ROUTES = {
   imprint: '/imprint',
 };
 
-export const PAGES = Object.values(ROUTES).map((page) => SITE.origin + page);
-
-export const DEFAULT_LANGUAGE = 'de-DE';
-export const LANGUAGES = ['de-DE'];
+export const DEFAULT_LANGUAGE = 'de';
+export const LANGUAGES = ['de'];

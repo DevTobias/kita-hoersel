@@ -3,23 +3,16 @@
   "type": "module",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "export/index.cjs",
-  "types": "export/index.d.ts",
-  "files": [
-    "export",
-    "dist"
-  ],
   "scripts": {
-    "dev": "PUBLIC_ENDPOINT_URL=https://admin.tobias-kaerst.de/graphql astro dev",
-    "build": "PUBLIC_ENDPOINT_URL=https://admin.tobias-kaerst.de/graphql astro build",
+    "dev": "astro dev",
+    "build": "astro build && yarn subfont",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src --ext .tsx,.ts,.astro",
-    "subfont": "subfont -ir --no-fallbacks --root dist/client"
+    "subfont": "subfont -i -r dist/index.html"
   },
   "devDependencies": {
     "@astrojs/image": "^0.10.0",
-    "@astrojs/node": "^2.0.0",
     "@astrojs/preact": "^1.1.1",
     "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^2.0.2",
@@ -54,5 +47,8 @@
       "no-await-in-loop": "off",
       "no-param-reassign": "off"
     }
+  },
+  "dependencies": {
+    "sharp": "^0.31.1"
   }
 }

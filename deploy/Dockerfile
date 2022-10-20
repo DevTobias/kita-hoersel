@@ -19,10 +19,8 @@ RUN yarn install --frozen-lockfile --non-interactive
 WORKDIR /build/frontend
 COPY frontend/tsconfig.json frontend/tailwind.config.cjs frontend/astro.config.ts ./
 COPY frontend/public/ ./public/
-COPY frontend/export/ ./export/
 COPY frontend/src/ ./src
 ENV NODE_ENV=production
-ENV PUBLIC_ENDPOINT_URL=https://admin.tobias-kaerst.de/graphql
 RUN yarn build
 
 # Build backend
@@ -40,7 +38,7 @@ WORKDIR /server
 
 RUN npm install pm2 -g
 
-COPY --from=builder /build/frontend/dist/client ./client/
+COPY --from=builder /build/frontend/dist ./client/
 COPY --from=builder /build/backend/dist/server.js ./server.js
 
 ENV CLIENT_PATH=./client
