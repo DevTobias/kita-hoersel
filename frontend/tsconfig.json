@@ -6,8 +6,7 @@
     "types": ["astro/client"],
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"],
-      "data/*": ["data/*"]
+      "~/*": ["src/*"]
     }
   },
   "types": ["@astrojs/image/client", "vite/client"]

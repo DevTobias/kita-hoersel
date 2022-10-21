@@ -17,6 +17,10 @@ RUN yarn install --frozen-lockfile --non-interactive
 #! Build the frontend / server
 
 # Build frontend
+WORKDIR /build/modules/astro-utils
+COPY modules/astro-utils/tsconfig.json ./
+COPY modules/astro-utils/src/ ./src/
+
 WORKDIR /build/frontend
 COPY frontend/tsconfig.json frontend/tailwind.config.cjs frontend/astro.config.ts ./
 COPY frontend/public/ ./public/

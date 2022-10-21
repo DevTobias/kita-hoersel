@@ -4,7 +4,7 @@ import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import image from '@astrojs/image';
-import { resolve } from 'path';
+import { join } from 'path';
 import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 
@@ -37,8 +37,7 @@ export default defineConfig({
     ssr: { noExternal: ['path-to-regexp'], external: ['svgo'] },
     resolve: {
       alias: {
-        '~': resolve(__dirname, './src'),
-        data: resolve(__dirname, './data'),
+        '~': join(__dirname, 'src'),
       },
     },
   },

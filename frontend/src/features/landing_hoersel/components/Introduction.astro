@@ -1,7 +1,6 @@
 ---
 import PostList from '~/features/landing_hoersel/components/PostList.astro';
 import { fetchPosts } from '~/utils/posts';
-import '~/utils/localization';
 import { ROUTES } from '~/config';
 
 const posts = await fetchPosts(2);

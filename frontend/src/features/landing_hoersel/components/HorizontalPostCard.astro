@@ -1,6 +1,7 @@
 ---
 import { Image } from '@astrojs/image/components';
 import { ROUTES } from '~/config';
+import { findImage } from '~/utils/images';
 
 interface Props {
   id: string;
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const { id, title, publishDate, image, readingTime } = Astro.props;
+
+const imageSrc = await findImage(image);
 ---
 
 <a
@@ -19,7 +22,7 @@ const { id, title, publishDate, image, readingTime } = Astro.props;
   rel="prefetch"
   href={`${ROUTES.articles}/${id}`}
 >
-  <Image src={image} width="120" height="105" alt="article image" class="rounded-lg shadow-lg" />
+  <Image src={imageSrc} width="120" height="105" alt="article image" class="rounded-lg shadow-lg" />
 
   <div class="h-full w-full flex flex-col justify-between text-body-no lg:text-body-md">
     <span class="clamp-3">

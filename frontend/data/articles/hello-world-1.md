@@ -2,7 +2,7 @@
 publishDate: "20 Oktober"
 title: "Lorem ipsum dolor sit amet consectetur adipiscing elit euismod rutrum"
 description: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
-image: "data/articles/images/playing-children.jpg"
+image: "/data/articles/images/playing-children.jpg"
 ---
 
 ## Dictum integer fusce ac ridiculus et odio sollicitudin diam at
