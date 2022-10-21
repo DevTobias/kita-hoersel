@@ -1,0 +1,13 @@
+---
+import ArticleLayout from '~/layouts/ArticleLayout.astro';
+import * as imprint from 'data/pages/imprint.md';
+
+const meta = {
+  title: imprint.frontmatter.title,
+  description: imprint.frontmatter.desc,
+};
+---
+
+<ArticleLayout meta={meta}>
+  <imprint.Content />
+</ArticleLayout>

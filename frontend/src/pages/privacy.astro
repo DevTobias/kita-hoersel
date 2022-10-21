@@ -1,0 +1,13 @@
+---
+import ArticleLayout from '~/layouts/ArticleLayout.astro';
+import * as privacy from 'data/pages/privacy.md';
+
+const meta = {
+  title: privacy.frontmatter.title,
+  description: privacy.frontmatter.desc,
+};
+---
+
+<ArticleLayout meta={meta}>
+  <privacy.Content />
+</ArticleLayout>

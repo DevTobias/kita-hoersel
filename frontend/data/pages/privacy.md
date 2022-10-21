@@ -1,5 +1,4 @@
 ---
-layout: ../layouts/ArticleLayout.astro
 title: "Datenschutz"
 desc: "Hier finden Sie einen einen Überblick darüber, was mit Ihren personenbezogenen Daten passiert. Die Website kann jedoch ohne jegliche die Erfassung von personenbezogenen Daten uneingeschränkt benutzt werden."
 ---
