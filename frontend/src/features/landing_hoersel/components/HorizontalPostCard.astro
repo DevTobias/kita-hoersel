@@ -25,9 +25,8 @@ const { id, title, publishDate, image, readingTime } = Astro.props;
     <span class="clamp-3">
       {title}
     </span>
-    <span class="text-primary-200 flex justify-between">
-      <span>{publishDate}</span>
-      <span>{readingTime} Min</span>
+    <span class="text-primary-200 flex">
+      {publishDate} ~ {readingTime} min
     </span>
   </div>
 </a>

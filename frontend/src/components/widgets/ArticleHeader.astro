@@ -5,9 +5,11 @@ import { ROUTES } from '~/config';
 interface Props {
   title: string;
   desc: string;
+  publishDate: string;
+  readingTime: string;
 }
 
-const { title, desc } = Astro.props;
+const { title, desc, publishDate, readingTime } = Astro.props;
 ---
 
 <header
@@ -20,6 +22,9 @@ const { title, desc } = Astro.props;
       <li><a href={ROUTES.teutlebenLanding}>{'header.teutleben'.tr()}</a></li>
     </ul>
     <div class="mb-10">
+      <span class="text-primary-100">
+        {publishDate} ~ {readingTime} min
+      </span>
       <h1 class="text-header-md font-bold mb-5 lg:text-header-lg">{title}</h1>
       <p class="text-body-md text-primary-100 lg:text-body-lg">{desc}</p>
     </div>

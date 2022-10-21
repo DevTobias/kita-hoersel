@@ -21,6 +21,6 @@ const meta = {
 };
 ---
 
-<ArticleLayout meta={meta} frontmatter={{ title: meta.title, desc: meta.description }}>
+<ArticleLayout meta={meta} readingTime={post.readingTime} publishDate={post.publishDate}>
   <post.content />
 </ArticleLayout>
