@@ -5,9 +5,16 @@ import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import image from '@astrojs/image';
 import { resolve } from 'path';
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
 
-import { remarkReadingTime } from './src/utils/frontmatter';
 import { SITE } from './src/config';
+
+const remarkReadingTime = () => {
+  return (tree: unknown, { data }) => {
+    data.astro.frontmatter.readingTime = Math.ceil(getReadingTime(toString(tree)).minutes);
+  };
+};
 
 export default defineConfig({
   site: SITE.origin,

@@ -19,7 +19,10 @@ const { meta } = Astro.props;
       <slot />
     </div>
     <script>
-      import { addInitialParallaxOffset, listenForParallax } from '~/utils/parallax';
+      import {
+        addInitialParallaxOffset,
+        listenForParallax,
+      } from '@kita-hoersel/astro-utils/src/parallax';
       window.addEventListener('scroll', () => listenForParallax('.parallax'));
       window.addEventListener('load', () => addInitialParallaxOffset('.parallax'));
     </script>

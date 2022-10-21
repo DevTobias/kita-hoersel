@@ -1,0 +1,18 @@
+---
+import { loadSvg } from './utils';
+
+interface Props {
+  name: string;
+  title: string;
+  class: string;
+}
+
+let { name, title, class: className, ...inputProps } = Astro.props;
+
+const svg = await loadSvg(name, { ...inputProps, class: className, name });
+---
+
+<svg
+  {...svg.props}
+  astro-icon={name}
+  set:html={(title ? `<title>${title}</title>` : '') + svg.innerHTML}></svg>

@@ -1,0 +1,36 @@
+{
+  "name": "@kita-hoersel/astro-utils",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "files": [
+    "src/"
+  ],
+  "peerDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "devDependencies": {
+    "@kita-hoersel/eslint-config": "^1.0.0",
+    "@kita-hoersel/prettier-config": "^1.0.0",
+    "@types/svgo": "^2.6.4",
+    "vite": "^3.1.8"
+  },
+  "prettier": "@kita-hoersel/prettier-config",
+  "eslintConfig": {
+    "extends": [
+      "@kita-hoersel/eslint-config"
+    ],
+    "ignorePatterns": [
+      "*.[m|c]js",
+      "dist"
+    ],
+    "rules": {
+      "import/no-extraneous-dependencies": "off",
+      "no-extend-native": "off",
+      "no-await-in-loop": "off",
+      "no-param-reassign": "off"
+    }
+  },
+  "dependencies": {
+    "svgo": "^2.8.0"
+  }
+}
