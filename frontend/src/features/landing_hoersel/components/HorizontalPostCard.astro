@@ -1,0 +1,31 @@
+---
+import { Image } from '@astrojs/image/components';
+import { ROUTES } from '~/config';
+
+interface Props {
+  id: string;
+  title: string;
+  publishDate: string;
+  image: string;
+}
+
+const { id, title, publishDate, image } = Astro.props;
+const reductedTitle = title.substring(0, 50);
+const wasReduced = title.length !== reductedTitle.length;
+---
+
+<a
+  class="flex space-x-3 w-full h-[105px] text-primary-600 cursor-pointer hover:scale-[1.03] transition-transform"
+  underline-hover="false"
+  rel="prefetch"
+  href={`${ROUTES.articleBase}/${id}`}
+>
+  <Image src={image} width="120" height="105" alt="article image" class="rounded-lg shadow-lg" />
+
+  <div class="h-full w-full flex flex-col justify-between text-body-no lg:text-body-md">
+    <span class="overflow-hidden text-ellipsis">
+      {reductedTitle + (wasReduced ? '...' : '')}
+    </span>
+    <span class="text-primary-200">{publishDate}</span>
+  </div>
+</a>

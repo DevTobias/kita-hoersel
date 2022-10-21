@@ -2,12 +2,12 @@
 import { Icon } from 'astro-icon';
 
 import headerImageReference from '~/assets/images/forest-header.svg';
-import { header as content } from '~/assets/translations/de.json';
+import { header as content } from 'data/translations/de.json';
 import { ROUTES } from '~/config';
 ---
 
-<header class="max-h-[40rem]">
-  <div class="relative max-h-[40rem]">
+<header class="max-h-[50rem] lg:max-h-[40rem]">
+  <div class="relative max-h-[50rem] lg:max-h-[40rem]">
     <Icon
       name="boy-silhouette"
       class="absolute w-28 bottom-0 left-20 parallax z-10 lg:w-44 lg:left-52 2xl:w-56 2xl:left-60"
@@ -55,7 +55,7 @@ import { ROUTES } from '~/config';
 
     <img
       src={headerImageReference}
-      class="bg-primary-600 w-full max-w-full h-auto aspect-[16/9] max-h-[40rem] object-cover"
+      class="bg-primary-600 w-full max-w-full h-auto aspect-[16/9] max-h-[50rem] lg:max-h-[40rem] object-cover"
       alt="illustration of forest at day time"
       loading="lazy"
     />

@@ -4,6 +4,7 @@ import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
 import image from '@astrojs/image';
+import { resolve } from 'path';
 
 import { SITE } from './src/config';
 
@@ -19,5 +20,13 @@ export default defineConfig({
     preact(),
   ],
 
-  vite: { ssr: { noExternal: ['path-to-regexp'], external: ['svgo'] } },
+  vite: {
+    ssr: { noExternal: ['path-to-regexp'], external: ['svgo'] },
+    resolve: {
+      alias: {
+        '~': resolve(__dirname, './src'),
+        data: resolve(__dirname, './data'),
+      },
+    },
+  },
 });

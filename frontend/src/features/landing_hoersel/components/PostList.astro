@@ -1,0 +1,18 @@
+---
+import PostCard from '~/features/landing_hoersel/components/HorizontalPostCard.astro';
+import { Post } from '~/utils/posts';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="space-y-3">
+  {
+    posts.map((post) => (
+      <PostCard id={post.id} title={post.title} publishDate={post.publishDate} image={post.image} />
+    ))
+  }
+</div>

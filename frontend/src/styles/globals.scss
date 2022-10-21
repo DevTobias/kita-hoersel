@@ -20,6 +20,15 @@ a::before {
   transition: transform 0.3s ease-in-out;
 }
 
+a[underline-hover="false"]::before {
+  display: none;
+}
+
+em {
+  color: #DE8C7D;
+  font-style: normal;
+}
+
 a:hover::before {
   transform: scaleX(1);
 }
