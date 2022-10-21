@@ -13,8 +13,8 @@ const { meta = {} } = Astro.props;
 <html lang={DEFAULT_LANGUAGE} class="motion-safe:scroll-smooth">
   <head>
     <MetaTags {...meta} />
-    <style lang="scss">
-      ** {
+    <style lang="scss" is:global>
+      * {
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
 
