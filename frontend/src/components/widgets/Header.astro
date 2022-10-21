@@ -1,7 +1,7 @@
 ---
+import '~/utils/localization';
 import { Svg } from '@kita-hoersel/astro-utils/src/svg';
 import headerImageReference from '~/assets/images/forest-header.svg';
-import { header as content } from 'data/translations/de.json';
 import { ROUTES } from '~/config';
 ---
 
@@ -36,19 +36,19 @@ import { ROUTES } from '~/config';
         <ul class="text-body-md text-secondary-100 flex space-x-5 justify-end 2xl:text-body-lg">
           <li>
             <a href={ROUTES.mechterstaedtLanding} class="before:bg-secondary-100">
-              {content.mechterstaedt}
+              {'header.mechterstaedt'.tr()}
             </a>
           </li>
           <li>
             <a href={ROUTES.teutlebenLanding} class="before:bg-secondary-100">
-              {content.teutleben}
+              {'header.teutleben'.tr()}
             </a>
           </li>
         </ul>
         <div class="h-full flex flex-col justify-center text-right">
-          <p class="text-body-lg 2xl:text-body-xl">{content.welcome_to}</p>
+          <p class="text-body-lg 2xl:text-body-xl">{'header.welcome_to'.tr()}</p>
           <h1 class="text-header-md font-bold mb-3 2xl:text-header-xl">
-            <span class="whitespace-pre-line">{content.kita_hoersel}</span>
+            <span class="whitespace-pre-line">{'header.kita_hoersel'.tr()}</span>
           </h1>
         </div>
       </div>
@@ -67,17 +67,17 @@ import { ROUTES } from '~/config';
     data-parallax-rate="3"
     data-parallax-offset="1"
   >
-    <p class="text-body-sm">{content.welcome_to}</p>
-    <h1 class="text-header-sm font-bold mb-3">{content.kita_hoersel}</h1>
+    <p class="text-body-sm">{'header.welcome_to'.tr()}</p>
+    <h1 class="text-header-sm font-bold mb-3">{'header.kita_hoersel'.tr()}</h1>
     <ul class="text-body-no text-secondary-100 flex space-x-5 justify-end">
       <li>
         <a href={ROUTES.mechterstaedtLanding} class="before:bg-secondary-100">
-          {content.mechterstaedt}
+          {'header.mechterstaedt'.tr()}
         </a>
       </li>
       <li>
         <a href={ROUTES.teutlebenLanding} class="before:bg-secondary-100">
-          {content.teutleben}
+          {'header.teutleben'.tr()}
         </a>
       </li>
     </ul>

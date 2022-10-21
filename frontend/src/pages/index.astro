@@ -1,14 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { SITE } from '~/config';
 import HoerselLandingPage from '~/features/landing_hoersel/views/HoerselLandingPage.astro';
-
-const meta = {
-  title: SITE.title,
-  description: SITE.description,
-};
 ---
 
-<Layout {meta}>
+<Layout>
   <HoerselLandingPage />
 </Layout>

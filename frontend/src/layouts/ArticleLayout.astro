@@ -2,6 +2,13 @@
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/ArticleHeader.astro';
 import Footer from '~/components/widgets/Footer.astro';
+import { Meta } from '~/components/core/MetaTags.astro';
+
+interface Props {
+  meta?: Meta;
+  publishDate?: string;
+  readingTime?: string;
+}
 
 const { meta, publishDate, readingTime } = Astro.props;
 ---

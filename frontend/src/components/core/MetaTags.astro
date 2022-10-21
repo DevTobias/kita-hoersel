@@ -4,6 +4,16 @@ import { SEO } from 'astro-seo';
 import Fonts from '~/components/core/Fonts.astro';
 import { SITE } from '~/config';
 
+export interface Meta {
+  title?: string;
+  description?: string;
+  image?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  ogTitle?: string;
+  ogType?: string;
+}
+
 const {
   title = SITE.name,
   description = SITE.description,

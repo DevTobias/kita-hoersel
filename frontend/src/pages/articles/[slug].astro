@@ -1,6 +1,7 @@
 ---
+import { Meta } from '~/components/core/MetaTags.astro';
 import ArticleLayout from '~/layouts/ArticleLayout.astro';
-import { fetchPosts } from '~/utils/posts';
+import { fetchPosts, Post } from '~/utils/posts';
 
 export async function getStaticPaths() {
   const posts = await fetchPosts();
@@ -11,12 +12,15 @@ export async function getStaticPaths() {
   }));
 }
 
+interface Props {
+  post: Post;
+}
+
 const { post } = Astro.props;
 
-const meta = {
+const meta: Meta = {
   title: post.title,
   description: post.description,
-  ogTitle: post.title,
   ogType: 'article',
 };
 ---

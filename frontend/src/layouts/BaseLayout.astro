@@ -1,11 +1,16 @@
 ---
-import MetaTags from '~/components/core/MetaTags.astro';
+import MetaTags, { Meta } from '~/components/core/MetaTags.astro';
+import { DEFAULT_LANGUAGE } from '~/config';
+
+interface Props {
+  meta?: Meta;
+}
 
 const { meta = {} } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="de" class="motion-safe:scroll-smooth">
+<html lang={DEFAULT_LANGUAGE} class="motion-safe:scroll-smooth">
   <head>
     <MetaTags {...meta} />
     <style lang="scss">

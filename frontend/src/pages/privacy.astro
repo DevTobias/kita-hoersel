@@ -1,8 +1,9 @@
 ---
 import ArticleLayout from '~/layouts/ArticleLayout.astro';
 import * as privacy from 'data/pages/privacy.md';
+import { Meta } from '~/components/core/MetaTags.astro';
 
-const meta = {
+const meta: Meta = {
   title: privacy.frontmatter.title,
   description: privacy.frontmatter.desc,
 };
