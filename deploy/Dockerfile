@@ -9,6 +9,7 @@ COPY frontend/package.json ./frontend/
 COPY backend/package.json ./backend/
 COPY modules/kita-hoersel-eslint/package.json ./modules/kita-hoersel-eslint/
 COPY modules/kita-hoersel-prettier/package.json ./modules/kita-hoersel-prettier/
+COPY modules/astro-utils/package.json ./modules/astro-utils/
 
 # Install all dependencies
 RUN yarn install --frozen-lockfile --non-interactive
