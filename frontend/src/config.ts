@@ -16,7 +16,6 @@ export const ROUTES = {
   privacy: '/privacy',
   imprint: '/imprint',
   articles: '/articles',
-  articleBase: '/article',
 };
 
 export const DEFAULT_LANGUAGE = 'de';

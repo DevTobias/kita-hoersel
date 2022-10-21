@@ -1,0 +1,26 @@
+---
+import ArticleLayout from '~/layouts/ArticleLayout.astro';
+import { fetchPosts } from '~/utils/posts';
+
+export async function getStaticPaths() {
+  const posts = await fetchPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+
+const meta = {
+  title: post.title,
+  description: post.description,
+  ogTitle: post.title,
+  ogType: 'article',
+};
+---
+
+<ArticleLayout meta={meta} frontmatter={{ title: meta.title, desc: meta.description }}>
+  <post.content />
+</ArticleLayout>

@@ -6,6 +6,7 @@ import compress from 'astro-compress';
 import image from '@astrojs/image';
 import { resolve } from 'path';
 
+import { remarkReadingTime } from './src/utils/frontmatter';
 import { SITE } from './src/config';
 
 export default defineConfig({
@@ -19,6 +20,11 @@ export default defineConfig({
     tailwind(),
     preact(),
   ],
+
+  markdown: {
+    remarkPlugins: [remarkReadingTime],
+    extendDefaultPlugins: true,
+  },
 
   vite: {
     ssr: { noExternal: ['path-to-regexp'], external: ['svgo'] },

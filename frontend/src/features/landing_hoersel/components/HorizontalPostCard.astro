@@ -7,25 +7,27 @@ interface Props {
   title: string;
   publishDate: string;
   image: string;
+  readingTime: string;
 }
 
-const { id, title, publishDate, image } = Astro.props;
-const reductedTitle = title.substring(0, 50);
-const wasReduced = title.length !== reductedTitle.length;
+const { id, title, publishDate, image, readingTime } = Astro.props;
 ---
 
 <a
   class="flex space-x-3 w-full h-[105px] text-primary-600 cursor-pointer hover:scale-[1.03] transition-transform"
   underline-hover="false"
   rel="prefetch"
-  href={`${ROUTES.articleBase}/${id}`}
+  href={`${ROUTES.articles}/${id}`}
 >
   <Image src={image} width="120" height="105" alt="article image" class="rounded-lg shadow-lg" />
 
   <div class="h-full w-full flex flex-col justify-between text-body-no lg:text-body-md">
-    <span class="overflow-hidden text-ellipsis">
-      {reductedTitle + (wasReduced ? '...' : '')}
+    <span class="clamp-3">
+      {title}
     </span>
-    <span class="text-primary-200">{publishDate}</span>
+    <span class="text-primary-200 flex justify-between">
+      <span>{publishDate}</span>
+      <span>{readingTime} Min</span>
+    </span>
   </div>
 </a>

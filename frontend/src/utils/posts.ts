@@ -5,6 +5,7 @@ export interface Post {
   description: string;
   image: string;
   content: string;
+  readingTime: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,6 +20,7 @@ const getNormalizedPost = (post: any): Post => {
     description: frontmatter.description,
     image: frontmatter.image,
     content: Content,
+    readingTime: frontmatter.readingTime,
   };
 };
 

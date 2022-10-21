@@ -2,7 +2,7 @@
 publishDate: "20 September"
 title: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti"
 description: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
-image: "data/articles/images/astronaut.png"
+image: "data/articles/images/sitting-children.jpg"
 ---
 
 ## Dictum integer fusce ac ridiculus et odio sollicitudin diam at

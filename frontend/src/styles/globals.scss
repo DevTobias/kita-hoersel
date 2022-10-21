@@ -37,3 +37,11 @@ body {
   position: relative;
 }
 
+.clamp-3 {
+  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; 
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

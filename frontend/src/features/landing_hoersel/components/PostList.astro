@@ -12,7 +12,13 @@ const { posts } = Astro.props;
 <div class="space-y-3">
   {
     posts.map((post) => (
-      <PostCard id={post.id} title={post.title} publishDate={post.publishDate} image={post.image} />
+      <PostCard
+        id={post.id}
+        title={post.title}
+        publishDate={post.publishDate}
+        image={post.image}
+        readingTime={post.readingTime}
+      />
     ))
   }
 </div>
