@@ -20,6 +20,7 @@ RUN yarn install --frozen-lockfile --non-interactive
 WORKDIR /build/frontend
 COPY frontend/tsconfig.json frontend/tailwind.config.cjs frontend/astro.config.ts ./
 COPY frontend/public/ ./public/
+COPY frontend/data/ ./data/
 COPY frontend/src/ ./src
 ENV NODE_ENV=production
 RUN yarn build
