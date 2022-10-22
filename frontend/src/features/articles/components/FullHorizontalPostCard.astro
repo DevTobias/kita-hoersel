@@ -1,6 +1,8 @@
 ---
+import { de } from 'date-fns/locale';
+import { format } from 'date-fns';
 import Picutre from '~/components/common/Picture.astro';
-import { BLOG, ROUTES } from '~/config';
+import { BLOG } from '~/config';
 import { findImage } from '~/utils/images';
 import { Post } from '~/utils/posts';
 
@@ -11,6 +13,7 @@ interface Props {
 const { post } = Astro.props;
 const image = await findImage(post.image);
 const articleUrl = BLOG.post.pathname + '/' + post.id;
+const dateString = format(new Date(post.publishDate), 'dd LLL', { locale: de });
 ---
 
 <article class="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -50,7 +53,7 @@ const articleUrl = BLOG.post.pathname + '/' + post.id;
     <footer class="mt-4">
       <div>
         <span class="text-primary-200">
-          <time datetime={post.publishDate}>{post.publishDate}</time> ~
+          <time datetime={post.publishDate}>{dateString}</time> ~
           {post.readingTime} min
         </span>
       </div>

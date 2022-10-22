@@ -1,4 +1,6 @@
 ---
+import { de } from 'date-fns/locale';
+import { format } from 'date-fns';
 import { ROUTES } from '~/config';
 
 interface Props {
@@ -9,6 +11,7 @@ interface Props {
 }
 
 const { title, desc, publishDate, readingTime } = Astro.props;
+const dateString = format(new Date(publishDate), 'dd LLL', { locale: de });
 ---
 
 <header
@@ -22,9 +25,9 @@ const { title, desc, publishDate, readingTime } = Astro.props;
     </ul>
     <div class="mb-10">
       {
-        publishDate && readingTime && (
+        dateString && readingTime && (
           <span class="text-primary-100">
-            {publishDate} ~ {readingTime} min
+            {dateString} ~ {readingTime} min
           </span>
         )
       }

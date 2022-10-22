@@ -1,4 +1,4 @@
-import { BLOG } from '~/config';
+import { BLOG, SITE } from '~/config';
 
 const trim = (str: string, ch?: string) => {
   let start = 0;
@@ -9,7 +9,23 @@ const trim = (str: string, ch?: string) => {
 };
 
 const trimSlash = (s: string) => trim(trim(s, '/'));
+const createPath = (...params: string[]) => `/${params.filter((el) => !!el).join('/')}`;
 export const cleanSlug = (text: string) => trimSlash(text);
 
 export const ARTICLES_BASE = cleanSlug(BLOG.articles.pathname);
 export const POST_BASE = cleanSlug(BLOG.post.pathname);
+
+const basePathname = trimSlash(SITE.basePathname);
+
+export const getPermalink = (slug = '', type = 'page') => {
+  const cleanedSlug = cleanSlug(slug);
+
+  switch (type) {
+    case 'post':
+      return createPath(basePathname, POST_BASE, cleanedSlug);
+
+    case 'page':
+    default:
+      return createPath(basePathname, cleanedSlug);
+  }
+};

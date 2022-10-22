@@ -1,5 +1,5 @@
 ---
-publishDate: "20 Oktober"
+publishDate: "2022-10-24"
 title: "Dictum integer fusce ac ridiculus et odio sollicitudin diam at"
 description: "Ornare cum cursus laoreet sagittis nunc fusce posuere per euismod dis vehicula a, semper fames lacus maecenas dictumst pulvinar neque enim non potenti. Torquent hac sociosqu eleifend potenti."
 image: "/data/articles/images/rainbow-children.png"

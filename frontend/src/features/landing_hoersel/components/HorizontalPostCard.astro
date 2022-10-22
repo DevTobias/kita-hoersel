@@ -1,8 +1,9 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { BLOG, ROUTES } from '~/config';
+import { de } from 'date-fns/locale';
+import { format } from 'date-fns';
+import { BLOG } from '~/config';
 import { findImage } from '~/utils/images';
-import { cleanSlug } from '~/utils/permalinks';
 
 interface Props {
   id: string;
@@ -15,6 +16,7 @@ interface Props {
 const { id, title, publishDate, image, readingTime } = Astro.props;
 
 const imageSrc = await findImage(image);
+const dateString = format(new Date(publishDate), 'dd LLL', { locale: de });
 ---
 
 <a
@@ -29,8 +31,9 @@ const imageSrc = await findImage(image);
     <span class="clamp-3">
       {title}
     </span>
-    <span class="text-primary-200 flex">
-      {publishDate} ~ {readingTime} min
+    <span class="text-primary-200 flex space-x-1">
+      <time datetime={publishDate}>{dateString}</time>
+      <span>~ {readingTime} min</span>
     </span>
   </div>
 </a>
