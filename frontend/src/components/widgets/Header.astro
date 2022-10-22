@@ -63,7 +63,7 @@ const { pretitle, title, showHomeLink = true } = Astro.props;
         </ul>
         <div class="h-full flex flex-col justify-center text-right">
           <If condition={pretitle != null}>
-            <p class="text-body-lg 2xl:text-body-xl">{pretitle}</p>
+            <p class="text-body-lg 2xl:text-body-xl" slot="if">{pretitle}</p>
           </If>
           <h1 class="text-header-md font-bold mb-3 2xl:text-header-xl">
             <span class="whitespace-pre-line">{title}</span>
@@ -86,7 +86,7 @@ const { pretitle, title, showHomeLink = true } = Astro.props;
     data-parallax-offset="1"
   >
     <If condition={pretitle != null}>
-      <p class="text-body-sm">{pretitle}</p>
+      <p class="text-body-sm" slot="if">{pretitle}</p>
     </If>
     <h1 class="text-header-sm font-bold mb-3">{title}</h1>
     <ul class="text-body-no text-secondary-100 flex space-x-5 justify-end">
