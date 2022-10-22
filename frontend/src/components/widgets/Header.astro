@@ -1,7 +1,17 @@
 ---
 import { Svg } from '@kita-hoersel/astro-utils/src/svg';
 import headerImageReference from '~/assets/images/forest-header.svg';
+import If from '~/components/common/If.astro';
 import { ROUTES } from '~/config';
+
+interface Props {
+  pretitle?: string;
+  title: string;
+  description?: string;
+  showHomeLink?: boolean;
+}
+
+const { pretitle, title, showHomeLink = true } = Astro.props;
 ---
 
 <header class="max-h-[50rem] lg:max-h-[40rem]">
@@ -33,6 +43,13 @@ import { ROUTES } from '~/config';
 
       <div class="bg-primary-600 w-[90%] p-10 2xl:pr-[10%]">
         <ul class="text-body-md text-secondary-100 flex space-x-5 justify-end 2xl:text-body-lg">
+          <If condition={showHomeLink}>
+            <li slot="if">
+              <a href={ROUTES.home} class="before:bg-secondary-100">
+                {'header.home'.tr()}
+              </a>
+            </li>
+          </If>
           <li>
             <a href={ROUTES.mechterstaedtLanding} class="before:bg-secondary-100">
               {'header.mechterstaedt'.tr()}
@@ -45,9 +62,11 @@ import { ROUTES } from '~/config';
           </li>
         </ul>
         <div class="h-full flex flex-col justify-center text-right">
-          <p class="text-body-lg 2xl:text-body-xl">{'header.welcome_to'.tr()}</p>
+          <If condition={pretitle != null}>
+            <p class="text-body-lg 2xl:text-body-xl">{pretitle}</p>
+          </If>
           <h1 class="text-header-md font-bold mb-3 2xl:text-header-xl">
-            <span class="whitespace-pre-line">{'header.kita_hoersel'.tr()}</span>
+            <span class="whitespace-pre-line">{title}</span>
           </h1>
         </div>
       </div>
@@ -66,9 +85,18 @@ import { ROUTES } from '~/config';
     data-parallax-rate="3"
     data-parallax-offset="1"
   >
-    <p class="text-body-sm">{'header.welcome_to'.tr()}</p>
-    <h1 class="text-header-sm font-bold mb-3">{'header.kita_hoersel'.tr()}</h1>
+    <If condition={pretitle != null}>
+      <p class="text-body-sm">{pretitle}</p>
+    </If>
+    <h1 class="text-header-sm font-bold mb-3">{title}</h1>
     <ul class="text-body-no text-secondary-100 flex space-x-5 justify-end">
+      <If condition={showHomeLink}>
+        <li slot="if">
+          <a href={ROUTES.home} class="before:bg-secondary-100">
+            {'header.home'.tr()}
+          </a>
+        </li>
+      </If>
       <li>
         <a href={ROUTES.mechterstaedtLanding} class="before:bg-secondary-100">
           {'header.mechterstaedt'.tr()}

@@ -8,8 +8,6 @@ let images: Record<string, () => Promise<unknown>>;
 
 export const fetchLocalImages = async () => {
   images = images || (await load());
-  console.log(images);
-
   return images;
 };
 

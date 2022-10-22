@@ -1,7 +1,8 @@
 ---
 import { Image } from '@astrojs/image/components';
-import { ROUTES } from '~/config';
+import { BLOG, ROUTES } from '~/config';
 import { findImage } from '~/utils/images';
+import { cleanSlug } from '~/utils/permalinks';
 
 interface Props {
   id: string;
@@ -20,7 +21,7 @@ const imageSrc = await findImage(image);
   class="flex space-x-3 w-full h-[105px] text-primary-600 cursor-pointer hover:scale-[1.03] transition-transform"
   underline-hover="false"
   rel="prefetch"
-  href={`${ROUTES.articles}/${id}`}
+  href={BLOG.post.pathname + '/' + id}
 >
   <Image src={imageSrc} width="120" height="105" alt="article image" class="rounded-lg shadow-lg" />
 

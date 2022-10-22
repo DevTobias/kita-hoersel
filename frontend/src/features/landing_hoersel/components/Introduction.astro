@@ -1,7 +1,7 @@
 ---
 import PostList from '~/features/landing_hoersel/components/PostList.astro';
 import { fetchPosts } from '~/utils/posts';
-import { ROUTES } from '~/config';
+import { BLOG, ROUTES } from '~/config';
 
 const posts = await fetchPosts(2);
 ---
@@ -23,7 +23,7 @@ const posts = await fetchPosts(2);
   <div class="lg:w-1/2 justify-center flex flex-col">
     <div class="flex justify-between items-center mb-5">
       <h2 class="text-body-md lg:text-body-lg">{'hoersel_landing.sec_1.news'.tr()}</h2>
-      <a href={ROUTES.articles} class="text-primary-600 text-body-sm lg:text-body-no">
+      <a href={BLOG.articles.pathname} class="text-primary-600 text-body-sm lg:text-body-no">
         {'hoersel_landing.sec_1.show_more'.tr()}
       </a>
     </div>

@@ -3,6 +3,12 @@ import Layout from '~/layouts/PageLayout.astro';
 import HoerselLandingPage from '~/features/landing_hoersel/views/HoerselLandingPage.astro';
 ---
 
-<Layout>
+<Layout
+  header={{
+    title: await 'header.kita_hoersel'.tr(),
+    pretitle: await 'header.welcome_to'.tr(),
+    showHomeLink: false,
+  }}
+>
   <HoerselLandingPage />
 </Layout>

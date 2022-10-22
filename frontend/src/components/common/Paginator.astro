@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon';
+import { classNames } from '@kita-hoersel/astro-utils/src/classnames';
+import If from '~/components/common/If.astro';
+
+interface Props {
+  prevUrl?: string;
+  nextUrl?: string;
+  prevText?: string;
+  nextText?: string;
+}
+
+const { prevUrl, nextUrl, prevText, nextText } = Astro.props;
+---
+
+<If condition={prevUrl != null || nextUrl != null}>
+  <div class="flex justify-between" slot="if">
+    <a
+      href={prevUrl}
+      class={classNames('text-btn text-primary-600', !prevUrl && 'invisible')}
+      underline-hover="false"
+    >
+      <div class="flex flex-row align-middle items-center">
+        <Icon name="tabler:arrow-left" class="w-6 h-6" />
+        <p class="ml-2">{prevText ?? 'pagination.forwards'.tr()}</p>
+      </div>
+    </a>
+    <a
+      href={nextUrl}
+      class={classNames('text-btn text-primary-600', !nextUrl && 'invisible')}
+      underline-hover="false"
+    >
+      <div class="flex flex-row align-middle items-center">
+        <span class="mr-2">{nextText ?? 'pagination.backwards'.tr()}</span>
+        <Icon name="tabler:arrow-right" class="w-6 h-6" />
+      </div>
+    </a>
+  </div>
+</If>

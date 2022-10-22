@@ -15,7 +15,12 @@ export const ROUTES = {
   mechterstaedtLanding: '/mechterstaedt',
   privacy: '/privacy',
   imprint: '/imprint',
-  articles: '/articles',
+};
+
+export const BLOG = {
+  postsPerPage: 2,
+  articles: { pathname: 'article' },
+  post: { pathname: '' },
 };
 
 export const DEFAULT_LANGUAGE = 'de';

@@ -1,0 +1,39 @@
+---
+import { Page } from 'astro';
+import Paginator from '~/components/common/Paginator.astro';
+import { Meta } from '~/components/core/MetaTags.astro';
+import { BLOG, SITE } from '~/config';
+import FullPostList from '~/features/articles/components/FullPostList.astro';
+import PageLayout from '~/layouts/PageLayout.astro';
+import { ARTICLES_BASE } from '~/utils/permalinks';
+import { fetchPosts } from '~/utils/posts';
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await fetchPosts();
+  return paginate(posts, {
+    params: { articles: ARTICLES_BASE },
+    pageSize: BLOG.postsPerPage,
+  });
+}
+
+interface Props {
+  page: Page;
+}
+
+const { page } = Astro.props;
+const currentPage = page.currentPage ?? 1;
+
+const meta: Meta = {
+  title: await 'articles.header'.tr({ values: [currentPage] }),
+  description: SITE.description,
+  ogType: 'blog',
+  noindex: currentPage > 1,
+};
+---
+
+<PageLayout meta={meta} header={{ title: meta.title }}>
+  <div class="max-w-3xl mx-auto">
+    <FullPostList posts={page.data} />
+    <Paginator prevUrl={page.url.prev} nextUrl={page.url.next} />
+  </div>
+</PageLayout>

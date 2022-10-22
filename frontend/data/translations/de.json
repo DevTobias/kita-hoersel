@@ -13,6 +13,13 @@
     "contact": "Kontakt",
     "copyright": "© {0} <a href='https://www.linkedin.com/in/tobias-kärst' target='_blank' rel='noopener noreferrer'>Tobias Kärst</a>. All rights reserved."
   },
+  "articles": {
+    "header": "Beiträge der Kindertagesstädten \nSeite {0}"
+  },
+  "pagination": {
+    "forwards": "Ältere",
+    "backwards": "Neuere"
+  },
   "hoersel_landing": {
     "sec_1": {
       "header": "Die Kindergärten",
