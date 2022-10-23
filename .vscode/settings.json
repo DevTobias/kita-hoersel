@@ -69,6 +69,7 @@
   },
 
   "material-icon-theme.folders.associations": {
-    "server-config": "config"
+    "server-config": "config",
+    "sections": "template"
   }
 }

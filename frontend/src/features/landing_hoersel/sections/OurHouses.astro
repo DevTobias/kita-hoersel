@@ -1,0 +1,33 @@
+---
+import '../styles/our_houses.scss';
+import HouseCard from '~/features/landing_hoersel/components/HouseCard.astro';
+import dreikaesehochImage from '~/assets/images/mechterstaedt_house.jpg';
+import strolcheImage from '~/assets/images/teutleben_house.jpg';
+import { ROUTES } from '~/config';
+---
+
+<section class="page-container mb-20">
+  <h1 class="text-header-no leading-10 font-bold mb-5 lg:text-header-md">
+    {'hoersel_landing.sec_3.header'.tr()}
+  </h1>
+
+  <p
+    set:html={'hoersel_landing.sec_3.paragraph'.tr()}
+    class="text-primary-200 text-body-no mb-5 lg:mb-11 lg:text-body-md"
+  >
+  </p>
+
+  <div class="flex flex-col gap-5 md:flex-row md:gap-14">
+    <a href={ROUTES.mechterstaedtLanding} underline-hover="false" class="md:w-1/2">
+      <HouseCard logoName="dreikaesehoch-logo" title="Dreikäsehoch" image={dreikaesehochImage} />
+    </a>
+
+    <a href={ROUTES.teutlebenLanding} underline-hover="false" class="md:w-1/2">
+      <HouseCard logoName="strolche-logo" title="Kleine Strolche" image={strolcheImage} />
+    </a>
+  </div>
+</section>
+
+<script>
+  import 'vanilla-tilt';
+</script>

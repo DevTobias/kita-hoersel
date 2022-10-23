@@ -1,0 +1,54 @@
+---
+import Picture from '~/components/common/Picture.astro';
+import { Svg } from '@kita-hoersel/astro-utils/src/svg';
+
+interface Props {
+  title: string;
+  logoName: string;
+  image: string;
+}
+
+const { logoName, title, image } = Astro.props;
+---
+
+<div
+  class="tilt-tile"
+  data-tilt
+  data-tilt-max="10"
+  data-tilt-speed="400"
+  data-tilt-scale="1.05"
+  class="w-full"
+>
+  <div class="relative pb-[60.25%] md:pb-[50%] overflow-hidden rounded-md shadow-lg w-full">
+    <div class="bg-primary-500 w-full h-full absolute z-10 opacity-70"></div>
+    <Picture
+      src={image}
+      class="absolute inset-0 object-cover w-full h-full mb-6"
+      widths={[400, 600]}
+      sizes="(max-width: 600px) 400px, 600px"
+      alt="our management inside the kindergarten building"
+      aspectRatio="16:9"
+    />
+  </div>
+
+  <div class="tilt-inner w-full h-full absolute top-0">
+    <h2
+      class="w-full text-center text-white font-medium text-body-lg mt-5 xl:mt-10 xl:text-header-no"
+    >
+      {title}
+    </h2>
+
+    <div class="relative w-full h-[70%]">
+      <div
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 xl:w-32 xl:h-32 rounded-full bg-primary-500"
+      >
+      </div>
+
+      <Svg
+        name={logoName}
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 w-32 xl:w-44 -translate-y-1/2"
+        title={logoName}
+      />
+    </div>
+  </div>
+</div>

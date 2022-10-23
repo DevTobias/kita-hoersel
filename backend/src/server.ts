@@ -13,7 +13,8 @@ const bootstrap = async () => {
   await server.register(fastifyHelmet, {
     contentSecurityPolicy: {
       directives: {
-        scriptSrc: ["'unsafe-inline'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        scriptSrcElem: ["'self'", "'unsafe-inline'"],
       },
     },
   });
