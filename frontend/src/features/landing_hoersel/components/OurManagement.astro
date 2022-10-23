@@ -1,0 +1,38 @@
+---
+import '../styles/our_management.scss';
+
+import Picture from '~/components/common/Picture.astro';
+import ourManagmentSrc from '~/../data/images/our_management.jpeg';
+---
+
+<section class="relative overflow-hidden py-14 lg:py-32">
+  <div class="page-container md:flex lg:flex-row-reverse">
+    <div class="md:w-1/2 md:flex md:flex-col md:justify-center">
+      <h1 class="text-header-no font-bold mb-2 lg:text-header-md">
+        {'hoersel_landing.sec_2.header'.tr()}
+      </h1>
+
+      <p
+        set:html={'hoersel_landing.sec_2.paragraph'.tr()}
+        class="text-primary-200 text-body-no mb-5 lg:text-body-md"
+      >
+      </p>
+    </div>
+
+    <div class="w-full md:w-1/2 md:flex md:justify-end md:pr-11">
+      <div
+        class="relative pb-[56.25%] md:pb-[40%] h-0 overflow-hidden rounded-md shadow-lg w-full md:w-3/4"
+      >
+        <Picture
+          src={ourManagmentSrc}
+          class="absolute inset-0 object-cover w-full h-full mb-6"
+          widths={[400, 600]}
+          sizes="(max-width: 600px) 400px, 600px"
+          alt="our management inside the kindergarten building"
+          aspectRatio="16:9"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="back-shadow absolute w-full h-[150%] left-0 -top-[25%] -z-10"></div>
+</section>

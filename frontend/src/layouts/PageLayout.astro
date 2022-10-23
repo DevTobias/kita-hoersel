@@ -1,4 +1,6 @@
 ---
+import { classNames } from '@kita-hoersel/astro-utils/src/classnames';
+
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
@@ -12,9 +14,10 @@ interface Props {
     subtitle?: string;
     showHomeLink?: boolean;
   };
+  container?: boolean;
 }
 
-const { meta, header } = Astro.props;
+const { meta, header, container = true } = Astro.props;
 ---
 
 <Layout {meta}>
@@ -26,7 +29,7 @@ const { meta, header } = Astro.props;
   >
   </div>
   <main class="relative z-30">
-    <div class="w-full max-w-[80rem] mx-auto py-14 px-8 lg:w-[85%] lg:py-20">
+    <div class={classNames(container && 'page-container py-14 lg:py-20')}>
       <slot />
     </div>
     <script>
