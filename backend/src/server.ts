@@ -8,6 +8,8 @@ const frontendPath = process.env.CLIENT_PATH ?? '../../frontend/dist';
 const bootstrap = async () => {
   const server = fastify({ logger: true });
 
+  await server.register(import('@fastify/compress'), { encodings: ['br', 'gzip'] });
+
   await server.register(fastifyHelmet, {
     contentSecurityPolicy: {
       directives: {
@@ -15,6 +17,7 @@ const bootstrap = async () => {
       },
     },
   });
+
   await server.register(fastifyStatic, { root: join(__dirname, frontendPath) });
 
   server.listen({ port: 8080, host: '0.0.0.0' });

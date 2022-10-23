@@ -37,7 +37,7 @@ a::before {
   height: 1px;
   bottom: 0;
   left: 0;
-  background-color: #fdebe8;
+  background-color: #de8c7d;
   transform: scaleX(0);
   transition: transform 0.3s ease-in-out;
 }
@@ -47,7 +47,7 @@ a[underline-hover='false']::before {
 }
 
 em {
-  color: #de8c7d;
+  font-weight: 600;
   font-style: normal;
 }
 

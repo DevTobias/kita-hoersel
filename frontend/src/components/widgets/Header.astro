@@ -1,6 +1,5 @@
 ---
 import { Svg } from '@kita-hoersel/astro-utils/src/svg';
-import headerImageReference from '~/assets/images/forest-header.svg';
 import If from '~/components/common/If.astro';
 import { ROUTES } from '~/config';
 
@@ -72,11 +71,10 @@ const { pretitle, title, showHomeLink = true } = Astro.props;
       </div>
     </div>
 
-    <img
-      src={headerImageReference}
+    <Svg
+      name="forest-header"
       class="bg-primary-600 w-full max-w-full h-auto aspect-[16/9] max-h-[50rem] lg:max-h-[40rem] object-cover"
-      alt="illustration of forest at day time"
-      loading="lazy"
+      title="illustration of forest at day time"
     />
   </div>
 

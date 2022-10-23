@@ -20,11 +20,17 @@ export default defineConfig({
   site: SITE.origin,
   base: SITE.basePathname,
 
+  output: 'static',
+
   integrations: [
     sitemap(),
     image({ serviceEntryPoint: '@astrojs/image/sharp' }),
     compress(),
-    tailwind(),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
     preact(),
   ],
 

@@ -1,5 +1,5 @@
 ---
-import { de } from 'date-fns/locale';
+import { de } from 'date-fns/locale/index.js';
 import { format } from 'date-fns';
 import { ROUTES } from '~/config';
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, desc, publishDate, readingTime } = Astro.props;
-const dateString = format(new Date(publishDate), 'dd LLL', { locale: de });
+const dateString = publishDate ? format(new Date(publishDate), 'dd LLL', { locale: de }) : '';
 ---
 
 <header

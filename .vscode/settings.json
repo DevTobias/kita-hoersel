@@ -55,13 +55,13 @@
   "explorer.fileNesting.patterns": {
     "README.md": "SECURITY.md,LICENSE",
     "package.json": "tsconfig.json,.gitignore,tsconfig.build.json,.editorconfig,.env",
-    "astro.config.ts": "tailwind.config.cjs"
+    "astro.config.ts": "tailwind.config.cjs,postcss.config.cjs"
   },
 
   // hide various files/folders
   "files.exclude": {
     "**/node_modules": true,
-    "**/dist": true,
+    //"**/dist": true,
     "**/database": true,
     "**/uploads": true,
     "**/export": true,
