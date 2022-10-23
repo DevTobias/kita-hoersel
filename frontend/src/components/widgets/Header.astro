@@ -73,8 +73,9 @@ const { pretitle, title, showHomeLink = true } = Astro.props;
 
     <Svg
       name="forest-header"
-      class="bg-primary-600 w-full max-w-full h-auto aspect-[16/9] max-h-[50rem] lg:max-h-[40rem] object-cover"
+      class="w-full max-w-full aspect-[16/9] max-h-[50rem] lg:max-h-[40rem] object-cover"
       title="illustration of forest at day time"
+      preserveAspectRatio="xMinYMin slice"
     />
   </div>
 

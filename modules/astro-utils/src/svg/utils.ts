@@ -2,7 +2,7 @@
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-cond-assign */
 
-import { optimize, OptimizedSvg } from 'svgo';
+import { optimize as optimizeSvgo, OptimizedSvg } from 'svgo';
 
 import { Props } from './Props';
 
@@ -13,7 +13,7 @@ const domParserTokenizer =
   /(?:<(\/?)([a-zA-Z][a-zA-Z0-9:]*)(?:\s([^>]*?))?((?:\s*\/)?)>|(<!--)([\s\S]*?)(-->)|(<!\[CDATA\[)([\s\S]*?)(\]\]>))/gm;
 
 const optimizeSvgAsset = (contents: string, name: string): string => {
-  const optimizedAsset = optimize(contents, {
+  const optimizedAsset = optimizeSvgo(contents, {
     plugins: [
       'removeDoctype',
       'removeXMLProcInst',
@@ -42,8 +42,6 @@ const optimizeSvgAsset = (contents: string, name: string): string => {
       'removeEmptyText',
       'convertShapeToPath',
       'moveElemsAttrsToGroup',
-      'moveGroupAttrsToElems',
-      'collapseGroups',
       'convertPathData',
       'convertTransform',
       'removeEmptyAttrs',
@@ -54,7 +52,6 @@ const optimizeSvgAsset = (contents: string, name: string): string => {
       'removeTitle',
       'removeDesc',
       'removeDimensions',
-      'removeStyleElement',
       'removeScriptElement',
     ],
   });
@@ -75,11 +72,11 @@ const splitAttrs = (str: string) => {
   return res;
 };
 
-const preprocess = (contents: string, name: string) => {
+const preprocess = (contents: string, name: string, optimize: boolean) => {
   if (preprocessCache.has(contents)) {
     return preprocessCache.get(contents);
   }
-  contents = optimizeSvgAsset(contents, name);
+  contents = optimize ? optimizeSvgAsset(contents, name) : contents;
 
   domParserTokenizer.lastIndex = 0;
   let result = contents;
@@ -115,7 +112,7 @@ export function normalizeProps(inputProps: Props) {
   return { ...inputProps, width, height };
 }
 
-export const loadSvg = async (name: string, inputProps: Props) => {
+export const loadSvg = async (name: string, optimize: boolean, inputProps: Props) => {
   const filepath = `/src/assets/icons/${name}.svg`;
 
   // @ts-ignore
@@ -125,7 +122,7 @@ export const loadSvg = async (name: string, inputProps: Props) => {
     throw new Error(`Could not find the file "${filepath}"`);
   }
 
-  const { innerHTML, defaultProps } = preprocess(files[filepath], name);
+  const { innerHTML, defaultProps } = preprocess(files[filepath], name, optimize);
 
   return {
     innerHTML,

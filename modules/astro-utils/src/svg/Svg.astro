@@ -5,11 +5,13 @@ interface Props {
   name: string;
   title: string;
   class: string;
+  optimize?: boolean;
+  [x: string]: any;
 }
 
-let { name, title, class: className, ...inputProps } = Astro.props;
+let { name, title, optimize = true, class: className, ...inputProps } = Astro.props;
 
-const svg = await loadSvg(name, { ...inputProps, class: className, name });
+const svg = await loadSvg(name, optimize, { ...inputProps, class: className, name });
 ---
 
 <svg
