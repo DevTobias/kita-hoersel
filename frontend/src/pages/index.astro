@@ -1,13 +1,18 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HoerselLandingPage from '~/features/landing_hoersel/views/HoerselLandingPage.astro';
+import { ROUTES } from '~/config';
 ---
 
 <Layout
   header={{
-    title: await 'header.kita_hoersel'.tr(),
+    title: await 'hoersel_landing.header.title'.tr(),
     pretitle: await 'header.welcome_to'.tr(),
-    showHomeLink: false,
+    links: [
+      { label: await 'header.home'.tr(), url: ROUTES.home },
+      { label: await 'header.mechterstaedt'.tr(), url: ROUTES.mechterstaedtLanding },
+      { label: await 'header.teutleben'.tr(), url: ROUTES.teutlebenLanding },
+    ],
   }}
   container={false}
 >

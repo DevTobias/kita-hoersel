@@ -15,6 +15,9 @@ export const ROUTES = {
   mechterstaedtLanding: '/mechterstaedt',
   privacy: '/privacy',
   imprint: '/imprint',
+  parentSection: '/parents',
+  supportAssociation: '/support',
+  ourHouse: '/house',
 };
 
 export const BLOG = {

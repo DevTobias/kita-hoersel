@@ -1,0 +1,7 @@
+---
+import OurHouse from '~/features/landing_mechterstaedt/sections/OurHouse.astro';
+import QuickFacts from '~/features/landing_mechterstaedt/sections/QuickFacts.astro';
+---
+
+<QuickFacts facts={await 'mechterstaedt_landing.sec_1.quick_facts'.load()} />
+<OurHouse />

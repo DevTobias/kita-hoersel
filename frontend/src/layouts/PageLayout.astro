@@ -11,8 +11,10 @@ interface Props {
   header: {
     pretitle?: string;
     title: string;
+    description?: string;
+    readMoreUrl?: string;
     subtitle?: string;
-    showHomeLink?: boolean;
+    links: { label: string; url: string }[];
   };
   container?: boolean;
 }

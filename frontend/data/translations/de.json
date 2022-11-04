@@ -1,10 +1,12 @@
 {
   "header": {
     "welcome_to": "Herzlich Willkommen bei den",
-    "kita_hoersel": "Kindertagesstädten\nder Gemeinde Hörsel",
+    "read_more": "Mehr erfahren...",
     "mechterstaedt": "Mechterstädt",
     "teutleben": "Teutleben",
-    "home": "Home"
+    "home": "Home",
+    "support_association": "Förderverein",
+    "parent_section": "Elternbereich"
   },
   "footer": {
     "header": "Kindertagesstädten der Gemeinde Hörsel",
@@ -21,6 +23,9 @@
     "backwards": "Neuere"
   },
   "hoersel_landing": {
+    "header": {
+      "title": "Kindertagesstädten\nder Gemeinde Hörsel"
+    },
     "sec_1": {
       "header": "Die Kindergärten",
       "paragraph_1": "Die Kindergärten <em>Dreikäsehoch</em> Mechterstädt und <em>Kleine Strolche</em> Teutleben sind die zwei kommunalen Kindergarteneinrichtung der Gemeinde Hörsel.",
@@ -35,6 +40,20 @@
     "sec_3": {
       "header": "Besuche unsere Einrichtungen",
       "paragraph": "Hier können Sie sich genauer über die einzelnen Kindereinrichtungen der Gemeinde Hörsel informieren."
+    }
+  },
+  "mechterstaedt_landing": {
+    "header": {
+      "title": "Kita Dreikäsehoch\nMechterstädt",
+      "desc": "Naturverbunden sind wir jeden Tag. Doch einmal im Jahr wird das zum Hauptanliegen. In unserer Waldwoche bieten wir den Kindern intensives Erleben in der Natur."
+    },
+    "sec_1": {
+      "quick_facts": [
+        { "value": "1983", "label": "Erbaut im Jahr" },
+        { "value": "53", "label": "Lernende Kinder" },
+        { "value": "10", "label": "Mitarbeiter:innen" },
+        { "value": "3", "label": "Gruppen" }
+      ]
     }
   }
 }

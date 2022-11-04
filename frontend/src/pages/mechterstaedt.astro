@@ -1,0 +1,23 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { ROUTES } from '~/config';
+import MechterstaedtLandingPage from '~/features/landing_mechterstaedt/views/MechterstaedtLandingPage.astro';
+
+const baseUrl = ROUTES.mechterstaedtLanding;
+---
+
+<Layout
+  header={{
+    title: await 'mechterstaedt_landing.header.title'.tr(),
+    description: await 'mechterstaedt_landing.header.desc'.tr(),
+    readMoreUrl: '#work',
+    links: [
+      { label: await 'header.home'.tr(), url: ROUTES.home },
+      { label: await 'header.support_association'.tr(), url: baseUrl + ROUTES.supportAssociation },
+      { label: await 'header.parent_section'.tr(), url: baseUrl + ROUTES.parentSection },
+    ],
+  }}
+  container={false}
+>
+  <MechterstaedtLandingPage />
+</Layout>
