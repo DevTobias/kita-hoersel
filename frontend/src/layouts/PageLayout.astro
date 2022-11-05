@@ -3,7 +3,7 @@ import { classNames } from '@kita-hoersel/astro-utils/src/classnames';
 
 import Layout from '~/layouts/BaseLayout.astro';
 import Header from '~/components/widgets/Header.astro';
-import Footer from '~/components/widgets/Footer.astro';
+import Footer from '~/components/widgets/footer/Footer.astro';
 import { Meta } from '~/components/core/MetaTags.astro';
 
 interface Props {
@@ -16,10 +16,22 @@ interface Props {
     subtitle?: string;
     links: { label: string; url: string }[];
   };
+  footer: {
+    routeMapUrl?: string;
+    fullMapUrl?: string;
+    contact?: {
+      opening: string;
+      management: string;
+      mobile: string;
+      email: string;
+      address: string;
+    };
+    links?: { label: string; url: string }[];
+  };
   container?: boolean;
 }
 
-const { meta, header, container = true } = Astro.props;
+const { meta, header, footer, container = true } = Astro.props;
 ---
 
 <Layout {meta}>
@@ -43,5 +55,5 @@ const { meta, header, container = true } = Astro.props;
       window.addEventListener('load', () => addInitialParallaxOffset('.parallax'));
     </script>
   </main>
-  <Footer />
+  <Footer {...footer} />
 </Layout>

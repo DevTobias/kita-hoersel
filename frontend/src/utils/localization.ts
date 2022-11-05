@@ -5,7 +5,7 @@ import { DEFAULT_LANGUAGE, LANGUAGES } from '~/config';
 declare global {
   interface String {
     tr({ lang, values }?: { lang?: string; values?: unknown[] }): Promise<string>;
-    load({ lang, values }?: { lang?: string; values?: unknown[] }): Promise<any[]>;
+    load({ lang, values }?: { lang?: string; values?: unknown[] }): Promise<any>;
   }
 }
 
@@ -22,11 +22,11 @@ const traverseObject = (
   obj: object | string,
   keys: string[],
   position = 0
-): string | string[] | undefined => {
+): string | any[] | object | undefined => {
   if (!obj) {
     return keys.join('.');
   }
-  if (typeof obj === 'string' || Array.isArray(obj)) return obj;
+  if (typeof obj === 'string' || Array.isArray(obj) || position >= keys.length) return obj;
   const key = keys[position];
   if (!Object.prototype.hasOwnProperty.call(obj, key)) return undefined;
   return traverseObject(obj[key], keys, position + 1);
@@ -50,5 +50,5 @@ String.prototype.load = async function load(this: string, { lang = DEFAULT_LANGU
   if (translations.size === 0) {
     await loadTranslations();
   }
-  return (traverseObject(translations.get(lang), this.split('.')) as any[]) ?? [];
+  return (traverseObject(translations.get(lang), this.split('.')) as any) ?? [];
 };

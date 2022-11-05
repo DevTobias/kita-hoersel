@@ -13,7 +13,18 @@
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "contact": "Kontakt",
-    "copyright": "© {0} <a href='https://www.linkedin.com/in/tobias-kärst' target='_blank' rel='noopener noreferrer'>Tobias Kärst</a>. All rights reserved."
+    "our_house": "Unser Haus",
+    "routine": "Tagesablauf",
+    "support_association": "Förderverein",
+    "parent_section": "Elternbereich",
+    "copyright": "© {0} <a href='https://www.linkedin.com/in/tobias-kärst' target='_blank' rel='noopener noreferrer'>Tobias Kärst</a>. All rights reserved.",
+    "full_map": "Komplette Karte",
+    "contact_form": "Sollten Sie weitere Fragen haben können Sie sich gerne per Kontaktformular melden.",
+    "your_email": "Ihre Email",
+    "your_message": "Ihre Nachricht an uns",
+    "send": "Senden",
+    "contact_details": "Sie können sich ebenfalls telefonisch oder per Email an uns wenden.",
+    "opening_hours": "Öffnungszeiten"
   },
   "articles": {
     "header": "Beiträge der Kindertagesstädten \nSeite {0}"
@@ -54,6 +65,20 @@
         { "value": "10", "label": "Mitarbeiter:innen" },
         { "value": "3", "label": "Gruppen" }
       ]
+    },
+    "sec_2": {
+      "our_house": "Unser Haus",
+      "opening": "Bereits 1983 wurde in Mechterstädt unser Kindergartengebäude eingeweiht. Heute spielen und lernen hier 52 Kinder, im Alter von einem Jahr bis zum Schuleintritt. Wir sind stolz auf das schöne Haus in der ländlichen Gegend.",
+      "read_more": "Mehr erfahren"
+    },
+    "footer": {
+      "contact": {
+        "opening": "Montag - Freitag 06.00 - 16:30 Uhr",
+        "management": "Leitung Andrea Reinhardt",
+        "address": "Kindertagesstätte Dreikäsehoch<br />Auf dem Börner 1<br />99880 Hörsel OT Mechterstädt",
+        "email": "kita.mechterstadt@hoersel.de",
+        "mobile": "03622 907115"
+      }
     }
   }
 }

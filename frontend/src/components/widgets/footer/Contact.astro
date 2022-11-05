@@ -1,0 +1,82 @@
+---
+import { Icon } from 'astro-icon';
+
+interface Props {
+  opening: string;
+  management: string;
+  mobile: string;
+  email: string;
+  address: string;
+}
+
+const { opening, management, mobile, email, address } = Astro.props;
+---
+
+<div class="flex flex-col w-full items-center">
+  <div>
+    <h3 class="text-header-no font-bold mb-3 px-5">{'footer.contact'.tr()}</h3>
+    <div class="flex flex-col px-5 gap-6 pb-10 lg:flex-row lg:gap-28">
+      <div class="lg:w-full lg:max-w-xl">
+        <p class="text-primary-100 text-body-md mb-5">
+          {'footer.contact_form'.tr()}
+        </p>
+        <div class="space-y-3">
+          <div class="lg:flex lg:gap-4">
+            <input
+              type="email"
+              placeholder={await 'footer.your_email'.tr()}
+              class="w-full lg:w-3/4 border-primary-100 border-2 border-opacity-30 outline-none rounded-md px-5 py-3 focus:border-primary-600"
+            />
+            <button
+              type="submit"
+              class="w-1/4 px-5 py-3 bg-primary-600 text-white rounded-md justify-center items-center gap-2 hidden lg:flex"
+            >
+              <span>{'footer.send'.tr()}</span>
+              <Icon name="mdi:send" class="w-5 h-5" />
+            </button>
+          </div>
+          <textarea
+            rows="7"
+            placeholder={await 'footer.your_message'.tr()}
+            class="w-full border-primary-100 border-2 border-opacity-30 rounded-md px-5 py-3 outline-none focus:border-primary-600"
+          ></textarea>
+          <button
+            type="submit"
+            class="w-full px-5 py-3 bg-primary-600 text-white rounded-md flex justify-center items-center gap-2 lg:hidden"
+          >
+            <span>{'footer.send'.tr()}</span>
+            <Icon name="mdi:send" class="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-5 lg:w-full lg:max-w-xl lg:flex lg:flex-col">
+        <p class="text-primary-100 text-body-md">{'footer.contact_details'.tr()}</p>
+        <div>
+          <h4 class="text-body-md font-medium">{'footer.opening_hours'.tr()}</h4>
+          <p class="text-body-no">{opening}</p>
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center font-medium gap-3">
+            <Icon name="mdi:account" class="w-7 h-7" />
+            <span>{management}</span>
+          </div>
+          <div class="flex items-center font-medium gap-3">
+            <Icon name="carbon:phone-filled" class="w-7 h-7" />
+            <span>{mobile}</span>
+          </div>
+          <div class="flex items-center font-medium gap-3">
+            <Icon name="mdi:email" class="w-7 h-7" />
+            <a href={'mailto:' + email} class="text-primary-600 underline" underline-hover="false">
+              {email}
+            </a>
+          </div>
+          <div class="flex items-start font-medium gap-3">
+            <Icon name="mdi:map-marker" class="w-7 h-7" />
+            <span set:html={address}></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+---
+import If from '~/components/common/If.astro';
+import Contact from '~/components/widgets/footer/Contact.astro';
+import Links from '~/components/widgets/footer/Links.astro';
+import Map from '~/components/widgets/footer/Map.astro';
+
+interface Props {
+  routeMapUrl?: string;
+  fullMapUrl?: string;
+  contact?: {
+    opening: string;
+    management: string;
+    mobile: string;
+    email: string;
+    address: string;
+  };
+  links?: { label: string; url: string }[];
+}
+
+const { routeMapUrl, fullMapUrl, contact, links } = Astro.props;
+---
+
+<footer>
+  <If condition={contact != null}>
+    <Contact slot="if" {...contact} />
+  </If>
+  <If condition={routeMapUrl != null && fullMapUrl != null}>
+    <Map slot="if" routeMapUrl={routeMapUrl} fullMapUrl={fullMapUrl} />
+  </If>
+  <Links links={links} />
+</footer>

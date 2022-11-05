@@ -15,9 +15,11 @@ export const ROUTES = {
   mechterstaedtLanding: '/mechterstaedt',
   privacy: '/privacy',
   imprint: '/imprint',
+  contact: '/contact',
   parentSection: '/parents',
   supportAssociation: '/support',
   ourHouse: '/house',
+  dailyRoutine: '/daily-routine',
 };
 
 export const BLOG = {
