@@ -1,10 +1,18 @@
 ---
 import Picutre from '~/components/common/Picture.astro';
 
-import openingImage from '~/../data/images/opening.jpg';
 import { ROUTES } from '~/config';
+import { findImage } from '~/utils/images';
 
+interface Props {
+  trPrefix: string;
+  image: string;
+}
+
+const { trPrefix, image } = Astro.props;
 const baseUrl = ROUTES.mechterstaedtLanding;
+
+const imageUrl = await findImage(image);
 ---
 
 <section class="bg-primary-600 w-full">
@@ -13,7 +21,7 @@ const baseUrl = ROUTES.mechterstaedtLanding;
       <div class="overflow-hidden h-full w-full lg:h-60 lg:w-60 lg:rounded-2xl lg:shadow-lg">
         <div class="block group relative pb-[45%] h-0 md:h-80">
           <Picutre
-            src={openingImage}
+            src={imageUrl}
             class="absolute inset-0 object-cover h-full mb-6"
             widths={[400, 1100]}
             sizes="(max-width: 1100px) 400px, 1100px"
@@ -25,12 +33,12 @@ const baseUrl = ROUTES.mechterstaedtLanding;
     </div>
 
     <div class="text-white py-10 pl-10 lg:flex lg:flex-col lg:justify-center">
-      <h2 class="font-bold text-header-md mb-6">{'mechterstaedt_landing.sec_2.our_house'.tr()}</h2>
+      <h2 class="font-bold text-header-md mb-6">{`${trPrefix}.sec_2.our_house`.tr()}</h2>
       <p class="text-body-no lg:text-body-lg leading-8">
-        {'mechterstaedt_landing.sec_2.opening'.tr()}
+        {`${trPrefix}.sec_2.opening`.tr()}
       </p>
       <div class="text-body-no pr-10 flex justify-end mt-10 lg:text-body-md">
-        <a href={baseUrl + ROUTES.ourHouse}>{'mechterstaedt_landing.sec_2.read_more'.tr()}</a>
+        <a href={baseUrl + ROUTES.ourHouse}>{`${trPrefix}.sec_2.read_more`.tr()}</a>
       </div>
     </div>
   </div>

@@ -1,0 +1,16 @@
+---
+import OurHouse from '~/features/landing_template/sections/OurHouse.astro';
+import QuickFacts from '~/features/landing_template/sections/QuickFacts.astro';
+
+interface Props {
+  trPrefix: string;
+  house: {
+    image: string;
+  };
+}
+
+const { trPrefix, house } = Astro.props;
+---
+
+<QuickFacts facts={await `${trPrefix}.sec_1.quick_facts`.load()} />
+<OurHouse trPrefix={trPrefix} {...house} />

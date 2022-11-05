@@ -61,7 +61,7 @@
   // hide various files/folders
   "files.exclude": {
     "**/node_modules": true,
-    //"**/dist": true,
+    "**/dist": true,
     "**/database": true,
     "**/uploads": true,
     "**/export": true,

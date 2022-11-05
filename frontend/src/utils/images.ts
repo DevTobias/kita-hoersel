@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 const load = async () => {
-  return import.meta.glob('~/../data/articles/images/**');
+  return import.meta.glob('~/../data/images/**');
 };
 
 let images: Record<string, () => Promise<unknown>>;
