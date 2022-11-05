@@ -7,6 +7,8 @@ import Map from '~/components/widgets/footer/Map.astro';
 interface Props {
   routeMapUrl?: string;
   fullMapUrl?: string;
+  label?: string;
+  address?: string;
   contact?: {
     opening: string;
     management: string;
@@ -17,7 +19,7 @@ interface Props {
   links?: { label: string; url: string }[];
 }
 
-const { routeMapUrl, fullMapUrl, contact, links } = Astro.props;
+const { routeMapUrl, fullMapUrl, contact, links, label, address } = Astro.props;
 ---
 
 <footer>
@@ -25,7 +27,13 @@ const { routeMapUrl, fullMapUrl, contact, links } = Astro.props;
     <Contact slot="if" {...contact} />
   </If>
   <If condition={routeMapUrl != null && fullMapUrl != null}>
-    <Map slot="if" routeMapUrl={routeMapUrl} fullMapUrl={fullMapUrl} />
+    <Map
+      slot="if"
+      routeMapUrl={routeMapUrl}
+      fullMapUrl={fullMapUrl}
+      label={label}
+      address={address}
+    />
   </If>
   <Links links={links} />
 </footer>

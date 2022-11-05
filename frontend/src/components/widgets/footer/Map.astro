@@ -1,39 +1,34 @@
 ---
-import mapImage from '~/../data/images/me_map.png';
 import { Icon } from 'astro-icon';
-import Picture from '~/components/common/Picture.astro';
 
 interface Props {
   routeMapUrl: string;
   fullMapUrl: string;
+  label: string;
+  address: string;
 }
 
-const { routeMapUrl, fullMapUrl } = Astro.props;
+const { routeMapUrl, fullMapUrl, label, address } = Astro.props;
 ---
 
 <div class="relative">
   <a
-    class="block relative pb-[15%] overflow-hidden"
+    id="map"
+    class="block h-[350px]"
     href={fullMapUrl}
     target="_blank"
     rel="noopener noreferrer"
     underline-hover="false"
   >
-    <Picture
-      src={mapImage}
-      class="absolute inset-0 object-cover h-full w-full mb-6"
-      widths={[400, 3000]}
-      sizes="(max-width: 3000px) 400px, 3000px"
-      alt="mechterstaedt google maps"
-      aspectRatio="2.26:1"
-    />
   </a>
-  <div class="bg-white text-primary-700 p-5 absolute top-5 left-5 rounded-lg shadow-lg flex gap-10">
+  <div
+    class="bg-white text-primary-700 p-5 absolute bottom-5 left-5 rounded-lg shadow-lg flex lg:gap-10"
+  >
     <div>
-      <div class="font-bold text-body-lg">Kita Dreikäsehoch</div>
-      <div class="mb-10">99880 Mechterstädt</div>
+      <div class="font-bold text-body-no lg:text-body-md">{label}</div>
+      <div class="text-body-sm lg:text-body-no mb-3 lg:mb-10">{address}</div>
       <a class="text-secondary-700" href={fullMapUrl} target="_blank" rel="noopener noreferrer">
-        Größere Karte ansehen
+        {'footer.bigger_map'.tr()}
       </a>
     </div>
     <a
@@ -43,8 +38,16 @@ const { routeMapUrl, fullMapUrl } = Astro.props;
       rel="noopener noreferrer"
       underline-hover="false"
     >
-      <Icon name="fa-solid:route" class="w-6 h-6" />
-      <span>Routenplaner</span>
+      <Icon name="fa-solid:route" class="w-5 h-5 lg:w-6 lg:h-6" />
+      <span class="text-body-sm lg:text-body-no">{'footer.route_planner'.tr()}</span>
     </a>
   </div>
 </div>
+
+<style>
+  #map {
+    background-image: url('/me_map.png');
+    background-position: center;
+    background-size: cover;
+  }
+</style>

@@ -24,7 +24,9 @@
     "your_message": "Ihre Nachricht an uns",
     "send": "Senden",
     "contact_details": "Sie können sich ebenfalls telefonisch oder per Email an uns wenden.",
-    "opening_hours": "Öffnungszeiten"
+    "opening_hours": "Öffnungszeiten",
+    "bigger_map": "Größere Karte ansehen",
+    "route_planner": "Routenplaner"
   },
   "articles": {
     "header": "Beiträge der Kindertagesstädten \nSeite {0}"
@@ -72,6 +74,8 @@
       "read_more": "Mehr erfahren"
     },
     "footer": {
+      "address_label": "Kita Dreikäsehoch",
+      "basic_address": "99880 Mechterstädt",
       "contact": {
         "opening": "Montag - Freitag 06.00 - 16:30 Uhr",
         "management": "Leitung Andrea Reinhardt",
