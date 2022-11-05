@@ -1,0 +1,16 @@
+---
+import TeamCard from '~/features/landing_template/components/TeamCard.astro';
+
+interface Props {
+  team: { name: string; position: string; image: string }[];
+}
+
+const { team } = Astro.props;
+---
+
+<section class="page-container mb-20">
+  <h2 class="text-header-md font-bold mb-10">{'mechterstaedt_landing.sec_3.our_team'.tr()}</h2>
+  <div class="flex flex-wrap justify-around gap-5 lg:gap-y-20">
+    {team.map((member) => <TeamCard {...member} />)}
+  </div>
+</section>

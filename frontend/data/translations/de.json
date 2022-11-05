@@ -73,6 +73,61 @@
       "opening": "Bereits 1983 wurde in Mechterstädt unser Kindergartengebäude eingeweiht. Heute spielen und lernen hier 52 Kinder, im Alter von einem Jahr bis zum Schuleintritt. Wir sind stolz auf das schöne Haus in der ländlichen Gegend.",
       "read_more": "Mehr erfahren"
     },
+    "sec_3": {
+      "team": [
+        {
+          "name": "Andrea Reinhardt",
+          "position": "Leiterin",
+          "image": "/data/images/mechterstaedt/team/andrea.jpeg"
+        },
+        {
+          "name": "Susanne Graul",
+          "position": "Teamleiterin",
+          "image": "/data/images/mechterstaedt/team/susanne.jpeg"
+        },
+        {
+          "name": "Beatrix Hirschberg",
+          "position": "Kinderschutzbeauftragte",
+          "image": "/data/images/mechterstaedt/team/beatrix.jpeg"
+        },
+        {
+          "name": "Carmen Schlothauer",
+          "position": "Hygienebeauftragte",
+          "image": "/data/images/mechterstaedt/team/carmen.jpeg"
+        },
+        {
+          "name": "Johannes Bundschuh",
+          "position": "Erzieher",
+          "image": "/data/images/mechterstaedt/team/johannes.jpg"
+        },
+        {
+          "name": "Lisa Ludewig",
+          "position": "Erzieherin",
+          "image": "/data/images/mechterstaedt/team/lisa.jpeg"
+        },
+        {
+          "name": "Kerstin Weist",
+          "position": "Erzieherin",
+          "image": "/data/images/mechterstaedt/team/kerstin.jpeg"
+        },
+        {
+          "name": "Ina Kornhaas",
+          "position": "Erzieherin",
+          "image": "/data/images/mechterstaedt/team/ina.jpg"
+        },
+        {
+          "name": "Regina Büchner",
+          "position": "Wirtschaftskraft",
+          "image": "/data/images/mechterstaedt/team/regina.jpeg"
+        },
+        {
+          "name": "Anja Kärst",
+          "position": "Wirtschaftskraft",
+          "image": "/data/images/mechterstaedt/team/anja.jpeg"
+        }
+      ],
+      "our_team": "Unser Team"
+    },
     "footer": {
       "address_label": "Kita Dreikäsehoch",
       "basic_address": "99880 Mechterstädt",

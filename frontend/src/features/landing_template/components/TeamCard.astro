@@ -1,0 +1,32 @@
+---
+import Picture from '~/components/common/Picture.astro';
+import { findImage } from '~/utils/images';
+
+interface Props {
+  name: string;
+  position: string;
+  image: string;
+}
+
+const { name, position, image } = Astro.props;
+const imageUrl = await findImage(image);
+---
+
+<div class="flex flex-col items-center w-[130px] lg:w-[270px]">
+  <div
+    class="block group relative h-[100px] w-[130px] lg:h-[175px] lg:w-[270px] overflow-hidden rounded-lg shadow-lg mb-4"
+  >
+    <Picture
+      src={imageUrl}
+      class="absolute inset-0 object-cover w-full h-full mb-6"
+      widths={[160, 270]}
+      sizes="(max-width: 270px) 160px, 270px"
+      alt={`image of ${name}`}
+      aspectRatio="16:9"
+    />
+  </div>
+  <div class="flex flex-col items-center space-y-1 lg:space-y-2 text-center">
+    <h3 class="text-body-sm font-medium lg:text-body-lg">{name}</h3>
+    <p class="text-body-sm text-primary-100 uppercase lg:text-body-md">{position}</p>
+  </div>
+</div>
