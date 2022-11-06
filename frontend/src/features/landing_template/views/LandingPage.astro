@@ -10,13 +10,16 @@ interface Props {
   house: {
     image: string;
   };
+  educationalWork: {
+    image: string;
+  };
 }
 
-const { trPrefix, house, team } = Astro.props;
+const { trPrefix, house, educationalWork } = Astro.props;
 ---
 
 <QuickFacts facts={await `${trPrefix}.sec_1.quick_facts`.load()} />
 <OurHouse trPrefix={trPrefix} {...house} />
 <OurTeam team={await `${trPrefix}.sec_3.team`.load()} />
-<EducationalWork />
-<RegisterNow />
+<EducationalWork trPrefix={trPrefix} image={educationalWork.image} />
+<RegisterNow trPrefix={trPrefix} />

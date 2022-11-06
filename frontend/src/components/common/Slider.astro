@@ -1,12 +1,13 @@
 ---
 interface Props {
   amount: number;
+  class: string;
 }
 
-const { amount } = Astro.props;
+const { amount, class: classes } = Astro.props;
 ---
 
-<div class="slider">
+<div class={`slider ${classes}`}>
   <div class="slides">
     <slot />
   </div>

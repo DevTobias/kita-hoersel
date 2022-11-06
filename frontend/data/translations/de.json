@@ -128,6 +128,43 @@
       ],
       "our_team": "Unser Team"
     },
+    "sec_4": {
+      "educational_work": "Pädagogische Arbeit",
+      "principle": " Wir bevorzugen die offene Arbeit, so sind Angebote und Aktivitäten für alle Kinder zugänglich und wählbar.",
+      "paragraphs": [
+        {
+          "label": "Naturverbunden",
+          "icon": "forest",
+          "text": "Naturverbunden sind wir jeden Tag. Doch einmal im Jahr wird das zum Hauptanliegen. In unserer Waldwoche bieten wir den Kindern intensives Erleben in der Natur. Dann wird die Tänksgrundhütte im Wald unser Basislager."
+        },
+        {
+          "label": "Lebensbezogener Ansatz",
+          "icon": "academic-cap",
+          "text": "Der lebensbezogene Ansatz nach Prof. Dr. Huppertz ist unsere Leitlinie. In diesem Bildungsansatz der Frühpädagogik steht das Leben und Lernen der Kinder im Zentrum. Durch wertebezogene Bildungs- und Erziehungsziele begleiten wir die Kinder vielseitig in deren realen Wirklichkeit."
+        },
+        {
+          "label": "Vielseitige Tätigkeiten",
+          "icon": "paint-brush",
+          "text": "Unsere Projekte entstehen aus den Inhalten der Lebenswelten und Interessen der Kinder. Spiel als Haupttätigkeit der Kinder steht bei all unseren Aktivitäten im Vordergrund."
+        },
+        {
+          "label": "Bewegung tut gut",
+          "icon": "musical-note",
+          "text": "Bewegung, Natur, Musik und Ernährung sind wichtige Schwerpunkte in unserer pädagogischen Arbeit. Es gilt: Kein Tag ohne Musik und bei jedem Wetter geht’s nach draußen."
+        },
+        {
+          "label": "Praxisprojekte",
+          "icon": "bug-ant",
+          "text": "Seit 2016 arbeiten wir an einem dauerhaften Projekt. Unser Nachbar Herr Litzkow stellt uns einen Teil seines Gemüsegartens zur Bewirtschaftung zur Verfügung und begleitet uns seitdem beständig, hilfreich und kompetent durch das Gartenjahr."
+        }
+      ]
+    },
+    "sec_6": {
+      "register_now": "Jetzt anmelden",
+      "use_formula": " Nutzen und reichen Sie bitte das Formular bei der Gemeindeverwaltung Hörsel ein, um Ihr Kind in unserer Einrichtung anzumelden.",
+      "hoersel_address": "Gemeindeverwaltung Hörsel <br /> Waltershäuser Str. 16 a <br /> 99880 Hörsel OT Hörselgau",
+      "download_formula": "Formular downloaden"
+    },
     "footer": {
       "address_label": "Kita Dreikäsehoch",
       "basic_address": "99880 Mechterstädt",
