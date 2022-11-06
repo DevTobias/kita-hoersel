@@ -2,6 +2,7 @@
 import OurHouse from '~/features/landing_template/sections/OurHouse.astro';
 import OurTeam from '~/features/landing_template/sections/OurTeam.astro';
 import QuickFacts from '~/features/landing_template/sections/QuickFacts.astro';
+import RegisterNow from '~/features/landing_template/sections/RegisterNow.astro';
 
 interface Props {
   trPrefix: string;
@@ -16,3 +17,4 @@ const { trPrefix, house, team } = Astro.props;
 <QuickFacts facts={await `${trPrefix}.sec_1.quick_facts`.load()} />
 <OurHouse trPrefix={trPrefix} {...house} />
 <OurTeam team={await `${trPrefix}.sec_3.team`.load()} />
+<RegisterNow />
