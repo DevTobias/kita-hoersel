@@ -1,31 +1,40 @@
 ---
+import readingTime from 'reading-time';
+import { marked } from 'marked';
+
 import { Meta } from '~/components/core/MetaTags.astro';
+import { Article, fetchArticles } from '~/features/articles/services/ArticleService';
 import ArticleLayout from '~/layouts/ArticleLayout.astro';
 import { cleanSlug, POST_BASE } from '~/utils/permalinks';
-import { fetchPosts, Post } from '~/utils/posts';
 
 export async function getStaticPaths() {
-  const posts = await fetchPosts();
+  const articles = await fetchArticles();
 
-  return posts.map((post) => ({
-    params: { slug: cleanSlug(post.id), articles: POST_BASE || undefined },
-    props: { post },
+  return articles.map((article) => ({
+    params: { slug: cleanSlug(article.slug), articles: POST_BASE || undefined },
+    props: { article },
   }));
 }
 
 interface Props {
-  post: Post;
+  article: Article;
 }
 
-const { post } = Astro.props;
+const { article } = Astro.props;
 
 const meta: Meta = {
-  title: post.title,
-  description: post.description,
+  title: article.title,
+  description: article.description,
   ogType: 'article',
 };
+
+const content = marked.parse(article.content);
 ---
 
-<ArticleLayout meta={meta} readingTime={post.readingTime} publishDate={post.publishDate}>
-  <post.content />
+<ArticleLayout
+  meta={meta}
+  readingTime={readingTime(article.content).minutes.toFixed(0)}
+  publishDate={article.date_created}
+>
+  <article set:html={content}></article>
 </ArticleLayout>

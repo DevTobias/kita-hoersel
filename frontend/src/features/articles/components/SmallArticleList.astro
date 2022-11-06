@@ -1,0 +1,27 @@
+---
+import readingTime from 'reading-time';
+
+import { ASSET_ENDPOINT } from '~/config';
+import SmallArticleCard from '~/features/articles/components/SmallArticleCard.astro';
+import { Article } from '~/features/articles/services/ArticleService';
+
+interface Props {
+  articles: Article[];
+}
+
+const { articles } = Astro.props;
+---
+
+<div class="space-y-3">
+  {
+    articles.map((article) => (
+      <SmallArticleCard
+        slug={article.slug}
+        title={article.title}
+        publishDate={article.date_created}
+        thumbnail={ASSET_ENDPOINT + '/' + article.thumbnail.id}
+        readingTime={readingTime(article.content).minutes.toFixed(0)}
+      />
+    ))
+  }
+</div>

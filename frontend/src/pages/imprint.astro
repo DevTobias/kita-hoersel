@@ -1,14 +1,20 @@
 ---
+import { marked } from 'marked';
+
 import ArticleLayout from '~/layouts/ArticleLayout.astro';
-import * as imprint from '~/../data/pages/imprint.md';
 import { Meta } from '~/components/core/MetaTags.astro';
+import { fetchImprint } from '~/features/legal/LegalService';
+
+const imprint = await fetchImprint();
 
 const meta: Meta = {
-  title: imprint.frontmatter.title,
-  description: imprint.frontmatter.desc,
+  title: imprint.title,
+  description: imprint.description,
 };
+
+const content = marked.parse(imprint.content);
 ---
 
 <ArticleLayout meta={meta}>
-  <imprint.Content />
+  <article set:html={content}></article>
 </ArticleLayout>

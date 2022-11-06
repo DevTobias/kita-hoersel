@@ -1,18 +1,19 @@
 ---
 import { Page } from 'astro';
+
 import Paginator from '~/components/common/Paginator.astro';
 import { Meta } from '~/components/core/MetaTags.astro';
-import { BLOG, SITE } from '~/config';
-import FullPostList from '~/features/articles/components/FullPostList.astro';
+import { ARTICLES, ROUTES, SITE } from '~/config';
+import FullArticleList from '~/features/articles/components/FullArticleList.astro';
+import { fetchArticles } from '~/features/articles/services/ArticleService';
 import PageLayout from '~/layouts/PageLayout.astro';
 import { ARTICLES_BASE } from '~/utils/permalinks';
-import { fetchPosts } from '~/utils/posts';
 
 export async function getStaticPaths({ paginate }) {
-  const posts = await fetchPosts();
-  return paginate(posts, {
+  const articles = await fetchArticles();
+  return paginate(articles, {
     params: { articles: ARTICLES_BASE },
-    pageSize: BLOG.postsPerPage,
+    pageSize: ARTICLES.postsPerPage,
   });
 }
 
@@ -31,9 +32,12 @@ const meta: Meta = {
 };
 ---
 
-<PageLayout meta={meta} header={{ title: meta.title }}>
+<PageLayout
+  meta={meta}
+  header={{ title: meta.title, links: [{ label: await 'header.home'.tr(), url: ROUTES.home }] }}
+>
   <div class="max-w-3xl mx-auto">
-    <FullPostList posts={page.data} />
+    <FullArticleList articles={page.data} />
     <Paginator prevUrl={page.url.prev} nextUrl={page.url.next} />
   </div>
 </PageLayout>

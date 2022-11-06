@@ -1,32 +1,38 @@
 ---
-import PostList from '~/features/landing_hoersel/components/PostList.astro';
-import { fetchPosts } from '~/utils/posts';
-import { BLOG, ROUTES } from '~/config';
+import { ARTICLES } from '~/config';
+import SmallArticleList from '~/features/articles/components/SmallArticleList.astro';
+import { fetchArticles } from '~/features/articles/services/ArticleService';
+import { fetchHoerselContent } from '~/features/landing_hoersel/services/HoerselService';
 
-const posts = await fetchPosts(2);
+const articles = (await fetchArticles()).slice(0, 2);
+const content = await fetchHoerselContent();
 ---
 
 <section class="h-auto page-container pt-14 lg:pt-20 lg:flex">
-  <div class="lg:w-1/2 lg:text-right lg:border-r-primary-200 lg:border-r-2 lg:pr-7 lg:mr-7">
+  <div class="lg:w-1/2 lg:text-right lg:border-r-primary-100 lg:border-r-[2px] lg:pr-7 lg:mr-7">
     <div class="h-full flex flex-col justify-center">
       <h1 class="text-header-no font-bold mb-4 lg:text-header-md">
-        {'hoersel_landing.sec_1.header'.tr()}
+        {content.introduction_title}
       </h1>
 
-      <div class="text-primary-200 text-body-no space-y-6 mb-10 lg:text-body-md">
-        <p set:html={'hoersel_landing.sec_1.paragraph_1'.tr()}></p>
-        <p set:html={'hoersel_landing.sec_1.paragraph_2'.tr()}></p>
+      <div
+        class="text-primary-200 text-body-no space-y-6 mb-10 lg:text-body-md"
+        set:html={content.introduction_description}
+      >
       </div>
     </div>
   </div>
 
   <div class="lg:w-1/2 justify-center flex flex-col">
     <div class="flex justify-between items-center mb-5">
-      <h2 class="text-body-md lg:text-body-lg">{'hoersel_landing.sec_1.news'.tr()}</h2>
-      <a href={BLOG.articles.pathname} class="text-primary-600 text-body-sm lg:text-body-no">
-        {'hoersel_landing.sec_1.show_more'.tr()}
+      <h2 class="font-medium uppercase text-body-no lg:text-body-md">
+        {'hoersel.intro.our_news'.tr()}
+      </h2>
+      <a href={ARTICLES.articles.pathname} class="text-primary-600 text-body-sm lg:text-body-no">
+        {'show_more'.tr()}
       </a>
     </div>
-    <PostList posts={posts} />
+
+    <SmallArticleList articles={articles} />
   </div>
 </section>

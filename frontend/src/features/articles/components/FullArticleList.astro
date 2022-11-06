@@ -1,0 +1,20 @@
+---
+import HorizontalArticleCard from '~/features/articles/components/HorizontalArticleCard.astro';
+import { Article } from '~/features/articles/services/ArticleService';
+
+interface Props {
+  articles: Article[];
+}
+
+const { articles } = Astro.props;
+---
+
+<ul>
+  {
+    articles.map((article) => (
+      <li class="mb-16">
+        <HorizontalArticleCard article={article} />
+      </li>
+    ))
+  }
+</ul>

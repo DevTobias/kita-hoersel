@@ -1,4 +1,6 @@
 {
+  "show_more": "Mehr anzeigen",
+
   "header": {
     "welcome_to": "Herzlich Willkommen bei den",
     "read_more": "Mehr erfahren...",
@@ -8,6 +10,7 @@
     "support_association": "Förderverein",
     "parent_section": "Elternbereich"
   },
+
   "footer": {
     "header": "Kindertagesstädten der Gemeinde Hörsel",
     "privacy": "Datenschutz",
@@ -28,33 +31,23 @@
     "bigger_map": "Größere Karte ansehen",
     "route_planner": "Routenplaner"
   },
-  "articles": {
-    "header": "Beiträge der Kindertagesstädten \nSeite {0}"
-  },
+
   "pagination": {
     "forwards": "Ältere",
     "backwards": "Neuere"
   },
 
-  "hoersel_landing": {
+  "hoersel": {
     "header": {
       "title": "Kindertagesstädten\nder Gemeinde Hörsel"
     },
-    "sec_1": {
-      "header": "Die Kindergärten",
-      "paragraph_1": "Die Kindergärten <em>Dreikäsehoch</em> Mechterstädt und <em>Kleine Strolche</em> Teutleben sind die zwei kommunalen Kindergarteneinrichtung der Gemeinde Hörsel.",
-      "paragraph_2": "Deshalb finden Sie alle Informationen über beide Einrichtungen gebündelt auf dieser Website. Sie können einfach die <em>gewünschte Kita auswählen</em> um mehr über sie zu erfahren.",
-      "news": "Aktuelles von uns",
-      "show_more": "Mehr anzeigen"
-    },
-    "sec_2": {
-      "header": "Unsere Leitung",
-      "paragraph": "Wir arbeiten Hand in Hand und bilden ein Team mit einer gemeinsamen Leitung."
-    },
-    "sec_3": {
-      "header": "Besuche unsere Einrichtungen",
-      "paragraph": "Hier können Sie sich genauer über die einzelnen Kindereinrichtungen der Gemeinde Hörsel informieren."
+    "intro": {
+      "our_news": "Aktuelles von uns"
     }
+  },
+
+  "articles": {
+    "header": "Beiträge der Kindertagesstädten \nSeite {0}"
   },
 
   "template_landing": {

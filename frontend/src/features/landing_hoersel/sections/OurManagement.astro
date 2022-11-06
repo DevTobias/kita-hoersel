@@ -1,8 +1,9 @@
 ---
-import '../styles/our_management.scss';
-
 import Picture from '~/components/common/Picture.astro';
-import ourManagmentSrc from '~/../data/images/our_management.jpeg';
+import { ASSET_ENDPOINT } from '~/config';
+import { fetchHoerselContent } from '~/features/landing_hoersel/services/HoerselService';
+
+const content = await fetchHoerselContent();
 ---
 
 <section class="relative overflow-hidden py-14 lg:py-32">
@@ -11,20 +12,20 @@ import ourManagmentSrc from '~/../data/images/our_management.jpeg';
       class="md:w-1/2 md:flex md:flex-col md:justify-center md:text-right md:pr-5 lg:text-left lg:pr-0"
     >
       <h1 class="text-header-no font-bold mb-5 lg:text-header-md">
-        {'hoersel_landing.sec_2.header'.tr()}
+        {content.management_title}
       </h1>
 
-      <p
-        set:html={'hoersel_landing.sec_2.paragraph'.tr()}
-        class="text-primary-200 text-body-no mb-5 lg:text-body-md"
+      <div
+        set:html={content.management_description}
+        class="text-primary-200 text-body-no mb-5 lg:mb-0 lg:text-body-md"
       >
-      </p>
+      </div>
     </div>
 
     <div class="md:w-1/2 md:flex md:justify-end md:pr-11">
-      <div class="relative pb-[56.25%] md:pb-[50%] h-0 overflow-hidden rounded-md shadow-lg w-full">
+      <div class="relative pb-[56.25%] md:pb-[50%] h-0 overflow-hidden rounded-lg shadow-lg w-full">
         <Picture
-          src={ourManagmentSrc}
+          src={`${ASSET_ENDPOINT}/a4efa066-d025-41c3-9f4b-deb8ccc2345e.jpeg/our_management.jpeg`}
           class="absolute inset-0 object-cover w-full h-full mb-6"
           widths={[400, 600]}
           sizes="(max-width: 600px) 400px, 600px"
@@ -36,3 +37,9 @@ import ourManagmentSrc from '~/../data/images/our_management.jpeg';
   </div>
   <div class="back-shadow absolute w-full h-[150%] left-0 -top-[25%] -z-10"></div>
 </section>
+
+<style is:global>
+  .back-shadow {
+    background: linear-gradient(180deg, #ffffff 20.85%, #e6f4ff 49.95%, #ffffff 81.25%);
+  }
+</style>

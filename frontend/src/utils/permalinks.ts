@@ -1,4 +1,4 @@
-import { BLOG, SITE } from '~/config';
+import { ARTICLES, SITE } from '~/config';
 
 const trim = (str: string, ch?: string) => {
   let start = 0;
@@ -12,8 +12,8 @@ const trimSlash = (s: string) => trim(trim(s, '/'));
 const createPath = (...params: string[]) => `/${params.filter((el) => !!el).join('/')}`;
 export const cleanSlug = (text: string) => trimSlash(text);
 
-export const ARTICLES_BASE = cleanSlug(BLOG.articles.pathname);
-export const POST_BASE = cleanSlug(BLOG.post.pathname);
+export const ARTICLES_BASE = cleanSlug(ARTICLES.articles.pathname);
+export const POST_BASE = cleanSlug(ARTICLES.post.pathname);
 
 const basePathname = trimSlash(SITE.basePathname);
 

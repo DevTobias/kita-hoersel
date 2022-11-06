@@ -7,11 +7,11 @@ interface Props {
   pretitle?: string;
   title: string;
   description?: string;
-  links: { label: string; url: string }[];
+  links?: { label: string; url: string }[];
   readMoreUrl?: string;
 }
 
-const { pretitle, title, description, links, readMoreUrl } = Astro.props;
+const { pretitle, title, description, links = [], readMoreUrl } = Astro.props;
 ---
 
 <header class="max-h-[50rem] lg:max-h-[40rem]">

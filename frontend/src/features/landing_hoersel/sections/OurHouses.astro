@@ -1,29 +1,35 @@
 ---
-import '../styles/our_houses.scss';
 import HouseCard from '~/features/landing_hoersel/components/HouseCard.astro';
 import dreikaesehochImage from '~/assets/images/mechterstaedt_house.jpg';
 import strolcheImage from '~/assets/images/teutleben_house.jpg';
 import { ROUTES } from '~/config';
+import { fetchHoerselContent } from '~/features/landing_hoersel/services/HoerselService';
+
+const content = await fetchHoerselContent();
 ---
 
 <section class="page-container mb-20">
   <h1 class="text-header-no leading-10 font-bold mb-5 lg:text-header-md">
-    {'hoersel_landing.sec_3.header'.tr()}
+    {content.houses_title}
   </h1>
 
-  <p
-    set:html={'hoersel_landing.sec_3.paragraph'.tr()}
+  <div
+    set:html={content.houses_description}
     class="text-primary-200 text-body-no mb-5 lg:mb-11 lg:text-body-md"
   >
-  </p>
+  </div>
 
   <div class="flex flex-col gap-5 md:flex-row md:gap-14">
     <a href={ROUTES.mechterstaedtLanding} underline-hover="false" class="md:w-1/2">
-      <HouseCard logoName="dreikaesehoch-logo" title="Dreikäsehoch" image={dreikaesehochImage} />
+      <HouseCard
+        logoName="dreikaesehoch-logo"
+        title={content.mechterstaedt_title}
+        image={dreikaesehochImage}
+      />
     </a>
 
     <a href={ROUTES.teutlebenLanding} underline-hover="false" class="md:w-1/2">
-      <HouseCard logoName="strolche-logo" title="Kleine Strolche" image={strolcheImage} />
+      <HouseCard logoName="strolche-logo" title={content.teutleben_title} image={strolcheImage} />
     </a>
   </div>
 </section>
@@ -31,3 +37,14 @@ import { ROUTES } from '~/config';
 <script>
   import 'vanilla-tilt';
 </script>
+
+<style is:global>
+  .tilt-tile {
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .tilt-inner {
+    transform: translateZ(30px);
+  }
+</style>

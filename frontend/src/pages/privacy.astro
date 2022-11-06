@@ -1,14 +1,20 @@
 ---
+import { marked } from 'marked';
+
 import ArticleLayout from '~/layouts/ArticleLayout.astro';
-import * as privacy from '~/../data/pages/privacy.md';
 import { Meta } from '~/components/core/MetaTags.astro';
+import { fetchPrivacy } from '~/features/legal/LegalService';
+
+const privacy = await fetchPrivacy();
 
 const meta: Meta = {
-  title: privacy.frontmatter.title,
-  description: privacy.frontmatter.desc,
+  title: privacy.title,
+  description: privacy.description,
 };
+
+const content = marked.parse(privacy.content);
 ---
 
 <ArticleLayout meta={meta}>
-  <privacy.Content />
+  <article set:html={content}></article>
 </ArticleLayout>

@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear();
 <div class="bg-primary-600 text-white w-full rounded-t-2xl p-10 lg:py-10 lg:px-20">
   <div class="lg:flex lg:justify-between lg:items-center lg:mb-10">
     <h3 class="text-body-lg mb-5 lg:text-body-xl lg:mb-0">{'footer.header'.tr()}</h3>
-    <ul class="flex space-x-5 text-body-no mb-7 lg:mb-0 text-secondary-100">
+    <ul class="flex space-x-5 text-body-no lg:text-body-md mb-7 lg:mb-0 text-secondary-100">
       <li><a href={ROUTES.privacy}>{'footer.privacy'.tr()}</a></li>
       <li><a href={ROUTES.imprint}>{'footer.imprint'.tr()}</a></li>
       <li><a href={ROUTES.contact}>{'footer.contact'.tr()}</a></li>
@@ -36,7 +36,7 @@ const currentYear = new Date().getFullYear();
     </If>
 
     <p
-      class="text-body-sm lg:text-right"
+      class="text-body-sm lg:text-right lg:text-body-md"
       set:html={'footer.copyright'.tr({ values: [currentYear] })}
     >
     </p>

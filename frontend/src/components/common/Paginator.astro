@@ -22,7 +22,7 @@ const { prevUrl, nextUrl, prevText, nextText } = Astro.props;
     >
       <div class="flex flex-row align-middle items-center">
         <Icon name="tabler:arrow-left" class="w-6 h-6" />
-        <p class="ml-2">{prevText ?? 'pagination.forwards'.tr()}</p>
+        <p class="ml-2">{prevText ?? 'pagination.backwards'.tr()}</p>
       </div>
     </a>
     <a
@@ -31,7 +31,7 @@ const { prevUrl, nextUrl, prevText, nextText } = Astro.props;
       underline-hover="false"
     >
       <div class="flex flex-row align-middle items-center">
-        <span class="mr-2">{nextText ?? 'pagination.backwards'.tr()}</span>
+        <span class="mr-2">{nextText ?? 'pagination.forwards'.tr()}</span>
         <Icon name="tabler:arrow-right" class="w-6 h-6" />
       </div>
     </a>

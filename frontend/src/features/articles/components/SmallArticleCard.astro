@@ -1,0 +1,42 @@
+---
+import dayjs from 'dayjs';
+
+import { ARTICLES } from '~/config';
+import Picture from '~/components/common/Picture.astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  publishDate: string;
+  thumbnail: string;
+  readingTime: string;
+}
+
+const { slug, title, publishDate, thumbnail, readingTime } = Astro.props;
+const dateString = dayjs(publishDate).locale('de').format('DD MMM');
+---
+
+<a
+  class="text-primary-600 flex space-x-3 w-full h-[110px] cursor-pointer transition-transform hover:scale-[1.03]"
+  underline-hover="false"
+  rel="prefetch"
+  href={ARTICLES.post.pathname + '/' + slug}
+>
+  <div class="relative pb-[15%] w-[150px] lg:w-[200px] overflow-hidden rounded-lg shadow-lg">
+    <Picture
+      src={thumbnail}
+      class="absolute inset-0 w-full h-full object-cover"
+      widths={[200, 150]}
+      sizes="(max-width: 200px) 200px, 150px"
+      alt={title}
+    />
+  </div>
+
+  <div class="w-full flex flex-col justify-between text-body-no lg:text-body-md">
+    <span class="clamp-3">{title}</span>
+    <span class="text-primary-200 flex space-x-1">
+      <time datetime={publishDate}>{dateString}</time>
+      <span>~ {readingTime} min</span>
+    </span>
+  </div>
+</a>
