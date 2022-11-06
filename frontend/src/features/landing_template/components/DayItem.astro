@@ -1,0 +1,31 @@
+---
+import Icon from 'astro-icon';
+import If from '~/components/common/If.astro';
+
+interface Props {
+  time: string;
+  label: string;
+  description?: string;
+  isLast: boolean;
+}
+
+const { time, label, description, isLast } = Astro.props;
+---
+
+<div class="mb-4">
+  <div class="flex gap-5">
+    <div class="flex flex-col items-center gap-2">
+      <div class="h-10">
+        <Icon name="dot" class="w-5 h-5" />
+      </div>
+      <div class={`bg-primary-600 w-1 h-full ${isLast ? 'hidden' : ''}`}></div>
+    </div>
+    <div class="w-full">
+      <div class="bg-primary-600 text-white py-[2px] px-4 w-28 mb-1">{time}</div>
+      <div class="text-body-md">{label}</div>
+      <If condition={description != null}>
+        <div slot="if" class="text-primary-100 mt-1">{description}</div>
+      </If>
+    </div>
+  </div>
+</div>

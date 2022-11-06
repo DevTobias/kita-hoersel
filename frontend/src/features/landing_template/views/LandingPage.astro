@@ -23,5 +23,5 @@ const { trPrefix, house, educationalWork } = Astro.props;
 <OurHouse trPrefix={trPrefix} {...house} />
 <OurTeam team={await `${trPrefix}.sec_3.team`.load()} />
 <EducationalWork trPrefix={trPrefix} image={educationalWork.image} />
-<OurDay />
+<OurDay trPrefix={trPrefix} />
 <RegisterNow trPrefix={trPrefix} />

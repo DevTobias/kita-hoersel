@@ -35,6 +35,7 @@
     "forwards": "Ältere",
     "backwards": "Neuere"
   },
+
   "hoersel_landing": {
     "header": {
       "title": "Kindertagesstädten\nder Gemeinde Hörsel"
@@ -55,6 +56,15 @@
       "paragraph": "Hier können Sie sich genauer über die einzelnen Kindereinrichtungen der Gemeinde Hörsel informieren."
     }
   },
+
+  "template_landing": {
+    "sec_5": {
+      "our_day": "Unser Tag",
+      "structure_needed": "Denn Struktur braucht ein jedes Kind",
+      "read_more": "Mehr erfahren"
+    }
+  },
+
   "mechterstaedt_landing": {
     "header": {
       "title": "Kita Dreikäsehoch\nMechterstädt",
@@ -156,6 +166,43 @@
           "label": "Praxisprojekte",
           "icon": "bug-ant",
           "text": "Seit 2016 arbeiten wir an einem dauerhaften Projekt. Unser Nachbar Herr Litzkow stellt uns einen Teil seines Gemüsegartens zur Bewirtschaftung zur Verfügung und begleitet uns seitdem beständig, hilfreich und kompetent durch das Gartenjahr."
+        }
+      ]
+    },
+    "sec_5": {
+      "day": [
+        {
+          "time": "06.00 Uhr",
+          "label": "Ankommen und gemeinsames Spiel"
+        },
+        {
+          "time": "08.00 Uhr",
+          "label": "Gemeinsamer Morgenkreis",
+          "description": "Gemeisamens Singen, Kreisspiele und Jahreszeitbedzogene Aktivitäten stehen hier auf dem Programm"
+        },
+        {
+          "time": "08.30 Uhr",
+          "label": "Frühstück in den jeweiligen Gruppen"
+        },
+        {
+          "time": "09.00 Uhr",
+          "label": "Aktivitätszeit",
+          "description": "Themen- oder projektbezogene Bildungsangebote, Freies Spiel im Haus und an der frischen Luft"
+        },
+        {
+          "time": "11.25 Uhr",
+          "label": "Mittagsessen",
+          "description": "Durch eigenständiges Aufschöpfen am Tisch erlangen die Kinder bei uns mehr Selbstständigkeit"
+        },
+        {
+          "time": "12.30 Uhr",
+          "label": "Mittagsruhe",
+          "description": "Individuelles Aufstehen nach einer Ruhezeit, stille Beschäftigung in der Kunstschmide"
+        },
+        {
+          "time": "14.30 Uhr",
+          "label": "Nachmittagsversorgung und gemeinsames Spiel",
+          "description": "Individuelles Aufstehen nach einer Ruhezeit, stille Beschäftigung in der Kunstschmide"
         }
       ]
     },

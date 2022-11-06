@@ -1,1 +1,53 @@
-<section class="mb-20 page-container">Hello World</section>
+---
+import { ROUTES } from '~/config';
+import DayItem from '~/features/landing_template/components/DayItem.astro';
+
+interface Props {
+  trPrefix: string;
+}
+
+const { trPrefix } = Astro.props;
+
+const day = await `${trPrefix}.sec_5.day`.load();
+const firstSlice = day.slice(0, day.length / 2 + 1);
+const secondSlice = day.slice(day.length / 2 + 1, day.length);
+const baseRoute = ROUTES.mechterstaedtLanding;
+---
+
+<section class="mb-20 page-container">
+  <h2 class="text-header-md font-medium mb-3">{'template_landing.sec_5.our_day'.tr()}</h2>
+  <div class="lg:flex lg:justify-between">
+    <p class="text-body-lg mb-10 text-primary-100">
+      {'template_landing.sec_5.structure_needed'.tr()}
+    </p>
+    <a
+      href={baseRoute + ROUTES.dailyRoutine}
+      underline-hover="false"
+      class="hidden lg:block text-primary-600 text-body-md"
+    >
+      {'template_landing.sec_5.read_more'.tr()}
+    </a>
+  </div>
+  <div class="lg:hidden">
+    {day.map((section, i) => <DayItem {...section} isLast={i == day.length - 1} />)}
+  </div>
+  <div class="hidden lg:flex lg:justify-between">
+    <div class="w-[45%]">
+      {firstSlice.map((section, i) => <DayItem {...section} isLast={i == firstSlice.length - 1} />)}
+    </div>
+    <div class="w-[45%]">
+      {
+        secondSlice.map((section, i) => (
+          <DayItem {...section} isLast={i == secondSlice.length - 1} />
+        ))
+      }
+    </div>
+  </div>
+  <a
+    href={baseRoute + ROUTES.dailyRoutine}
+    class="text-primary-600 text-body-md lg:hidden"
+    underline-hover="false"
+  >
+    {'template_landing.sec_5.read_more'.tr()}
+  </a>
+</section>
