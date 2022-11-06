@@ -6,9 +6,10 @@ interface Props {
   fullMapUrl: string;
   label: string;
   address: string;
+  mapImage: string;
 }
 
-const { routeMapUrl, fullMapUrl, label, address } = Astro.props;
+const { routeMapUrl, fullMapUrl, label, address, mapImage } = Astro.props;
 ---
 
 <div class="relative">
@@ -44,9 +45,9 @@ const { routeMapUrl, fullMapUrl, label, address } = Astro.props;
   </div>
 </div>
 
-<style>
+<style define:vars={{ imageUrl: `url(${mapImage})` }}>
   #map {
-    background-image: url('/me_map.png');
+    background-image: var(--imageUrl);
     background-position: center;
     background-size: cover;
   }

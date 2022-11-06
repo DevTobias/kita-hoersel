@@ -1,38 +1,28 @@
 ---
 import Picture from '~/components/common/Picture.astro';
-import childBowImage from '~/assets/images/child_bow.jpeg';
-import breakfastImage from '~/assets/images/breakfast.jpeg';
-import Icon from 'astro-icon';
 import Slider from '~/components/common/Slider.astro';
+import { LandingContent } from '~/features/landing_template/services/ContentService';
+import { EducationParagraph } from '~/features/landing_template/services/EducationService';
+import EducationTile from '~/features/landing_template/components/EducationTile.astro';
 
 interface Props {
-  trPrefix: string;
-  image: string;
+  content: LandingContent;
+  paragraphs: EducationParagraph[];
+  backgroundImage: string;
+  headerImage: string;
+  footerImage: string;
 }
 
-interface Slide {
-  label: string;
-  icon: string;
-  text: string;
-}
-
-const { trPrefix, image } = Astro.props;
-
-const paragraphs: Slide[] = await `${trPrefix}.sec_4.paragraphs`.load();
+const { content, backgroundImage, paragraphs, headerImage, footerImage } = Astro.props;
 ---
 
-<section id="background" class="py-10 lg:py-24 mb-20 text-white">
+<section id="work" class="py-10 lg:py-24 mb-20 text-white">
   <div
     class="page-container lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-20"
   >
     <div>
-      <h2 class="text-header-md font-medium mb-5">
-        {`${trPrefix}.sec_4.educational_work`.tr()}
-      </h2>
-
-      <p class="text-body-md mb-10">
-        {`${trPrefix}.sec_4.principle`.tr()}
-      </p>
+      <h2 class="text-header-md font-medium mb-5">{content.education_title}</h2>
+      <p class="text-body-md mb-10">{content.education_description}</p>
     </div>
 
     <div class="md:flex md:gap-10 md:items-center">
@@ -40,7 +30,7 @@ const paragraphs: Slide[] = await `${trPrefix}.sec_4.paragraphs`.load();
         class="block group relative pb-[56.25%] md:pb-[25%] lg:pb-[56%] overflow-hidden rounded-xl shadow-lg mb-10 md:w-[400px]"
       >
         <Picture
-          src={childBowImage}
+          src={headerImage}
           class="absolute inset-0 object-cover w-full h-full mb-6"
           widths={[400]}
           sizes="(max-width: 400px) 400px"
@@ -50,15 +40,7 @@ const paragraphs: Slide[] = await `${trPrefix}.sec_4.paragraphs`.load();
       </div>
 
       <Slider amount={paragraphs.length} class="lg:hidden">
-        {
-          paragraphs.map((slide) => (
-            <div class="space-y-3">
-              <Icon name={slide.icon} class="h-10 w-10" />
-              <h3 class="text-body-xl">{slide.label}</h3>
-              <p class="text-body-md">{slide.text}</p>
-            </div>
-          ))
-        }
+        {paragraphs.map((p) => <EducationTile {...p} />)}
       </Slider>
     </div>
   </div>
@@ -66,18 +48,10 @@ const paragraphs: Slide[] = await `${trPrefix}.sec_4.paragraphs`.load();
   <div
     class="hidden lg:flex lg:flex-wrap lg:page-container lg:gap-10 lg:space-y-10 lg:justify-between"
   >
-    {
-      paragraphs.map((slide) => (
-        <div class="space-y-3 w-[45%]">
-          <Icon name={slide.icon} class="h-10 w-10" />
-          <h3 class="text-body-xl">{slide.label}</h3>
-          <p class="text-body-md leading-8">{slide.text}</p>
-        </div>
-      ))
-    }
+    {paragraphs.map((p) => <EducationTile {...p} />)}
     <div class="block group relative pb-[20%] overflow-hidden rounded-xl shadow-lg mb-10 w-[45%]">
       <Picture
-        src={breakfastImage}
+        src={footerImage}
         class="absolute inset-0 object-cover w-full h-full mb-6"
         widths={[400]}
         sizes="(max-width: 400px) 400px"
@@ -88,8 +62,8 @@ const paragraphs: Slide[] = await `${trPrefix}.sec_4.paragraphs`.load();
   </div>
 </section>
 
-<style define:vars={{ imageUrl: `url(${image})` }}>
-  #background {
+<style define:vars={{ imageUrl: `url(${backgroundImage})` }}>
+  #work {
     background: linear-gradient(0deg, rgba(37, 51, 79, 0.9), rgba(37, 51, 79, 0.9)), var(--imageUrl);
     background-position: center;
     background-size: cover;

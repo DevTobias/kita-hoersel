@@ -1,11 +1,9 @@
 ---
-interface Fact {
-  value: string;
-  label: string;
-}
+import Fact from '~/features/landing_template/components/Fact.astro';
+import { QuickFact } from '~/features/landing_template/services/QuickFactService';
 
 interface Props {
-  facts: Fact[];
+  facts: QuickFact[];
 }
 
 const { facts } = Astro.props;
@@ -14,14 +12,5 @@ const { facts } = Astro.props;
 <section
   class="page-container py-20 grid grid-rows-2 grid-cols-2 gap-10 w-full lg:py-28 lg:flex lg:justify-between"
 >
-  {
-    facts.map((fact) => (
-      <div class="text-center lg:flex lg:flex-col items-center lg:w-fit">
-        <p class="lg:w-fit font-semibold text-header-md md:text-header-xl">{fact.value}</p>
-        <p class="lg:w-fit font-medium text-primary-200 text-body-md md:text-body-xl">
-          {fact.label}
-        </p>
-      </div>
-    ))
-  }
+  {facts.map((fact) => <Fact fact={fact} />)}
 </section>

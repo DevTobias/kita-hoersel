@@ -14,7 +14,7 @@ const translations = new Map();
 const loadTranslations = async () => {
   for (let i = 0; i < LANGUAGES.length; i += 1) {
     const lang = LANGUAGES[i];
-    translations.set(lang, (await import(`../../data/translations/${lang}.json`)).default);
+    translations.set(lang, (await import(`../../translations/${lang}.json`)).default);
   }
 };
 

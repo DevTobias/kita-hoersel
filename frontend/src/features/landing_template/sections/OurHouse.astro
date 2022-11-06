@@ -2,17 +2,15 @@
 import Picutre from '~/components/common/Picture.astro';
 
 import { ROUTES } from '~/config';
-import { findImage } from '~/utils/images';
+import { LandingContent } from '~/features/landing_template/services/ContentService';
 
 interface Props {
-  trPrefix: string;
+  content: LandingContent;
   image: string;
 }
 
-const { trPrefix, image } = Astro.props;
+const { content, image } = Astro.props;
 const baseUrl = ROUTES.mechterstaedtLanding;
-
-const imageUrl = await findImage(image);
 ---
 
 <section class="bg-primary-600 w-full">
@@ -21,7 +19,7 @@ const imageUrl = await findImage(image);
       <div class="overflow-hidden h-full w-full lg:h-60 lg:w-60 lg:rounded-2xl lg:shadow-lg">
         <div class="block group relative pb-[45%] h-0 md:h-80">
           <Picutre
-            src={imageUrl}
+            src={image}
             class="absolute inset-0 object-cover h-full mb-6"
             widths={[400, 1100]}
             sizes="(max-width: 1100px) 400px, 1100px"
@@ -33,12 +31,12 @@ const imageUrl = await findImage(image);
     </div>
 
     <div class="text-white py-10 pl-6 lg:flex lg:flex-col lg:justify-center">
-      <h2 class="font-bold text-header-md mb-6">{`${trPrefix}.sec_2.our_house`.tr()}</h2>
+      <h2 class="font-bold text-header-md mb-6">{content.house_title}</h2>
       <p class="text-body-no lg:text-body-lg leading-8">
-        {`${trPrefix}.sec_2.opening`.tr()}
+        {content.house_description}
       </p>
       <div class="text-body-no pr-10 flex justify-end mt-10 lg:text-body-md">
-        <a href={baseUrl + ROUTES.ourHouse}>{`${trPrefix}.sec_2.read_more`.tr()}</a>
+        <a href={baseUrl + ROUTES.ourHouse}>{'read_more'.tr()}</a>
       </div>
     </div>
   </div>

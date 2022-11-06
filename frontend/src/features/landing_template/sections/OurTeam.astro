@@ -1,16 +1,26 @@
 ---
+import { ASSET_ENDPOINT } from '~/config';
 import TeamCard from '~/features/landing_template/components/TeamCard.astro';
+import { TeamMember } from '~/features/landing_template/services/TeamService';
 
 interface Props {
-  team: { name: string; position: string; image: string }[];
+  teamMembers: TeamMember[];
 }
 
-const { team } = Astro.props;
+const { teamMembers } = Astro.props;
 ---
 
 <section class="page-container mb-20">
-  <h2 class="text-header-md font-medium mb-10">{'mechterstaedt_landing.sec_3.our_team'.tr()}</h2>
+  <h2 class="text-header-md font-medium mb-10">{'landing_page.team.our_team'.tr()}</h2>
   <div class="flex flex-wrap justify-around gap-5 lg:gap-y-20">
-    {team.map((member) => <TeamCard {...member} />)}
+    {
+      teamMembers.map((member) => (
+        <TeamCard
+          name={member.name}
+          position={member.position}
+          image={ASSET_ENDPOINT + '/' + member.image.id}
+        />
+      ))
+    }
   </div>
 </section>

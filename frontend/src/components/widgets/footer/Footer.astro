@@ -7,6 +7,7 @@ import Map from '~/components/widgets/footer/Map.astro';
 interface Props {
   routeMapUrl?: string;
   fullMapUrl?: string;
+  mapImage?: string;
   label?: string;
   address?: string;
   contact?: {
@@ -19,7 +20,7 @@ interface Props {
   links?: { label: string; url: string }[];
 }
 
-const { routeMapUrl, fullMapUrl, contact, links, label, address } = Astro.props;
+const { routeMapUrl, fullMapUrl, contact, links, label, address, mapImage } = Astro.props;
 ---
 
 <footer>
@@ -33,6 +34,7 @@ const { routeMapUrl, fullMapUrl, contact, links, label, address } = Astro.props;
       fullMapUrl={fullMapUrl}
       label={label}
       address={address}
+      mapImage={mapImage}
     />
   </If>
   <Links links={links} />

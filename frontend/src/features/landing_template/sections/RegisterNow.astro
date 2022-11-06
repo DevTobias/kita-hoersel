@@ -1,31 +1,32 @@
 ---
+import { LandingContent } from '~/features/landing_template/services/ContentService';
+
 interface Props {
-  trPrefix: string;
+  content: LandingContent;
 }
 
-const { trPrefix } = Astro.props;
+const { content } = Astro.props;
 ---
 
 <section id="register-now" class="text-white py-10 mb-16">
   <div class="page-container lg:flex lg:flex-col lg:items-center">
     <h2 class="text-header-no lg:text-header-md font-bold mb-7">
-      {`${trPrefix}.sec_6.register_now`.tr()}
+      {'landing_page.register.download_formula'.tr()}
     </h2>
     <div class="text-body-md space-y-5 mb-10 lg:flex lg:items-center lg:space-y-0">
       <p class="lg:w-1/2 lg:max-w-md lg:text-right lg:border-r-2 lg:border-r-white lg:pr-5">
-        {`${trPrefix}.sec_6.use_formula`.tr()}
+        {content.formular_description}
       </p>
-      <p class="lg:w-1/2 lg:max-w-md lg:ml-5" set:html={`${trPrefix}.sec_6.hoersel_address`.tr()}>
-      </p>
+      <p class="lg:w-1/2 lg:max-w-md lg:ml-5" set:html={content.formular_address}></p>
     </div>
     <a
-      href="https://www.hoersel.de/de/datei/anzeigen/id/2528,1215,1/anmeldung_kita_teutleben_und_mechterst%C3%A4dt.pdf"
+      href={content.formular_url}
       underline-hover="false"
       target="_blank"
       rel="noopener noreferrer"
     >
       <button class="bg-primary-600 w-full lg:w-72 py-4 rounded-md shadow-lg text-white">
-        {`${trPrefix}.sec_6.download_formula`.tr()}
+        {'landing_page.register.register_now'.tr()}
       </button>
     </a>
   </div>
@@ -34,7 +35,7 @@ const { trPrefix } = Astro.props;
 <style>
   #register-now {
     background: linear-gradient(0deg, rgba(127, 98, 255, 0.4) 0%, rgba(51, 5, 252, 0.4) 100%),
-      url('/nature-background.jpg');
+      url('/images/nature-background.jpg');
     background-position: center;
     background-size: cover;
   }

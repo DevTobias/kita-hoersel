@@ -1,15 +1,26 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import { ROUTES } from '~/config';
+import { ASSET_ENDPOINT, ROUTES } from '~/config';
 import LandingPage from '~/features/landing_template/views/LandingPage.astro';
+import { fetchLandingContent } from '~/features/landing_template/services/ContentService';
 
 const baseUrl = ROUTES.mechterstaedtLanding;
+
+const content = await fetchLandingContent('me');
+
+const contact = {
+  opening: content.footer_opening,
+  management: content.footer_management,
+  address: content.footer_address,
+  email: content.footer_email,
+  mobile: content.footer_mobile,
+};
 ---
 
 <Layout
   header={{
-    title: await 'mechterstaedt_landing.header.title'.tr(),
-    description: await 'mechterstaedt_landing.header.desc'.tr(),
+    title: content.header_title,
+    description: content.header_description,
     readMoreUrl: '#work',
     links: [
       { label: await 'header.home'.tr(), url: ROUTES.home },
@@ -18,13 +29,14 @@ const baseUrl = ROUTES.mechterstaedtLanding;
     ],
   }}
   footer={{
-    label: await 'mechterstaedt_landing.footer.address_label'.tr(),
-    address: await 'mechterstaedt_landing.footer.basic_address'.tr(),
+    label: content.footer_kita_name,
+    address: content.footer_short_address,
+    mapImage: '/images/me_map.png',
     routeMapUrl:
       'https://maps.google.com/maps/dir//Kindertagesst%C3%A4tte+Dreik%C3%A4sehoch+99880+Mechterst%C3%A4dt/@50.9430556,10.5268147,16z/data=!4m5!4m4!1m0!1m2!1m1!1s0x47a4811997e48997:0x6f26df4a56af5fc6',
     fullMapUrl:
       'https://maps.google.com/maps?ll=50.942949,10.526816&z=16&t=m&hl=de&gl=DE&mapclient=embed&cid=8009334497699913670',
-    contact: await 'mechterstaedt_landing.footer.contact'.load(),
+    contact,
     links: [
       { label: await 'footer.our_house'.tr(), url: baseUrl + ROUTES.ourHouse },
       { label: await 'footer.routine'.tr(), url: baseUrl + ROUTES.dailyRoutine },
@@ -35,8 +47,12 @@ const baseUrl = ROUTES.mechterstaedtLanding;
   container={false}
 >
   <LandingPage
-    trPrefix="mechterstaedt_landing"
-    house={{ image: '/data/images/opening.jpg' }}
-    educationalWork={{ image: '/me_air.jpg' }}
+    sitePrefix="me"
+    house={{ image: ASSET_ENDPOINT + '/a4325025-ea15-484b-bd4f-1173d6e7100b/opening_ceremony.jpg' }}
+    educationalWork={{
+      backgroundImage: '/images/me_air.jpg',
+      headerImage: ASSET_ENDPOINT + '/c0b96f85-a062-4bf8-bae7-d61df0cd0bd1/child_with_bow.jpg',
+      footerImage: ASSET_ENDPOINT + '/41150bd8-73aa-43d8-ab99-bc661c4eb87c/fresh_breakfast.jpg',
+    }}
   />
 </Layout>

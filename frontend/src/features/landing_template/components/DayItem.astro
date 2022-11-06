@@ -4,12 +4,12 @@ import If from '~/components/common/If.astro';
 
 interface Props {
   time: string;
-  label: string;
+  title: string;
   description?: string;
   isLast: boolean;
 }
 
-const { time, label, description, isLast } = Astro.props;
+const { time, title, description, isLast } = Astro.props;
 ---
 
 <div class="mb-4">
@@ -22,7 +22,7 @@ const { time, label, description, isLast } = Astro.props;
     </div>
     <div class="w-full">
       <div class="bg-primary-600 text-white py-[2px] px-4 w-28 mb-1">{time}</div>
-      <div class="text-body-md">{label}</div>
+      <div class="text-body-md">{title}</div>
       <If condition={description != null}>
         <div slot="if" class="text-primary-100 mt-1">{description}</div>
       </If>
