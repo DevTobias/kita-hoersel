@@ -60,6 +60,7 @@
             ADMIN_EMAIL: "{{ directus_admin_email }}"
             ADMIN_PASSWORD: "{{ directus_admin_password }}"
             PUBLIC_URL: https://admin.tobias-kaerst.de
+            CORS_ENABLED: "true"
           labels:
             traefik.enable: true
             traefik.http.routers.directus.entrypoints: web, websecure

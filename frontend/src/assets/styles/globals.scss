@@ -83,3 +83,33 @@ html {
 .clamp-7 {
   -webkit-line-clamp: 7;
 }
+
+.toast {
+  position: fixed;
+  z-index: 100;
+  right: 20px;
+  padding: 10px 20px;
+  font-weight: 500;
+  color: white;
+  transform: translateY(-100px);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  border-radius: 5px;
+}
+
+.toast-success {
+  background: linear-gradient(to right, rgb(0, 176, 155), rgb(150, 201, 61));
+}
+
+.toast-error {
+  background: linear-gradient(to right, rgb(255, 95, 109), rgb(255, 195, 113));
+}
+
+.active-toast {
+  transform: translateY(0px);
+}
+
+.inactive-toast {
+  transform: translateX(110%);
+}

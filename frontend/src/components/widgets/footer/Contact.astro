@@ -20,34 +20,44 @@ const { opening, management, mobile, email, address } = Astro.props;
         <p class="text-primary-100 text-body-md mb-5">
           {'footer.contact_form'.tr()}
         </p>
-        <div class="space-y-3">
+        <form class="space-y-3" onsubmit="return false">
           <div class="lg:flex lg:gap-4">
             <input
+              id="email-input"
               type="email"
+              name="email"
+              required
+              maxlength="100"
               placeholder={await 'footer.your_email'.tr()}
               class="w-full lg:w-3/4 border-primary-100 border-2 border-opacity-30 outline-none rounded-md px-5 py-3 focus:border-primary-600"
             />
             <button
               type="submit"
-              class="w-1/4 px-5 py-3 bg-primary-600 text-white rounded-md justify-center items-center gap-2 hidden lg:flex"
+              disabled="true"
+              class="submit-btn w-1/4 px-5 py-3 bg-primary-600 text-white rounded-md justify-center items-center gap-2 hidden lg:flex disabled:bg-primary-200 disabled:cursor-not-allowed"
             >
               <span>{'footer.send'.tr()}</span>
               <Icon name="mdi:send" class="w-5 h-5" />
             </button>
           </div>
           <textarea
+            id="message-input"
             rows="7"
+            name="message"
             placeholder={await 'footer.your_message'.tr()}
+            required
+            maxlength="5000"
             class="w-full border-primary-100 border-2 border-opacity-30 rounded-md px-5 py-3 outline-none focus:border-primary-600"
           ></textarea>
           <button
             type="submit"
-            class="w-full px-5 py-3 bg-primary-600 text-white rounded-md flex justify-center items-center gap-2 lg:hidden"
+            disabled="true"
+            class="submit-btn w-full px-5 py-3 bg-primary-600 text-white rounded-md flex justify-center items-center gap-2 lg:hidden disabled:bg-primary-200 disabled:cursor-not-allowed"
           >
             <span>{'footer.send'.tr()}</span>
             <Icon name="mdi:send" class="w-5 h-5" />
           </button>
-        </div>
+        </form>
       </div>
 
       <div class="space-y-5 lg:w-full lg:max-w-xl lg:flex lg:flex-col">
@@ -80,3 +90,57 @@ const { opening, management, mobile, email, address } = Astro.props;
     </div>
   </div>
 </div>
+
+<script is:inline>
+  const email = document.querySelector('#email-input');
+  const message = document.querySelector('#message-input');
+  const buttons = document.querySelectorAll('.submit-btn');
+
+  const validate = (e, element) => {
+    if (!e.target.validity.valid) {
+      element.classList.add('focus:border-danger-500');
+      element.classList.add('border-danger-500');
+      buttons.forEach((btn) => {
+        btn.setAttribute('disabled', true);
+      });
+    } else {
+      element.classList.remove('focus:border-danger-500');
+      element.classList.remove('border-danger-500');
+      if (email.validity.valid && message.validity.valid) {
+        buttons.forEach((btn) => {
+          btn.removeAttribute('disabled');
+        });
+      }
+    }
+  };
+
+  email.addEventListener('input', (e) => validate(e, email));
+  message.addEventListener('input', (e) => validate(e, message));
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      if (!email.validity.valid || !message.validity.valid) {
+        showToast('Bitte fülle das Formular aus!', false);
+        return;
+      }
+
+      const res = await fetch('https://admin.tobias-kaerst.de/items/messages', {
+        method: 'POST',
+        body: JSON.stringify({ email: email.value, message: message.value }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (res.ok) {
+        showToast('Nachricht erfolreich gesendet!', true);
+
+        buttons.forEach((btn) => {
+          btn.setAttribute('disabled', true);
+        });
+      } else {
+        showToast('Nachricht konnte nicht gesendet werden!', false);
+      }
+    });
+  });
+</script>

@@ -20,5 +20,31 @@ const { meta = {} } = Astro.props;
 
   <body class="antialiased w-full font-poppins bg-white text-primary-600">
     <slot />
+    <script is:inline>
+      let activeToasts = 0;
+
+      const showToast = (msg, success) => {
+        const toast = document.createElement('div');
+        toast.className = `toast shadow-lg ${success ? 'toast-success' : 'toast-error'}`;
+        toast.innerHTML = `<span>${msg}</span>`;
+        document.body.appendChild(toast);
+        activeToasts += 1;
+
+        setTimeout(() => {
+          toast.classList.add('active-toast');
+          const height = Math.max(20, 20 + (toast.clientHeight + 10) * (activeToasts - 1));
+          toast.setAttribute('style', `top: ${height}px`);
+        }, 100);
+
+        setTimeout(() => {
+          toast.classList.add('inactive-toast');
+        }, 2000);
+
+        setTimeout(() => {
+          toast.remove();
+          activeToasts -= 1;
+        }, 2200);
+      };
+    </script>
   </body>
 </html>
