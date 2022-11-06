@@ -6,6 +6,7 @@ import { Meta } from '~/components/core/MetaTags.astro';
 import { Article, fetchArticles } from '~/features/articles/services/ArticleService';
 import ArticleLayout from '~/layouts/ArticleLayout.astro';
 import { cleanSlug, POST_BASE } from '~/utils/permalinks';
+import { ASSET_ENDPOINT } from '~/config';
 
 export async function getStaticPaths() {
   const articles = await fetchArticles();
@@ -26,6 +27,7 @@ const meta: Meta = {
   title: article.title,
   description: article.description,
   ogType: 'article',
+  image: ASSET_ENDPOINT + '/' + article.thumbnail.id,
 };
 
 const content = marked.parse(article.content);
