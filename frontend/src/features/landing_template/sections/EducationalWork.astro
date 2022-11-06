@@ -1,0 +1,77 @@
+---
+import Picture from '~/components/common/Picture.astro';
+import childBowImage from '~/assets/images/child_bow.jpeg';
+import Icon from 'astro-icon';
+import Slider from '~/components/common/Slider.astro';
+
+const slides = [
+  {
+    label: 'Naturverbunden',
+    icon: 'forest',
+    text: 'Naturverbunden sind wir jeden Tag. Doch einmal im Jahr wird das zum Hauptanliegen. In unserer Waldwoche bieten wir den Kindern intensives Erleben in der Natur. Dann wird die Tänksgrundhütte im Wald unser Basislager. ',
+  },
+  {
+    label: 'Lebensbezogener Ansatz',
+    icon: 'academic-cap',
+    text: 'Der lebensbezogene Ansatz nach Prof. Dr. Huppertz ist unsere Leitlinie. In diesem Bildungsansatz der Frühpädagogik steht das Leben und Lernen der Kinder im Zentrum. Durch wertebezogene Bildungs- und Erziehungsziele begleiten wir die Kinder vielseitig in deren realen Wirklichkeit.',
+  },
+  {
+    label: 'Vielseitige Tätigkeiten',
+    icon: 'paint-brush',
+    text: 'Unsere Projekte entstehen aus den Inhalten der Lebenswelten und Interessen der Kinder. Spiel als Haupttätigkeit der Kinder steht bei all unseren Aktivitäten im Vordergrund. ',
+  },
+  {
+    label: 'Bewegung tut gut',
+    icon: 'musical-note',
+    text: 'Bewegung, Natur, Musik und Ernährung sind wichtige Schwerpunkte in unserer pädagogischen Arbeit. Es gilt: Kein Tag ohne Musik und bei jedem Wetter geht’s nach draußen.',
+  },
+  {
+    label: 'Praxisprojekte',
+    icon: 'bug-ant',
+    text: 'Seit 2016 arbeiten wir an einem dauerhaften Projekt. Unser Nachbar Herr Litzkow stellt uns einen Teil seines Gemüsegartens zur Bewirtschaftung zur Verfügung und begleitet uns seitdem beständig, hilfreich und kompetent durch das Gartenjahr. ',
+  },
+];
+---
+
+<section id="background" class="px-5 py-10 mb-20 text-white">
+  <h2 class="text-header-md font-medium mb-5">Pädagogische Arbeit</h2>
+
+  <p class="text-body-md mb-10">
+    Wir bevorzugen die offene Arbeit, so sind Angebote und Aktivitäten für alle Kinder zugänglich
+    und wählbar.
+  </p>
+
+  <div
+    class="block group relative pb-[56.25%] h-0 md:h-80 overflow-hidden rounded-xl shadow-lg mb-10"
+  >
+    <Picture
+      src={childBowImage}
+      class="absolute inset-0 object-cover w-full h-full mb-6"
+      widths={[400]}
+      sizes="(max-width: 400px) 400px"
+      alt={'boy aiming with bow in the woods'}
+      aspectRatio="16:9"
+    />
+  </div>
+
+  <Slider amount={slides.length}>
+    {
+      slides.map((slide, i) => (
+        <div class="space-y-3">
+          <Icon name={slide.icon} class="h-10 w-10" />
+          <h3 class="text-body-xl">{slide.label}</h3>
+          <p class="text-body-md">{slide.text}</p>
+        </div>
+      ))
+    }
+  </Slider>
+</section>
+
+<style>
+  #background {
+    background: linear-gradient(0deg, rgba(37, 51, 79, 0.9), rgba(37, 51, 79, 0.9)),
+      url(/me_air.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+</style>

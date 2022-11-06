@@ -1,0 +1,111 @@
+---
+interface Props {
+  amount: number;
+}
+
+const { amount } = Astro.props;
+---
+
+<div class="slider">
+  <div class="slides">
+    <slot />
+  </div>
+  <div class="dots">
+    {[...Array(amount)].map(() => <span class="dot" />)}
+  </div>
+</div>
+
+<style is:global>
+  .slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .slides {
+    display: flex;
+    margin-bottom: 20px;
+
+    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
+    overflow-anchor: none;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-snap-stop: normal;
+    scroll-behavior: smooth;
+  }
+
+  .slides::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slides > div {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    width: 100%;
+    margin-right: 50px;
+    border-radius: 10px;
+    transform-origin: center center;
+    transform: scale(1);
+    transition: transform 0.5s;
+    position: relative;
+  }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 20px;
+    border: 2px solid white;
+  }
+
+  .active {
+    background-color: white;
+  }
+</style>
+
+<script>
+  let activeIndex = 0;
+
+  const container = document.querySelector('.slides');
+  const elements = [...document.querySelectorAll('.slides>*')];
+  const dots = [...document.querySelectorAll('.dot')];
+
+  const scrollTo = (i: number) => {
+    const left = (elements[0].scrollWidth + 50) * Math.abs(activeIndex - i);
+    container.scrollBy({ left: activeIndex > i ? -left : left, behavior: 'smooth' });
+  };
+
+  let interval: NodeJS.Timer;
+  const resetAutoPlay = () => {
+    clearInterval(interval);
+    interval = setInterval(() => scrollTo((activeIndex + 1) % elements.length), 10000);
+  };
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => scrollTo(i)));
+
+  const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+    const entry = entries.find((e) => e.isIntersecting);
+    if (entry) {
+      dots[activeIndex].classList.remove('active');
+      activeIndex = elements.findIndex((e) => e === entry.target);
+      dots[activeIndex].classList.add('active');
+      resetAutoPlay();
+    }
+  };
+
+  const observer = new IntersectionObserver(handleIntersect, {
+    root: container,
+    rootMargin: '0px',
+    threshold: 0.75,
+  });
+
+  elements.forEach((el) => observer.observe(el));
+  resetAutoPlay();
+</script>
