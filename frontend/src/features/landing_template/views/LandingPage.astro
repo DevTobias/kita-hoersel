@@ -1,5 +1,6 @@
 ---
 import EducationalWork from '~/features/landing_template/sections/EducationalWork.astro';
+import OurDay from '~/features/landing_template/sections/OurDay.astro';
 import OurHouse from '~/features/landing_template/sections/OurHouse.astro';
 import OurTeam from '~/features/landing_template/sections/OurTeam.astro';
 import QuickFacts from '~/features/landing_template/sections/QuickFacts.astro';
@@ -22,4 +23,5 @@ const { trPrefix, house, educationalWork } = Astro.props;
 <OurHouse trPrefix={trPrefix} {...house} />
 <OurTeam team={await `${trPrefix}.sec_3.team`.load()} />
 <EducationalWork trPrefix={trPrefix} image={educationalWork.image} />
+<OurDay />
 <RegisterNow trPrefix={trPrefix} />

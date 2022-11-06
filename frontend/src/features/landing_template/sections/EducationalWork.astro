@@ -21,9 +21,9 @@ const { trPrefix, image } = Astro.props;
 const paragraphs: Slide[] = await `${trPrefix}.sec_4.paragraphs`.load();
 ---
 
-<section id="background" class="px-5 py-10 lg:py-24 mb-20 text-white">
+<section id="background" class="py-10 lg:py-24 mb-20 text-white">
   <div
-    class="lg:page-container lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-20"
+    class="page-container lg:flex lg:flex-row-reverse lg:justify-between lg:items-center lg:gap-20"
   >
     <div>
       <h2 class="text-header-md font-medium mb-5">
