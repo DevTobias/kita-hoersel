@@ -1,0 +1,24 @@
+---
+import RoutineParagraph from '~/features/landing_template/features/day_template/components/RoutineParagraph.astro';
+import { Routine } from '~/features/landing_template/features/day_template/services/DailyRoutineService';
+import { ASSET_ENDPOINT } from '~/config';
+
+interface Props {
+  routines: Routine[];
+}
+
+const { routines } = Astro.props;
+---
+
+<section>
+  {
+    routines.map((routine, i) => (
+      <RoutineParagraph
+        title={routine.title}
+        content={routine.content}
+        image={ASSET_ENDPOINT + '/' + routine.image.id}
+        class={i % 2 == 0 ? 'flex-row-reverse' : 'flex-row'}
+      />
+    ))
+  }
+</section>

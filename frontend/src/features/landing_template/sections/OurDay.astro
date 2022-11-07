@@ -1,4 +1,5 @@
 ---
+import If from '~/components/common/If.astro';
 import { ROUTES } from '~/config';
 import DayItem from '~/features/landing_template/components/DayItem.astro';
 import { LandingContent } from '~/features/landing_template/services/ContentService';
@@ -7,26 +8,30 @@ import { Day } from '~/features/landing_template/services/DayService';
 interface Props {
   day: Day[];
   content: LandingContent;
+  showViewMore?: boolean;
 }
 
-const { day, content } = Astro.props;
+const { day, content, showViewMore = true } = Astro.props;
 
 const firstSlice = day.slice(0, day.length / 2 + 1);
 const secondSlice = day.slice(day.length / 2 + 1, day.length);
 const baseRoute = ROUTES.mechterstaedtLanding;
 ---
 
-<section class="mb-20 page-container">
+<section class="mb-20">
   <h2 class="text-header-md font-medium mb-3">{content.day_title}</h2>
   <div class="lg:flex lg:justify-between">
     <p class="text-body-lg mb-10 text-primary-100">{content.day_description}</p>
-    <a
-      href={baseRoute + ROUTES.dailyRoutine}
-      underline-hover="false"
-      class="hidden lg:block text-primary-600 text-body-md"
-    >
-      {'read_more'.tr()}
-    </a>
+
+    <If condition={showViewMore}>
+      <a
+        href={baseRoute + ROUTES.dailyRoutine}
+        underline-hover="false"
+        class="hidden lg:block text-primary-600 text-body-md"
+      >
+        {'read_more'.tr()}
+      </a>
+    </If>
   </div>
   <div class="lg:hidden">
     {day.map((section, i) => <DayItem {...section} isLast={i == day.length - 1} />)}
@@ -43,11 +48,13 @@ const baseRoute = ROUTES.mechterstaedtLanding;
       }
     </div>
   </div>
-  <a
-    href={baseRoute + ROUTES.dailyRoutine}
-    class="text-primary-600 text-body-md lg:hidden"
-    underline-hover="false"
-  >
-    {'read_more'.tr()}
-  </a>
+  <If condition={showViewMore}>
+    <a
+      href={baseRoute + ROUTES.dailyRoutine}
+      class="text-primary-600 text-body-md lg:hidden"
+      underline-hover="false"
+    >
+      {'read_more'.tr()}
+    </a>
+  </If>
 </section>

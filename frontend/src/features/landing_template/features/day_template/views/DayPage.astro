@@ -1,0 +1,23 @@
+---
+import { SiteGraphqlPrefix } from '~/config';
+import DailyRoutine from '~/features/landing_template/features/day_template/sections/DailyRoutine.astro';
+import { fetchDailyRoutine } from '~/features/landing_template/features/day_template/services/DailyRoutineService';
+import OurDay from '~/features/landing_template/sections/OurDay.astro';
+import { fetchLandingContent } from '~/features/landing_template/services/ContentService';
+import { fetchDay } from '~/features/landing_template/services/DayService';
+
+interface Props {
+  sitePrefix: SiteGraphqlPrefix;
+}
+
+const { sitePrefix } = Astro.props;
+
+const content = await fetchLandingContent(sitePrefix);
+const day = await fetchDay(sitePrefix);
+const routines = await fetchDailyRoutine(sitePrefix);
+---
+
+<div>
+  <OurDay day={day} content={content} showViewMore={false} />
+  <DailyRoutine routines={routines} />
+</div>

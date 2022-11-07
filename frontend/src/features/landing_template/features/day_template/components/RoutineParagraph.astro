@@ -1,0 +1,31 @@
+---
+import Picture from '~/components/common/Picture.astro';
+
+interface Props {
+  title: string;
+  content: string;
+  image: string;
+  class?: string;
+}
+
+const { title, content, image, class: classname } = Astro.props;
+---
+
+<div class={classname + ' md:flex md:justify-between md:gap-20 md:items-center md:mb-28'}>
+  <div class="md:w-full">
+    <h2 class="text-header-md break-words font-medium mb-5 mt-10 md:mt-0">{title}</h2>
+    <div set:html={content} class="prose mb-5 md:w-full md:max-w-full"></div>
+  </div>
+  <div>
+    <div class="relative h-[300px] w-[300px] overflow-hidden rounded-lg shadow-lg mb-4 md:mb-0">
+      <Picture
+        src={image}
+        class="absolute inset-0 object-cover w-full h-full mb-6"
+        widths={[300]}
+        sizes="(max-width: 300px) 300px"
+        alt={title}
+        aspectRatio="1:1"
+      />
+    </div>
+  </div>
+</div>
