@@ -4,6 +4,7 @@ import { fetchGraphql, gql } from '~/utils/graphql';
 const LANDING_CONTENT_QUERY = (prefix: SiteGraphqlPrefix) => gql`
   query {
     ${prefix}_content {
+      password
       header_title
       header_description
       house_title
@@ -30,6 +31,7 @@ const LANDING_CONTENT_QUERY = (prefix: SiteGraphqlPrefix) => gql`
 `;
 
 export interface LandingContent {
+  password: string;
   header_title: string;
   header_description: string;
   house_title: string;

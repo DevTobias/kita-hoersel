@@ -1,0 +1,41 @@
+---
+import Icon from 'astro-icon';
+import dayjs from 'dayjs';
+import { ASSET_ENDPOINT } from '~/config';
+
+interface Props {
+  name: string;
+  description: string;
+  date_created: string;
+  file: {
+    id: string;
+    filesize: string;
+  };
+}
+
+const { name, description, date_created, file } = Astro.props;
+const dateString = dayjs(date_created).format('D.M.YYYY');
+const mbSize = Math.round(parseInt(file.filesize) / 1000000);
+---
+
+<a
+  class="mb-4 text-primary-600 block md:w-[48%]"
+  underline-hover="false"
+  href={ASSET_ENDPOINT + '/' + file.id + '/' + name}
+  download={name}
+  target="_blank"
+>
+  <div class="flex bg-neutral-100 p-4 rounded-md gap-3">
+    <Icon name="fa-solid:file-download" class="w-8 text-primary-500" />
+    <div class="w-full flex flex-col">
+      <div class="flex justify-between">
+        <span class="text-body-no lg:text-body-md">{description}</span>
+        <span class="text-body-sm lg:text-body-no text-primary-100">{mbSize} MB</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-body-sm lg:text-body-no text-primary-200">{name}</span>
+        <span class="text-body-sm lg:text-body-no text-primary-200">{dateString}</span>
+      </div>
+    </div>
+  </div>
+</a>

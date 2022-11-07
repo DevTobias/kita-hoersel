@@ -61,6 +61,12 @@
     }
   },
 
+  "paywall": {
+    "please_enter": "Bitte geben Sie hier das Passwort ein, welches Sie vom Kindergarten erhalten haben.",
+    "show": "Anzeigen",
+    "password": "Passwort"
+  },
+
   "me_landing": {
     "footer": {
       "address_label": "Kita Dreikäsehoch",

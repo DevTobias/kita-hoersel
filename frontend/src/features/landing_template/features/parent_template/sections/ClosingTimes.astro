@@ -1,0 +1,20 @@
+---
+import ClosingTimeCard from '~/features/landing_template/features/parent_template/components/ClosingTimeCard.astro';
+import { ClosingTime } from '~/features/landing_template/features/parent_template/services/ParentService';
+
+interface Props {
+  closingTimes: ClosingTime[];
+}
+
+const { closingTimes } = Astro.props;
+---
+
+<section class="mb-10">
+  <h2 class="text-header-no font-medium mb-3 lg:text-header-md">Schließzeiten</h2>
+  <p class="text-primary-100 text-body-md mb-5 lg:text-body-lg">
+    Unser Kindergarten schließt in folgenden Zeiträumen
+  </p>
+  <div>
+    {closingTimes.map((closingTime) => <ClosingTimeCard {...closingTime} />)}
+  </div>
+</section>

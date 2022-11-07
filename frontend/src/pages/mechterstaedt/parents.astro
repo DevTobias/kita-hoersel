@@ -1,0 +1,22 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { ROUTES } from '~/config';
+import { fetchLandingContent } from '~/features/landing_template/services/ContentService';
+import ParentPage from '~/features/landing_template/features/parent_template/views/ParentPage.astro';
+
+const baseUrl = ROUTES.mechterstaedtLanding;
+const content = await fetchLandingContent('me');
+---
+
+<Layout
+  header={{
+    title: content.header_title,
+    subtitle: 'Elternbereich',
+    links: [
+      { label: await 'header.mechterstaedt'.tr(), url: ROUTES.mechterstaedtLanding },
+      { label: await 'header.support_association'.tr(), url: baseUrl + ROUTES.supportAssociation },
+    ],
+  }}
+>
+  <ParentPage sitePrefix="me" />
+</Layout>

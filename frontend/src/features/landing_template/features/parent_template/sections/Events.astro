@@ -1,0 +1,20 @@
+---
+import EventCard from '~/features/landing_template/features/parent_template/components/EventCard.astro';
+import { EventType } from '~/features/landing_template/features/parent_template/services/ParentService';
+
+interface Props {
+  events: EventType[];
+}
+
+const { events } = Astro.props;
+---
+
+<section class="mb-20">
+  <h2 class="text-header-no font-medium mb-3 lg:text-header-md">Termine</h2>
+  <p class="text-primary-100 text-body-md mb-5 lg:text-body-lg">
+    Hier werden alle in naher Zukunft anstehenden Termine aufgelistet
+  </p>
+  <div class="md:flex md:flex-wrap md:justify-between">
+    {events.map((event) => <EventCard {...event} />)}
+  </div>
+</section>

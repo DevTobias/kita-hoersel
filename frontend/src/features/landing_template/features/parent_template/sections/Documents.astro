@@ -1,0 +1,20 @@
+---
+import DocumentCard from '~/features/landing_template/features/parent_template/components/DocumentCard.astro';
+import { DocumentType } from '~/features/landing_template/features/parent_template/services/ParentService';
+
+interface Props {
+  documents: DocumentType[];
+}
+
+const { documents } = Astro.props;
+---
+
+<section class="mb-20">
+  <h2 class="text-header-no font-medium mb-3 lg:text-header-md">Dokumente / Dateien</h2>
+  <p class="text-primary-100 text-body-md mb-5 lg:text-body-lg">
+    Hier können Sie verschiedene Dateien oder Dokumente herunterladen
+  </p>
+  <div class="md:flex md:flex-wrap md:justify-between">
+    {documents.map((document) => <DocumentCard {...document} />)}
+  </div>
+</section>

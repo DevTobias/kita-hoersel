@@ -1,0 +1,26 @@
+---
+import dayjs from 'dayjs';
+
+interface Props {
+  address: string;
+  date: string;
+  description: string;
+  period: string;
+}
+
+const { address, description, date, period } = Astro.props;
+const dateString = dayjs(date).format('D.M.YYYY');
+---
+
+<div class="mb-4 text-primary-600 block md:w-[48%]">
+  <div class="bg-neutral-100 p-4 rounded-md gap-3">
+    <div class="flex justify-between">
+      <span class="text-body-md">{description}</span>
+      <span class="text-body-no text-primary-100">{dateString}</span>
+    </div>
+    <div class="flex justify-between">
+      <span class="text-body-no text-primary-200">{address}</span>
+      <span class="text-body-md text-primary-200 font-medium">{period}</span>
+    </div>
+  </div>
+</div>

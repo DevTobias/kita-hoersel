@@ -1,0 +1,41 @@
+---
+import { SiteGraphqlPrefix } from '~/config';
+import ClosingTimes from '~/features/landing_template/features/parent_template/sections/ClosingTimes.astro';
+import Documents from '~/features/landing_template/features/parent_template/sections/Documents.astro';
+import Events from '~/features/landing_template/features/parent_template/sections/Events.astro';
+import PaywallSection from '~/features/landing_template/features/parent_template/sections/PaywallSection.astro';
+import {
+  fetchClosingTimes,
+  fetchDocuments,
+  fetchEvents,
+} from '~/features/landing_template/features/parent_template/services/ParentService';
+import { fetchLandingContent } from '~/features/landing_template/services/ContentService';
+
+interface Props {
+  sitePrefix: SiteGraphqlPrefix;
+}
+
+const { sitePrefix } = Astro.props;
+
+const content = await fetchLandingContent(sitePrefix);
+const documents = await fetchDocuments(sitePrefix);
+const events = await fetchEvents(sitePrefix);
+const closingTimes = await fetchClosingTimes(sitePrefix);
+---
+
+<div class="paywall">
+  <PaywallSection password={content.password} />
+</div>
+<div class="content" style="display: none;">
+  <Documents documents={documents} />
+  <Events events={events} />
+  <ClosingTimes closingTimes={closingTimes} />
+</div>
+
+<script>
+  console.log('===================================================');
+  console.log(
+    'Falls du denkst, du hast eine Sicherheitslücke entdeckt, muss ich dich leider enttäuschen. Das hier soll nur eine visuelle paywall sein, da die Daten eh öffentlich sind! ;) Better luck next time!'
+  );
+  console.log('===================================================');
+</script>

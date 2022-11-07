@@ -1,0 +1,39 @@
+---
+interface Props {
+  dates: string;
+  title: string;
+}
+
+const { dates, title } = Astro.props;
+---
+
+<div class="mb-10">
+  <div class="text-body-md font-medium mb-3">{title}</div>
+  <div set:html={dates} class="list"></div>
+</div>
+
+<style is:global>
+  .list li {
+    margin-left: 35px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .list li:before {
+    left: -25px;
+    top: 2px;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    content: url('/images/bullet.svg');
+  }
+
+  .list strong {
+    font-weight: normal;
+  }
+
+  .list em {
+    font-weight: normal;
+    color: #5d6d8e;
+  }
+</style>
