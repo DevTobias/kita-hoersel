@@ -8,6 +8,9 @@ const LANDING_CONTENT_QUERY = (prefix: SiteGraphqlPrefix) => gql`
       header_description
       house_title
       house_description
+      house_paragraph_1
+      house_paragraph_2
+      house_paragraph_3
       education_title
       education_description
       day_title
@@ -31,6 +34,9 @@ export interface LandingContent {
   header_description: string;
   house_title: string;
   house_description: string;
+  house_paragraph_1: string;
+  house_paragraph_2: string;
+  house_paragraph_3: string;
   education_title: string;
   education_description: string;
   day_title: string;

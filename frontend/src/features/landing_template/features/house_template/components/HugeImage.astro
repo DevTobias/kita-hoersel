@@ -1,0 +1,26 @@
+---
+import Picture from '~/components/common/Picture.astro';
+
+interface Props {
+  label: string;
+  image: string;
+}
+
+const { label, image } = Astro.props;
+---
+
+<div>
+  <div
+    class="relative h-[200px] w-[300px] lg:h-[600px] lg:w-[800px] overflow-hidden rounded-lg shadow-lg mb-4"
+  >
+    <Picture
+      src={image}
+      class="absolute inset-0 object-cover w-full h-full mb-6"
+      widths={[400, 800]}
+      sizes="(max-width: 800px) 400px, 800px"
+      alt={`image of ${label} room`}
+      aspectRatio="16:9"
+    />
+  </div>
+  <h3 class="text-primary-100 text-body-no uppercase lg:text-body-lg w-fit">{label}</h3>
+</div>

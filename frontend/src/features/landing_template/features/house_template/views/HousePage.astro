@@ -1,0 +1,49 @@
+---
+import { SiteGraphqlPrefix } from '~/config';
+import MiscImageCarousel from '~/features/landing_template/features/house_template/sections/MiscImageCarousel.astro';
+import OurHouse from '~/features/landing_template/features/house_template/sections/OurHouse.astro';
+import Rooms from '~/features/landing_template/features/house_template/sections/Rooms.astro';
+import {
+  fetchMiscImages,
+  fetchRooms,
+} from '~/features/landing_template/features/house_template/services/RoomService';
+import { fetchLandingContent } from '~/features/landing_template/services/ContentService';
+
+interface Props {
+  sitePrefix: SiteGraphqlPrefix;
+  house: {
+    image: string;
+  };
+}
+
+const { sitePrefix, house } = Astro.props;
+
+const content = await fetchLandingContent(sitePrefix);
+const rooms = await fetchRooms(sitePrefix);
+const images = await fetchMiscImages(sitePrefix);
+---
+
+<div class="tight-page-container leading-7 lg:leading-8">
+  <OurHouse content={content} {...house} />
+  <section set:html={content.house_paragraph_1} class="text-body-md lg:text-body-lg mb-10">
+  </section>
+  <Rooms rooms={rooms} />
+  <section
+    set:html={content.house_paragraph_2}
+    class="colored-em text-body-md lg:text-body-lg mb-5"
+  >
+  </section>
+  <MiscImageCarousel images={images} />
+  <section
+    set:html={content.house_paragraph_3}
+    class="colored-em text-body-md lg:text-body-lg mb-28"
+  >
+  </section>
+</div>
+
+<style is:global>
+  .colored-em em {
+    font-weight: normal;
+    color: #de8c7d;
+  }
+</style>

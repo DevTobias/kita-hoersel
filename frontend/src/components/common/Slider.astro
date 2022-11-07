@@ -1,24 +1,38 @@
 ---
+import Icon from 'astro-icon';
+
 interface Props {
   amount: number;
-  class: string;
+  class?: string;
 }
 
+const id = Math.random()
+  .toString(36)
+  .replace(/[^a-z]+/g, '');
 const { amount, class: classes } = Astro.props;
 ---
 
-<div class={`slider ${classes}`}>
+<div class={`slider relative ${classes}`} id={id}>
   <div class="slides">
     <slot />
   </div>
   <div class="dots">
     {[...Array(amount)].map(() => <span class="dot" />)}
   </div>
+  <Icon
+    id={`${id}-right`}
+    name="akar-icons:chevron-right"
+    class="hidden lg:block w-20 text-white absolute right-0 top-1/2 -translate-y-full cursor-pointer"
+  />
+  <Icon
+    id={`${id}-left`}
+    name="akar-icons:chevron-left"
+    class="hidden lg:block w-20 text-white absolute left-0 top-1/2 -translate-y-full cursor-pointer"
+  />
 </div>
 
 <style is:global>
   .slider {
-    width: 100%;
     overflow: hidden;
   }
 
@@ -44,7 +58,6 @@ const { amount, class: classes } = Astro.props;
   .slides > div {
     scroll-snap-align: start;
     flex-shrink: 0;
-    width: 100%;
     margin-right: 50px;
     border-radius: 10px;
     transform-origin: center center;
@@ -71,42 +84,54 @@ const { amount, class: classes } = Astro.props;
   }
 </style>
 
-<script>
-  let activeIndex = 0;
+<script is:inline define:vars={{ id }}>
+  const initializeSlider = (id) => {
+    let activeIndex = 0;
 
-  const container = document.querySelector('.slides');
-  const elements = [...document.querySelectorAll('.slides>*')];
-  const dots = [...document.querySelectorAll('.dot')];
+    const container = document.querySelector(`#${id}>.slides`);
+    const elements = [...document.querySelectorAll(`#${id}>.slides>*`)];
+    const dots = [...document.querySelectorAll(`#${id}>.dots>*`)];
+    const left = document.querySelector(`#${id}-left`);
+    const right = document.querySelector(`#${id}-right`);
 
-  const scrollTo = (i: number) => {
-    const left = (elements[0].scrollWidth + 50) * Math.abs(activeIndex - i);
-    container.scrollBy({ left: activeIndex > i ? -left : left, behavior: 'smooth' });
+    const scrollTo = (i) => {
+      const left = (elements[0].scrollWidth + 50) * Math.abs(activeIndex - i);
+      container.scrollBy({ left: activeIndex > i ? -left : left, behavior: 'smooth' });
+    };
+
+    left.addEventListener('click', () => {
+      const newIndex = (activeIndex - 1) % elements.length;
+      scrollTo(newIndex < 0 ? elements.length - 1 : newIndex);
+    });
+    right.addEventListener('click', () => scrollTo((activeIndex + 1) % elements.length));
+
+    let interval;
+    const resetAutoPlay = () => {
+      clearInterval(interval);
+      interval = setInterval(() => scrollTo((activeIndex + 1) % elements.length), 10000);
+    };
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => scrollTo(i)));
+
+    const handleIntersect = (entries) => {
+      const entry = entries.find((e) => e.isIntersecting);
+      if (entry) {
+        dots[activeIndex].classList.remove('active');
+        activeIndex = elements.findIndex((e) => e === entry.target);
+        dots[activeIndex].classList.add('active');
+        resetAutoPlay();
+      }
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, {
+      root: container,
+      rootMargin: '0px',
+      threshold: 0.75,
+    });
+
+    elements.forEach((el) => observer.observe(el));
+    resetAutoPlay();
   };
 
-  let interval: NodeJS.Timer;
-  const resetAutoPlay = () => {
-    clearInterval(interval);
-    interval = setInterval(() => scrollTo((activeIndex + 1) % elements.length), 10000);
-  };
-
-  dots.forEach((dot, i) => dot.addEventListener('click', () => scrollTo(i)));
-
-  const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-    const entry = entries.find((e) => e.isIntersecting);
-    if (entry) {
-      dots[activeIndex].classList.remove('active');
-      activeIndex = elements.findIndex((e) => e === entry.target);
-      dots[activeIndex].classList.add('active');
-      resetAutoPlay();
-    }
-  };
-
-  const observer = new IntersectionObserver(handleIntersect, {
-    root: container,
-    rootMargin: '0px',
-    threshold: 0.75,
-  });
-
-  elements.forEach((el) => observer.observe(el));
-  resetAutoPlay();
+  initializeSlider(id);
 </script>

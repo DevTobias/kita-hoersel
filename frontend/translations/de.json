@@ -13,7 +13,7 @@
   },
 
   "footer": {
-    "header": "Kindertagesstädten der Gemeinde Hörsel",
+    "header": "Kindertagesstätten der Gemeinde Hörsel",
     "privacy": "Datenschutz",
     "imprint": "Impressum",
     "contact": "Kontakt",
@@ -40,7 +40,7 @@
 
   "hoersel": {
     "header": {
-      "title": "Kindertagesstädten\nder Gemeinde Hörsel"
+      "title": "Kindertagesstätten\nder Gemeinde Hörsel"
     },
     "intro": {
       "our_news": "Aktuelles von uns"
@@ -48,7 +48,7 @@
   },
 
   "articles": {
-    "header": "Beiträge der Kindertagesstädten \nSeite {0}"
+    "header": "Beiträge der Kindertagesstätten \nSeite {0}"
   },
 
   "landing_page": {

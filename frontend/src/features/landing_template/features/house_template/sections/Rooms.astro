@@ -1,0 +1,42 @@
+---
+import Slider from '~/components/common/Slider.astro';
+import { ASSET_ENDPOINT } from '~/config';
+import RoomCard from '~/features/landing_template/features/house_template/components/RoomCard.astro';
+import { Image } from '~/features/landing_template/features/house_template/services/RoomService';
+
+interface Props {
+  rooms: Image[];
+}
+
+const { rooms } = Astro.props;
+---
+
+<section class="mb-20">
+  <div class="hidden md:flex flex-wrap justify-center gap-20 lg:gap-y-20">
+    {
+      rooms.map((room) => (
+        <RoomCard label={room.label} image={ASSET_ENDPOINT + '/' + room.image.id} />
+      ))
+    }
+  </div>
+  <div class="flex justify-center">
+    <Slider amount={rooms.length} class="md:hidden w-[300px] lg:w-[400px]">
+      {
+        rooms.map((room) => (
+          <RoomCard label={room.label} image={ASSET_ENDPOINT + '/' + room.image.id} />
+        ))
+      }
+    </Slider>
+  </div>
+</section>
+
+<style is:global>
+  .dot {
+    border: 2px solid #c0c5d0;
+  }
+
+  .active {
+    border: 2px solid #25334f;
+    background-color: #25334f;
+  }
+</style>

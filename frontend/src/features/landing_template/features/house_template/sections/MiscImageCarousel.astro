@@ -1,0 +1,22 @@
+---
+import Slider from '~/components/common/Slider.astro';
+import { ASSET_ENDPOINT } from '~/config';
+import HugeImage from '~/features/landing_template/features/house_template/components/HugeImage.astro';
+import { Image } from '~/features/landing_template/features/house_template/services/RoomService';
+
+interface Props {
+  images: Image[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="my-10 flex justify-center">
+  <Slider amount={images.length} class="w-[300px] lg:w-[800px]">
+    {
+      images.map((image) => (
+        <HugeImage label={image.label} image={ASSET_ENDPOINT + '/' + image.image.id} />
+      ))
+    }
+  </Slider>
+</section>

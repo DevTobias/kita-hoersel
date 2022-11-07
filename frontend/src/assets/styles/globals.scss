@@ -14,6 +14,10 @@
   .page-container {
     @apply w-full max-w-[80rem] mx-auto px-6 lg:w-[85%];
   }
+
+  .tight-page-container {
+    @apply w-full max-w-[70rem] mx-auto px-6 lg:w-[80%];
+  }
 }
 
 [astro-icon] > * {

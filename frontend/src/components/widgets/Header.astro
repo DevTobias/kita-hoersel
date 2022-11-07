@@ -6,12 +6,13 @@ import { ROUTES } from '~/config';
 interface Props {
   pretitle?: string;
   title: string;
+  subtitle?: string;
   description?: string;
   links?: { label: string; url: string }[];
   readMoreUrl?: string;
 }
 
-const { pretitle, title, description, links = [], readMoreUrl } = Astro.props;
+const { pretitle, title, description, links = [], readMoreUrl, subtitle } = Astro.props;
 ---
 
 <header class="max-h-[50rem] lg:max-h-[40rem]">
@@ -59,6 +60,9 @@ const { pretitle, title, description, links = [], readMoreUrl } = Astro.props;
             <span class="whitespace-pre-line" set:html={title}></span>
           </h1>
           <div class="font-light text-body-lg space-y-3 my-5 max-w-2xl xl:w-4/6">
+            <If condition={subtitle != null}>
+              <h2 slot="if" class="text-header-md font-medium">{subtitle}</h2>
+            </If>
             <If condition={description != null}>
               <p slot="if">{description}</p>
             </If>
@@ -86,7 +90,10 @@ const { pretitle, title, description, links = [], readMoreUrl } = Astro.props;
     <If condition={pretitle != null}>
       <p class="text-body-sm" slot="if">{pretitle}</p>
     </If>
-    <h1 class="text-header-sm font-bold mb-5">{title}</h1>
+    <h1 class="text-header-sm font-bold mb-5" set:html={title}></h1>
+    <If condition={subtitle != null}>
+      <h2 slot="if" class="text-body-lg font-medium mb-10">{subtitle}</h2>
+    </If>
     <div class="font-light text-body-sm leading-6 space-y-3 mb-5">
       <If condition={description != null}>
         <p slot="if">{description}</p>
