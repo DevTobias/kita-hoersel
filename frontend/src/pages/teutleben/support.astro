@@ -11,7 +11,7 @@ const baseUrl = ROUTES.mechterstaedtLanding;
 const content = await fetchLandingContent('te');
 const support = await fetchSupport('te');
 
-const markdownContent = marked.parse(support.content);
+const markdownContent = marked.parse(support.content ?? '');
 ---
 
 <Layout
