@@ -1,0 +1,44 @@
+---
+import { marked } from 'marked';
+
+import Layout from '~/layouts/PageLayout.astro';
+import { ROUTES } from '~/config';
+import { fetchSupport } from '~/features/legal/SupportService';
+import { fetchLandingContent } from '~/features/landing_template/services/ContentService';
+import Icon from 'astro-icon';
+
+const baseUrl = ROUTES.mechterstaedtLanding;
+const content = await fetchLandingContent('te');
+const support = await fetchSupport('te');
+
+const markdownContent = marked.parse(support.content);
+---
+
+<Layout
+  header={{
+    title: content.header_title,
+    subtitle: support.title,
+    links: [
+      { label: await 'header.teutleben'.tr(), url: ROUTES.teutlebenLanding },
+      { label: await 'header.parent_section'.tr(), url: baseUrl + ROUTES.parentSection },
+    ],
+  }}
+>
+  <article
+    set:html={markdownContent}
+    class="w-full prose-sm prose-a:text-secondary-700 max-w-full mx-auto pt-10 lg:prose-xl lg:pt-20"
+  >
+  </article>
+
+  <div class="space-y-3 my-16">
+    <div class="flex gap-5 items-center">
+      <Icon name="mdi:account" class="w-[32px] h-[32px]" />
+      <span class="w-full font-medium text-body-no lg:text-body-md">{support.management}</span>
+    </div>
+    <div class="flex gap-5 items-start">
+      <Icon name="clarity:building-solid" class="w-[32px] h-[32px]" />
+      <span class="w-full font-medium text-body-no lg:text-body-md" set:html={support.address}
+      ></span>
+    </div>
+  </div>
+</Layout>
