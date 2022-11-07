@@ -37,5 +37,7 @@ const day = await fetchDay(sitePrefix);
 <OurHouse content={content} {...house} />
 <OurTeam teamMembers={teamMembers} />
 <EducationalWork content={content} paragraphs={educationParagraphs} {...educationalWork} />
-<OurDay day={day} content={content} />
+<div class="page-container">
+  <OurDay day={day} content={content} />
+</div>
 <RegisterNow content={content} />

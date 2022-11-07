@@ -25,6 +25,7 @@ const baseRoute = ROUTES.mechterstaedtLanding;
 
     <If condition={showViewMore}>
       <a
+        slot="if"
         href={baseRoute + ROUTES.dailyRoutine}
         underline-hover="false"
         class="hidden lg:block text-primary-600 text-body-md"
@@ -50,6 +51,7 @@ const baseRoute = ROUTES.mechterstaedtLanding;
   </div>
   <If condition={showViewMore}>
     <a
+      slot="if"
       href={baseRoute + ROUTES.dailyRoutine}
       class="text-primary-600 text-body-md lg:hidden"
       underline-hover="false"
