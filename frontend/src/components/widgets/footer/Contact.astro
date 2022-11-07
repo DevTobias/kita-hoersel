@@ -77,7 +77,12 @@ const { opening, management, mobile, email, address } = Astro.props;
           </div>
           <div class="flex items-center font-medium gap-3">
             <Icon name="mdi:email" class="w-7 h-7" />
-            <a href={'mailto:' + email} class="text-primary-600 underline" underline-hover="false">
+            <a
+              id="from"
+              href={'mailto:' + email}
+              class="text-primary-600 underline"
+              underline-hover="false"
+            >
               {email}
             </a>
           </div>
@@ -92,9 +97,10 @@ const { opening, management, mobile, email, address } = Astro.props;
 </div>
 
 <script is:inline>
-  const email = document.querySelector('#email-input');
-  const message = document.querySelector('#message-input');
+  const emailField = document.querySelector('#email-input');
+  const messageField = document.querySelector('#message-input');
   const buttons = document.querySelectorAll('.submit-btn');
+  const from = document.querySelector('#from').innerHTML;
 
   const validate = (e, element) => {
     if (!e.target.validity.valid) {
@@ -106,7 +112,7 @@ const { opening, management, mobile, email, address } = Astro.props;
     } else {
       element.classList.remove('focus:border-danger-500');
       element.classList.remove('border-danger-500');
-      if (email.validity.valid && message.validity.valid) {
+      if (emailField.validity.valid && messageField.validity.valid) {
         buttons.forEach((btn) => {
           btn.removeAttribute('disabled');
         });
@@ -114,19 +120,23 @@ const { opening, management, mobile, email, address } = Astro.props;
     }
   };
 
-  email.addEventListener('input', (e) => validate(e, email));
-  message.addEventListener('input', (e) => validate(e, message));
+  emailField.addEventListener('input', (e) => validate(e, emailField));
+  messageField.addEventListener('input', (e) => validate(e, messageField));
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', async (e) => {
-      if (!email.validity.valid || !message.validity.valid) {
+      if (!emailField.validity.valid || !messageField.validity.valid) {
         showToast('Bitte fülle das Formular aus!', false);
         return;
       }
 
       const res = await fetch('https://admin.tobias-kaerst.de/items/messages', {
         method: 'POST',
-        body: JSON.stringify({ email: email.value, message: message.value }),
+        body: JSON.stringify({
+          email: emailField.value,
+          message: messageField.value,
+          from: from.trim(),
+        }),
         headers: {
           'Content-Type': 'application/json',
         },
