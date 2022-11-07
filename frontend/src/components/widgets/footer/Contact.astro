@@ -20,7 +20,7 @@ const { opening, management, mobile, email, address } = Astro.props;
         <p class="text-primary-100 text-body-md mb-5">
           {'footer.contact_form'.tr()}
         </p>
-        <form class="space-y-3" onsubmit="return false">
+        <form class="space-y-3">
           <div class="lg:flex lg:gap-4">
             <input
               id="email-input"
@@ -125,6 +125,8 @@ const { opening, management, mobile, email, address } = Astro.props;
 
   buttons.forEach((btn) => {
     btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+
       if (!emailField.validity.valid || !messageField.validity.valid) {
         showToast('Bitte fülle das Formular aus!', false);
         return;

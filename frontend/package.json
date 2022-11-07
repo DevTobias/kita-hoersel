@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint src --ext .tsx,.ts,.astro",
-    "subfont": "subfont -i --inline-css -r dist/index.html"
+    "subfont": "subfont -i --inline-css -r dist/index.html dist/404.html"
   },
   "devDependencies": {
     "@astrojs/image": "^0.10.0",

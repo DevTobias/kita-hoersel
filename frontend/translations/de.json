@@ -67,6 +67,13 @@
     "password": "Passwort"
   },
 
+  "404": {
+    "error": "404 ERROR",
+    "not_found": "Seite nicht gefunden",
+    "not_found_desc": "Sorry, die angeforderte Seite konnte nicht gefunden werden.",
+    "back_home": "Wieder nach Hause"
+  },
+
   "me_landing": {
     "footer": {
       "address_label": "Kita Dreikäsehoch",

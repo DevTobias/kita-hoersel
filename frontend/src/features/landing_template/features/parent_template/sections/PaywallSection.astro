@@ -36,7 +36,9 @@ const { password } = Astro.props;
 </div>
 
 <script define:vars={{ password }}>
-  document.querySelector('#login-btn').addEventListener('click', () => {
+  document.querySelector('#login-btn').addEventListener('click', (e) => {
+    e.preventDefault();
+
     const givenPassword = document.querySelector('#password-input').value;
 
     if (password != givenPassword) {
