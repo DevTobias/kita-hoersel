@@ -39,7 +39,7 @@ const { content, backgroundImage, paragraphs, headerImage, footerImage } = Astro
         />
       </div>
 
-      <Slider amount={paragraphs.length} class="lg:hidden">
+      <Slider amount={paragraphs.length} class="lg:hidden w-full">
         {paragraphs.map((p) => <EducationTile {...p} />)}
       </Slider>
     </div>
