@@ -2,10 +2,12 @@ import { fetchGraphql, gql } from '~/utils/graphql';
 
 const PRIVACY_QUERY = gql`
   query {
-    privacy {
-      title
-      description
-      content
+    privacy  {
+      translations(filter: { languages_code: { locale: { _eq: "de" } } }) {
+          title
+          description
+          content
+      }
     }
   }
 `;
@@ -37,5 +39,5 @@ export const fetchImprint = async () => {
 };
 
 export const fetchPrivacy = async () => {
-  return fetchGraphql<Privacy>(PRIVACY_QUERY, 'privacy');
+  return (await fetchGraphql<Privacy>(PRIVACY_QUERY, 'privacy'))["translations"][0];
 };
