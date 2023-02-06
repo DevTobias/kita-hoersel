@@ -26,6 +26,8 @@ interface Props {
 
 const { sitePrefix, house, educationalWork } = Astro.props;
 
+const baseUrl = sitePrefix === "me" ? ROUTES.mechterstaedtLanding : ROUTES.teutlebenLanding;
+
 const facts = await fetchQuickFacts(sitePrefix);
 const content = await fetchLandingContent(sitePrefix);
 const teamMembers = await fetchTeamMembers(sitePrefix);
@@ -34,10 +36,10 @@ const day = await fetchDay(sitePrefix);
 ---
 
 <QuickFacts facts={facts} />
-<OurHouse content={content} {...house} />
+<OurHouse content={content} baseUrl={baseUrl} {...house} />
 <OurTeam teamMembers={teamMembers} />
 <EducationalWork content={content} paragraphs={educationParagraphs} {...educationalWork} />
 <div class="page-container">
-  <OurDay day={day} content={content} />
+  <OurDay day={day} content={content} baseUrl={baseUrl} />
 </div>
 <RegisterNow content={content} />

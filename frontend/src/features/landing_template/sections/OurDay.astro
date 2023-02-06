@@ -9,13 +9,13 @@ interface Props {
   day: Day[];
   content: LandingContent;
   showViewMore?: boolean;
+  baseUrl: string;
 }
 
 const { day, content, showViewMore = true } = Astro.props;
 
 const firstSlice = day.slice(0, day.length / 2 + 1);
 const secondSlice = day.slice(day.length / 2 + 1, day.length);
-const baseRoute = ROUTES.mechterstaedtLanding;
 ---
 
 <section class="mb-20">
@@ -26,7 +26,7 @@ const baseRoute = ROUTES.mechterstaedtLanding;
     <If condition={showViewMore}>
       <a
         slot="if"
-        href={baseRoute + ROUTES.dailyRoutine}
+        href={baseUrl + ROUTES.dailyRoutine}
         underline-hover="false"
         class="hidden lg:block text-primary-600 text-body-md"
       >
@@ -52,7 +52,7 @@ const baseRoute = ROUTES.mechterstaedtLanding;
   <If condition={showViewMore}>
     <a
       slot="if"
-      href={baseRoute + ROUTES.dailyRoutine}
+      href={baseUrl + ROUTES.dailyRoutine}
       class="text-primary-600 text-body-md lg:hidden"
       underline-hover="false"
     >

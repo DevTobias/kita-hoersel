@@ -5,12 +5,12 @@ import { ROUTES } from '~/config';
 import { LandingContent } from '~/features/landing_template/services/ContentService';
 
 interface Props {
+  baseUrl: string;
   content: LandingContent;
   image: string;
 }
 
 const { content, image } = Astro.props;
-const baseUrl = ROUTES.mechterstaedtLanding;
 ---
 
 <section class="bg-primary-600 w-full">
