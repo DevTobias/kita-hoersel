@@ -12,7 +12,7 @@ interface Props {
   baseUrl: string;
 }
 
-const { day, content, showViewMore = true } = Astro.props;
+const { baseUrl, day, content, showViewMore = true } = Astro.props;
 
 const firstSlice = day.slice(0, day.length / 2 + 1);
 const secondSlice = day.slice(day.length / 2 + 1, day.length);
